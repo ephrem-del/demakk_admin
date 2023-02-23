@@ -1,5 +1,5 @@
 import '../objects/customer.dart';
-import '../view_model/add_order_view_model.dart';
+// import '../view_model/add_order_view_model.dart';
 
 List<Customer> customers = <Customer>[
   Customer(name: 'abebe', phoneNumber: '09000000', address: 'iza fitlefit'),
@@ -9,7 +9,7 @@ List<Customer> customers = <Customer>[
   Customer(name: 'keyo', phoneNumber: '09444444', address: 'kegna jerba'),
   Customer(name: 'adey', phoneNumber: '09555555', address: 'gorebet'),
 ];
-AddOrderViewModel _addOrderViewModel = AddOrderViewModel();
-List<Customer> _customers = _addOrderViewModel.customerList.stream.hasValue
-    ? _addOrderViewModel.customerList.stream.value
-    : [];
+// AddOrderViewModel _addOrderViewModel = AddOrderViewModel();
+// List<Customer> _customers = _addOrderViewModel.customerList.stream.hasValue
+//     ? _addOrderViewModel.customerList.stream.value
+//     : [];

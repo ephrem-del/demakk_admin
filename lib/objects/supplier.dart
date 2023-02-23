@@ -1,4 +1,4 @@
-import 'package:demakk_admin/objects/supplier_items_and_services.dart';
+// import 'package:demakk_admin/objects/supplier_items_and_services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Supplier {

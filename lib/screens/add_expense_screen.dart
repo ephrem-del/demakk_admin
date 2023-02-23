@@ -47,11 +47,10 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    String _reason = _reasonController.text;
-                    double _price = double.parse(_priceController.text);
-                    ExpenseType _expenseType = expenseTypesMap[selectedType]!;
-                    _addExpenseViewModel.addExpense(
-                        _reason, _price, _expenseType);
+                    String reason = _reasonController.text;
+                    double price = double.parse(_priceController.text);
+                    ExpenseType expenseType = expenseTypesMap[selectedType]!;
+                    _addExpenseViewModel.addExpense(reason, price, expenseType);
                     Navigator.pop(context);
                     Navigator.pushNamed(context, '/home_screen');
                   },
@@ -104,6 +103,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                                   ? 'የወጪ አይነት ማስገባት አስፈላጊ ነው'
                                   : 'Expense type is required';
                             }
+                            return null;
                           },
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           items: _items,
@@ -144,6 +144,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                             ? 'ዋጋ ማስገባት አስፈላጊ ነው'
                             : 'Price is required';
                       }
+                      return null;
                     },
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     keyboardType: TextInputType.number,
@@ -174,6 +175,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                           ? 'ምክንያት ማስገባት አስፈላጊ ነው'
                           : 'Reason is required';
                     }
+                    return null;
                   },
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   maxLines: 4,

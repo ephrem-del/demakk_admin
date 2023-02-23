@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demakk_admin/objects/supplier_items_and_services.dart';
+import 'package:flutter/foundation.dart';
 
 import '../objects/supplier.dart';
 
@@ -23,9 +24,13 @@ class AddSupplierItemViewModel {
       isSaved = true;
       return isSaved;
     } on FirebaseException catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
     return isSaved;
   }

@@ -1,4 +1,4 @@
-import 'package:demakk_admin/resources/customer_list.dart';
+// import 'package:demakk_admin/resources/customer_list.dart';
 import 'package:demakk_admin/resources/order_resource.dart';
 import 'package:demakk_admin/resources/priorites.dart';
 import 'package:flutter/material.dart';
@@ -35,10 +35,12 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: amharic ? Text('ትዕዛዝ በመጨመር ላይ') : Text('Adding Order'),
+              title: amharic
+                  ? const Text('ትዕዛዝ በመጨመር ላይ')
+                  : const Text('Adding Order'),
               content: amharic
-                  ? Text('አዲስ ትዕዛዝ መጨመር ትፈልጋለህ/ሽ?')
-                  : Text('Are you sure you want to add an Order?'),
+                  ? const Text('አዲስ ትዕዛዝ መጨመር ትፈልጋለህ/ሽ?')
+                  : const Text('Are you sure you want to add an Order?'),
               actions: [
                 ElevatedButton(
                   onPressed: () {
@@ -49,7 +51,7 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                       const Color(0xFFC5C2C2),
                     ),
                   ),
-                  child: amharic ? Text('ሰርዝ') : Text('Cancel'),
+                  child: amharic ? const Text('ሰርዝ') : const Text('Cancel'),
                 ),
                 const SizedBox(
                   width: 10,
@@ -61,7 +63,7 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                   },
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(primaryColor)),
-                  child: amharic ? Text('አዎ') : Text('Yes'),
+                  child: amharic ? const Text('አዎ') : const Text('Yes'),
                 ),
                 const SizedBox(
                   width: 11,
@@ -80,19 +82,19 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
       stream: _addOrderViewModel.customerList.stream,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Text('Error');
+          return const Text('Error');
         }
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return Text('Loading');
+            return const Text('Loading');
           default:
             if (!snapshot.hasData) {
-              return Text('No Data');
+              return const Text('No Data');
             }
         }
 
         List<Customer> customers = snapshot.data!;
-        List<DropdownMenuItem> _items = customers
+        List<DropdownMenuItem> items = customers
             .map((customer) => DropdownMenuItem(
                   value: customer.name,
                   child: Text(customer.name),
@@ -101,8 +103,9 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
 
         return Scaffold(
           appBar: AppBar(
-            title:
-                amharic ? Text('አዲስ የደንበኛ ትዕዛዝ') : Text('New Customer Order'),
+            title: amharic
+                ? const Text('አዲስ የደንበኛ ትዕዛዝ')
+                : const Text('New Customer Order'),
           ),
           body: Center(
             child: Padding(
@@ -125,11 +128,11 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                           Row(
                             children: [
                               amharic
-                                  ? Text(
+                                  ? const Text(
                                       'የደንበኛ ስም',
                                       style: subTitleTextStyle,
                                     )
-                                  : Text(
+                                  : const Text(
                                       'Customer Name',
                                       style: subTitleTextStyle,
                                     ),
@@ -142,14 +145,15 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                                             ? 'የደንበኛ ስም ማስገባት ግዴታ ነው'
                                             : 'Customer name is required';
                                       }
+                                      return null;
                                     },
                                     autovalidateMode:
                                         AutovalidateMode.onUserInteraction,
-                                    items: _items,
+                                    items: items,
                                     value: _selectedCustomer,
                                     hint: amharic
-                                        ? Text('የደንበኛ ስም')
-                                        : Text('Customer Name'),
+                                        ? const Text('የደንበኛ ስም')
+                                        : const Text('Customer Name'),
                                     onChanged: (selected) {
                                       setState(() {
                                         _selectedCustomer = selected!;
@@ -161,15 +165,15 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                           Row(
                             children: [
                               amharic
-                                  ? Text(
+                                  ? const Text(
                                       'የትዕዛዝ አይነት',
                                       style: subTitleTextStyle,
                                     )
-                                  : Text(
+                                  : const Text(
                                       'Choose Type',
                                       style: subTitleTextStyle,
                                     ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 40,
                               ),
                               Expanded(
@@ -180,14 +184,15 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                                             ? 'የትዕዛዝ አይነት ማስገባት ግዴታ ነው'
                                             : 'Order type is required';
                                       }
+                                      return null;
                                     },
                                     autovalidateMode:
                                         AutovalidateMode.onUserInteraction,
                                     items: _orderTypes,
                                     value: _selectedOrderType,
                                     hint: amharic
-                                        ? Text('የትዕዛዝ አይነት')
-                                        : Text('Order Type'),
+                                        ? const Text('የትዕዛዝ አይነት')
+                                        : const Text('Order Type'),
                                     onChanged: (selected) {
                                       setState(() {
                                         _selectedOrderType = selected;
@@ -230,15 +235,15 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                               ? Row(
                                   children: [
                                     amharic
-                                        ? Text(
+                                        ? const Text(
                                             'የኩባያ አይነት',
                                             style: subTitleTextStyle,
                                           )
-                                        : Text(
+                                        : const Text(
                                             'Mug Type',
                                             style: subTitleTextStyle,
                                           ),
-                                    Spacer(),
+                                    const Spacer(),
                                     DropdownButton(
                                       items: _mugTypes,
                                       value: _selectedMug,
@@ -253,15 +258,15 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                               ? Row(
                                   children: [
                                     amharic
-                                        ? Text(
+                                        ? const Text(
                                             'የፕሎት አይነት',
                                             style: subTitleTextStyle,
                                           )
-                                        : Text(
+                                        : const Text(
                                             'Plot Type',
                                             style: subTitleTextStyle,
                                           ),
-                                    Spacer(),
+                                    const Spacer(),
                                     DropdownButton(
                                         items: _plotTypes,
                                         value: _selectedPlot,
@@ -282,7 +287,7 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                                           : 'Flash stamp type',
                                       style: subTitleTextStyle,
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     DropdownButton(
                                       items: _flashStampTypes,
                                       onChanged: (selected) {
@@ -294,7 +299,7 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                                     )
                                   ],
                                 )
-                              : SizedBox.shrink(),
+                              : const SizedBox.shrink(),
                           tshirtOrNot
                               ? Column(
                                   children: [
@@ -303,15 +308,15 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         amharic
-                                            ? Text(
+                                            ? const Text(
                                                 'የቲሸርት አይነት',
                                                 style: subTitleTextStyle,
                                               )
-                                            : Text(
+                                            : const Text(
                                                 'Tshirt Type',
                                                 style: subTitleTextStyle,
                                               ),
-                                        Spacer(),
+                                        const Spacer(),
                                         DropdownButton(
                                             items: _tshirtTypes,
                                             value: _selectedTshirt,
@@ -327,15 +332,15 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                                           MainAxisAlignment.center,
                                       children: [
                                         amharic
-                                            ? Text(
+                                            ? const Text(
                                                 'ሳይዝ',
                                                 style: subTitleTextStyle,
                                               )
-                                            : Text(
+                                            : const Text(
                                                 'Size',
                                                 style: subTitleTextStyle,
                                               ),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 10,
                                         ),
                                         DropdownButton(
@@ -346,19 +351,19 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                                                 _selectedTshirtSize = selected;
                                               });
                                             }),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 20,
                                         ),
                                         amharic
-                                            ? Text(
+                                            ? const Text(
                                                 'ከለር',
                                                 style: subTitleTextStyle,
                                               )
-                                            : Text(
+                                            : const Text(
                                                 'Color',
                                                 style: subTitleTextStyle,
                                               ),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 10,
                                         ),
                                         DropdownButton(
@@ -373,22 +378,22 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                                     )
                                   ],
                                 )
-                              : SizedBox.shrink(),
+                              : const SizedBox.shrink(),
                           otherOrNot
                               ? Column(
                                   children: [
                                     Row(
                                       children: [
                                         amharic
-                                            ? Text(
+                                            ? const Text(
                                                 'የትዕዛዝ አይነት',
                                                 style: subTitleTextStyle,
                                               )
-                                            : Text(
+                                            : const Text(
                                                 'Order type',
                                                 style: subTitleTextStyle,
                                               ),
-                                        Spacer(),
+                                        const Spacer(),
                                         SizedBox(
                                           width: 100,
                                           child: TextFormField(
@@ -401,6 +406,7 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                                                       : 'Order type is required';
                                                 }
                                               }
+                                              return null;
                                             },
                                             autovalidateMode: AutovalidateMode
                                                 .onUserInteraction,
@@ -417,15 +423,15 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                                     Row(
                                       children: [
                                         amharic
-                                            ? Text(
+                                            ? const Text(
                                                 'ዋጋ',
                                                 style: subTitleTextStyle,
                                               )
-                                            : Text(
+                                            : const Text(
                                                 'Price',
                                                 style: subTitleTextStyle,
                                               ),
-                                        Spacer(),
+                                        const Spacer(),
                                         SizedBox(
                                           width: 100,
                                           child: TextFormField(
@@ -438,6 +444,7 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                                                       : 'Price is required';
                                                 }
                                               }
+                                              return null;
                                             },
                                             autovalidateMode: AutovalidateMode
                                                 .onUserInteraction,
@@ -458,17 +465,17 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                                     ),
                                   ],
                                 )
-                              : SizedBox.shrink(),
+                              : const SizedBox.shrink(),
                           tshirtOrNot
-                              ? SizedBox.shrink()
+                              ? const SizedBox.shrink()
                               : Row(
                                   children: [
                                     amharic
-                                        ? Text(
+                                        ? const Text(
                                             'ቅድሚያ የሚሰጠው',
                                             style: subTitleTextStyle,
                                           )
-                                        : Text(
+                                        : const Text(
                                             'Priority',
                                             style: subTitleTextStyle,
                                           ),
@@ -486,11 +493,11 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                           Row(
                             children: [
                               amharic
-                                  ? Text(
+                                  ? const Text(
                                       'ብዛት',
                                       style: subTitleTextStyle,
                                     )
-                                  : Text(
+                                  : const Text(
                                       'Amount',
                                       style: subTitleTextStyle,
                                     ),
@@ -508,11 +515,11 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                           Row(
                             children: [
                               amharic
-                                  ? Text(
+                                  ? const Text(
                                       'የተከፈለ ብር',
                                       style: subTitleTextStyle,
                                     )
-                                  : Text(
+                                  : const Text(
                                       'Payment Made',
                                       style: subTitleTextStyle,
                                     ),
@@ -533,6 +540,7 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                                           ? 'የተከፈለ ብር ማስገባት ግዴታ ነው'
                                           : 'Payment made is required';
                                     }
+                                    return null;
                                   },
                                   decoration: InputDecoration(
                                       hintText: '\$\$\$',
@@ -542,24 +550,24 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                             ],
                           ),
                           Align(
+                            alignment: Alignment.topLeft,
                             child: amharic
-                                ? Text(
+                                ? const Text(
                                     'የትዕዛዝ መግለጫ',
                                     style: subTitleTextStyle,
                                   )
-                                : Text(
+                                : const Text(
                                     'Instruction',
                                     style: subTitleTextStyle,
                                   ),
-                            alignment: Alignment.topLeft,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           TextFormField(
                             maxLines: 3,
-                            decoration:
-                                InputDecoration(border: OutlineInputBorder()),
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder()),
                           ),
                           const SizedBox(
                             height: 20,
@@ -572,8 +580,9 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
                               backgroundColor:
                                   MaterialStateProperty.all(primaryColor),
                             ),
-                            child:
-                                amharic ? Text('ትዕዛዝ ጨምር') : Text('Add Order'),
+                            child: amharic
+                                ? const Text('ትዕዛዝ ጨምር')
+                                : const Text('Add Order'),
                           ),
                         ],
                       ),
@@ -639,6 +648,7 @@ List<DropdownMenuItem> _amountList = amount
 List<DropdownMenuItem> _mugTypes = mugTypes
     .map(
       (mugType) => DropdownMenuItem(
+        value: amharic ? mugType.amharicName : mugType.name,
         child: amharic
             ? Text(
                 mugType.amharicName,
@@ -646,15 +656,14 @@ List<DropdownMenuItem> _mugTypes = mugTypes
             : Text(
                 mugType.name,
               ),
-        value: amharic ? mugType.amharicName : mugType.name,
       ),
     )
     .toList();
 List<DropdownMenuItem> _plotTypes = plotTypes
     .map(
       (plotType) => DropdownMenuItem(
-        child: amharic ? Text(plotType.amharicName) : Text(plotType.name),
         value: amharic ? plotType.amharicName : plotType.name,
+        child: amharic ? Text(plotType.amharicName) : Text(plotType.name),
       ),
     )
     .toList();
@@ -662,6 +671,7 @@ List<DropdownMenuItem> _plotTypes = plotTypes
 List<DropdownMenuItem> _tshirtTypes = tshirtTypes
     .map(
       (tshirt) => DropdownMenuItem(
+        value: amharic ? tshirt.amharicName : tshirt.name,
         child: amharic
             ? Text(
                 tshirt.amharicName,
@@ -669,7 +679,6 @@ List<DropdownMenuItem> _tshirtTypes = tshirtTypes
             : Text(
                 tshirt.name,
               ),
-        value: amharic ? tshirt.amharicName : tshirt.name,
       ),
     )
     .toList();
@@ -677,8 +686,8 @@ List<DropdownMenuItem> _tshirtTypes = tshirtTypes
 List<DropdownMenuItem> _tshirtSizes = tshirtSizes
     .map(
       (size) => DropdownMenuItem(
-        child: Text(size),
         value: size,
+        child: Text(size),
       ),
     )
     .toList();
@@ -702,7 +711,7 @@ List<DropdownMenuItem> _shirtColors = colorSelection
               width: 20,
               height: 10,
             ),
-            SizedBox(
+            const SizedBox(
               width: 5,
             ),
             amharic ? Text(colorObject.amharicName) : Text(colorObject.name)
@@ -714,8 +723,8 @@ List<DropdownMenuItem> _shirtColors = colorSelection
 
 List<DropdownMenuItem> _flashStampTypes = flashStampTypes
     .map((flashStampType) => DropdownMenuItem(
+          value: flashStampType.name,
           child:
               Text(amharic ? flashStampType.amharicName : flashStampType.name),
-          value: flashStampType.name,
         ))
     .toList();

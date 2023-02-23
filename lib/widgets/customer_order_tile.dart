@@ -22,8 +22,8 @@ class CustomerOrderTile extends StatelessWidget {
               Row(
                 children: [
                   amharic
-                      ? Text('ስም', style: subTitleTextStyle)
-                      : Text(
+                      ? const Text('ስም', style: subTitleTextStyle)
+                      : const Text(
                           'Name',
                           style: subTitleTextStyle,
                         ),
@@ -37,13 +37,13 @@ class CustomerOrderTile extends StatelessWidget {
               Row(
                 children: [
                   amharic
-                      ? Text('አይነት', style: subTitleTextStyle)
-                      : Text(
+                      ? const Text('አይነት', style: subTitleTextStyle)
+                      : const Text(
                           'Type',
                           style: subTitleTextStyle,
                         ),
-                  Spacer(),
-                  Text(
+                  const Spacer(),
+                  const Text(
                     '*****',
                     style: otherTextStyle,
                   )
@@ -52,13 +52,13 @@ class CustomerOrderTile extends StatelessWidget {
               Row(
                 children: [
                   amharic
-                      ? Text('ብዛት', style: subTitleTextStyle)
-                      : Text(
+                      ? const Text('ብዛት', style: subTitleTextStyle)
+                      : const Text(
                           'Amount',
                           style: subTitleTextStyle,
                         ),
-                  Spacer(),
-                  Text(
+                  const Spacer(),
+                  const Text(
                     '*****',
                     style: otherTextStyle,
                   ),
@@ -67,13 +67,13 @@ class CustomerOrderTile extends StatelessWidget {
               Row(
                 children: [
                   amharic
-                      ? Text('የአንዱ ዋጋ', style: subTitleTextStyle)
-                      : Text(
+                      ? const Text('የአንዱ ዋጋ', style: subTitleTextStyle)
+                      : const Text(
                           'Single Price',
                           style: subTitleTextStyle,
                         ),
-                  Spacer(),
-                  Text(
+                  const Spacer(),
+                  const Text(
                     '*****',
                     style: otherTextStyle,
                   ),
@@ -82,13 +82,13 @@ class CustomerOrderTile extends StatelessWidget {
               Row(
                 children: [
                   amharic
-                      ? Text('የተከፈለ', style: subTitleTextStyle)
-                      : Text(
+                      ? const Text('የተከፈለ', style: subTitleTextStyle)
+                      : const Text(
                           'Paid',
                           style: subTitleTextStyle,
                         ),
-                  Spacer(),
-                  Text(
+                  const Spacer(),
+                  const Text(
                     '*****',
                     style: otherTextStyle,
                   ),
@@ -97,16 +97,16 @@ class CustomerOrderTile extends StatelessWidget {
               Row(
                 children: [
                   amharic
-                      ? Text(
+                      ? const Text(
                           'ቀሪ ሂሳብ',
                           style: subTitleTextStyle,
                         )
-                      : Text(
+                      : const Text(
                           'Payment Left',
                           style: subTitleTextStyle,
                         ),
-                  Spacer(),
-                  Text(
+                  const Spacer(),
+                  const Text(
                     '*****',
                     style: otherTextStyle,
                   ),
@@ -117,15 +117,15 @@ class CustomerOrderTile extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     amharic
-                        ? Text(
+                        ? const Text(
                             'የትዕዛዝ ቀን',
                             style: otherTextStyle,
                           )
-                        : Text(
+                        : const Text(
                             'Orders date',
                             style: otherTextStyle,
                           ),
-                    Text('******')
+                    const Text('******')
                   ],
                 ),
               ),

@@ -74,7 +74,7 @@ List<Widget> screens = <Widget>[
   const CustomersScreen(),
   const StalkScreen(),
   ExpenseScreen(),
-  HistoryScreen(),
+  const HistoryScreen(),
 ];
 
 //orders

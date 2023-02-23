@@ -2,7 +2,7 @@ import 'package:demakk_admin/objects/supplier.dart';
 import 'package:demakk_admin/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
-import '../objects/customer.dart';
+// import '../objects/customer.dart';
 
 class SupplierTile extends StatelessWidget {
   final Supplier supplier;
@@ -40,7 +40,7 @@ class SupplierTile extends StatelessWidget {
                   supplier.phoneNumber,
                   style: subTitleTextStyle,
                 ),
-                Divider(
+                const Divider(
                   color: primaryColor,
                 ),
                 SizedBox(
@@ -50,7 +50,7 @@ class SupplierTile extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Icon(Icons.location_on),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         Text(

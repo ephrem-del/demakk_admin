@@ -40,8 +40,8 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen>
                     builder: (context) {
                       return AlertDialog(
                         title: amharic
-                            ? Text('ደንበኛን አጥፋ')
-                            : Text('Delete Customer'),
+                            ? const Text('ደንበኛን አጥፋ')
+                            : const Text('Delete Customer'),
                         content: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -50,32 +50,32 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen>
                                     '${widget.customer.name}ን ከደንበኝነት ማጥፋት ትፈልጋለህ/ሽ?')
                                 : Text(
                                     'Are you sure you want to delete ${widget.customer.name} as a customer?'),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             TextFormField(
                               decoration: amharic
                                   ? userInputDecoration(
                                       'የተጠቃሚ ስም',
-                                      Icon(Icons.person),
+                                      const Icon(Icons.person),
                                     )
                                   : userInputDecoration(
                                       'User Name',
-                                      Icon(Icons.person),
+                                      const Icon(Icons.person),
                                     ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             TextFormField(
                               decoration: amharic
                                   ? userInputDecoration(
                                       'የሚስጥር ቁጥር',
-                                      Icon(Icons.password),
+                                      const Icon(Icons.password),
                                     )
                                   : userInputDecoration(
                                       'Password',
-                                      Icon(Icons.password),
+                                      const Icon(Icons.password),
                                     ),
                             )
                           ],
@@ -90,7 +90,9 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen>
                                 const Color(0xFFC5C2C2),
                               ),
                             ),
-                            child: amharic ? Text('ሰርዝ') : Text('Cancel'),
+                            child: amharic
+                                ? const Text('ሰርዝ')
+                                : const Text('Cancel'),
                           ),
                           const SizedBox(
                             width: 10,
@@ -103,7 +105,8 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen>
                             style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStateProperty.all(primaryColor)),
-                            child: amharic ? Text('አዎ') : Text('Yes'),
+                            child:
+                                amharic ? const Text('አዎ') : const Text('Yes'),
                           ),
                           const SizedBox(
                             width: 11,
@@ -112,7 +115,7 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen>
                       );
                     });
               },
-              icon: Icon(Icons.delete),
+              icon: const Icon(Icons.delete),
             ),
           ],
           bottom: TabBar(

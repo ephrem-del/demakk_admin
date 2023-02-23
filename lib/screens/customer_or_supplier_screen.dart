@@ -20,27 +20,31 @@ class CustomerOrSupplierScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return AddCustomerScreen();
+                    return const AddCustomerScreen();
                   }));
                 },
-                child: amharic ? Text('አዲስ ደንበኛ') : Text('Add Customer'),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(primaryColor),
                 ),
+                child: amharic
+                    ? const Text('አዲስ ደንበኛ')
+                    : const Text('Add Customer'),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return AddSupplierScreen();
+                    return const AddSupplierScreen();
                   }));
                 },
-                child: amharic ? Text('አዲስ አቅራቢ') : Text('Add Supplier'),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(primaryColor),
                 ),
+                child: amharic
+                    ? const Text('አዲስ አቅራቢ')
+                    : const Text('Add Supplier'),
               ),
             ],
           ),

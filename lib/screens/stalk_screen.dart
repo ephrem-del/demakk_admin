@@ -1,4 +1,4 @@
-import 'package:demakk_admin/objects/stalk_category.dart';
+// import 'package:demakk_admin/objects/stalk_category.dart';
 import 'package:demakk_admin/screens/stalk_detail_screen.dart';
 import 'package:demakk_admin/utilities/constants.dart';
 import 'package:flutter/material.dart';
@@ -19,12 +19,12 @@ class StalkScreen extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) {
-              return AddStalkScreen();
+              return const AddStalkScreen();
             }),
           );
         },
-        child: Icon(Icons.add),
         backgroundColor: primaryColor,
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterFloat,

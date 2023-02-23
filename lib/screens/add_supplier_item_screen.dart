@@ -57,7 +57,7 @@ class _AddSupplierItemScreenState extends State<AddSupplierItemScreen> {
                   amharic ? 'ዕቃ/አገልግሎት' : 'Item/Service',
                   style: subTitleTextStyle,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormField(
@@ -68,19 +68,20 @@ class _AddSupplierItemScreenState extends State<AddSupplierItemScreen> {
                           ? 'ዕቃ/አገልግሎት ማስገባት ያስፈልጋል'
                           : 'Item/Service is required';
                     }
+                    return null;
                   },
                   decoration: userInputDecoration(
                       amharic ? 'ዕቃ/አገልግሎት' : 'Item/Service',
-                      Icon(Icons.home_repair_service_rounded)),
+                      const Icon(Icons.home_repair_service_rounded)),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Text(
                   amharic ? 'ዋጋ' : 'Price',
                   style: subTitleTextStyle,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormField(
@@ -89,22 +90,23 @@ class _AddSupplierItemScreenState extends State<AddSupplierItemScreen> {
                     if (value == null || value.isEmpty) {
                       return amharic ? 'ዋጋ ማስገባት ያስፈልጋል' : 'Price is required';
                     }
+                    return null;
                   },
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   keyboardType: TextInputType.number,
                   decoration: userInputDecoration(
                     amharic ? 'ዋጋ' : 'Price',
-                    Icon(Icons.monetization_on_outlined),
+                    const Icon(Icons.monetization_on_outlined),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Text(
                   amharic ? 'መለኪያ' : 'Measurement',
                   style: subTitleTextStyle,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextFormField(
@@ -115,12 +117,13 @@ class _AddSupplierItemScreenState extends State<AddSupplierItemScreen> {
                           ? 'መለኪያ ያስፈልጋል'
                           : 'Measurement is required';
                     }
+                    return null;
                   },
                   decoration: userInputDecoration(
                       amharic ? 'መለኪያ' : 'Measurement',
-                      Icon(Icons.r_mobiledata)),
+                      const Icon(Icons.r_mobiledata)),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 ElevatedButton(

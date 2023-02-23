@@ -1,4 +1,4 @@
-import 'dart:async';
+// import 'dart:async';
 
 import 'package:rxdart/rxdart.dart';
 
@@ -15,7 +15,7 @@ class CustomerScreenViewModel {
     _fetchCustomers();
   }
 
-  void _initState() {
+  void initState() {
     _fetchCustomers();
   }
 

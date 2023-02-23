@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 
 import '../objects/date_and_time.dart';
 import '../objects/expense.dart';
@@ -18,9 +19,13 @@ class AddExpenseViewModel {
           .add(expense.toMap());
       isSaved = true;
     } on FirebaseException catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
     return isSaved;
   }

@@ -1,4 +1,4 @@
-import 'package:demakk_admin/objects/priorityType.dart';
+import 'package:demakk_admin/objects/priority_type.dart';
 import 'package:demakk_admin/utilities/constants.dart';
 import 'package:flutter/material.dart';
 

@@ -23,9 +23,9 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
   final AddCustomerViewModel _addCustomerViewModel = AddCustomerViewModel();
 
   void _authenticate(BuildContext context) {
-    String _name = _nameController.text;
-    String _address = _addressController.text;
-    String _phoneNumber = _phoneNumberController.text;
+    String name = _nameController.text;
+    String address = _addressController.text;
+    String phoneNumber = _phoneNumberController.text;
 
     if (_formKey.currentState!.validate()) {
       showDialog(
@@ -54,9 +54,9 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                   width: 15,
                 ),
                 ElevatedButton(
-                  onPressed: () async {
-                    await _addCustomerViewModel.addCustomer(
-                        _name, _phoneNumber, _address);
+                  onPressed: () {
+                    _addCustomerViewModel.addCustomer(
+                        name, phoneNumber, address);
                     Navigator.pop(context);
                     Navigator.pushNamed(context, '/home_screen');
                   },
@@ -110,6 +110,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                             ? 'የደንበኛ ስም ማስገባት ግዴታ ነው'
                             : 'Customer name is required';
                       }
+                      return null;
                     },
                     controller: _nameController,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -149,6 +150,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                             ? 'ስልክ ቁጥር 10ዲጅት መሆን አለበት'
                             : 'Phone number must be 10 digits';
                       }
+                      return null;
                     },
                     keyboardType: TextInputType.phone,
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -187,6 +189,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                             ? 'አድራሻ ማስገባት ግዴታ ነው'
                             : 'Adress is required';
                       }
+                      return null;
                     },
                     controller: _addressController,
                     decoration: amharic
@@ -199,7 +202,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                             const Icon(Icons.location_on),
                           ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   ElevatedButton(

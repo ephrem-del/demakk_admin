@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demakk_admin/objects/customer.dart';
+import 'package:flutter/foundation.dart';
 
 class AddCustomerViewModel {
   Future<bool> addCustomer(
@@ -11,9 +12,13 @@ class AddCustomerViewModel {
       FirebaseFirestore.instance.collection('customers').add(customer.toMap());
       isSaved = true;
     } on FirebaseException catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
     return isSaved;
   }

@@ -9,7 +9,7 @@ import '../view_model/supplier_detail_screen_view_model.dart';
 class SupplierItemTile extends StatefulWidget {
   final SupplierItemsAndServices supplierItemsAndServices;
   final Supplier supplier;
-  SupplierItemTile(
+  const SupplierItemTile(
       {Key? key,
       required this.supplierItemsAndServices,
       required this.supplier})
@@ -30,7 +30,9 @@ class _SupplierItemTileState extends State<SupplierItemTile> {
 
   late final SupplierDetailScreenViewModel _supplierDetailScreenViewModel;
 
+  @override
   void initState() {
+    super.initState();
     _supplierDetailScreenViewModel =
         SupplierDetailScreenViewModel(supplier: widget.supplier);
   }
@@ -59,13 +61,13 @@ class _SupplierItemTileState extends State<SupplierItemTile> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(
+      margin: const EdgeInsets.symmetric(
         vertical: 10,
       ),
       child: Card(
         elevation: 5,
         child: Padding(
-          padding: EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
               Row(
@@ -74,18 +76,18 @@ class _SupplierItemTileState extends State<SupplierItemTile> {
                     widget.supplierItemsAndServices.itemOrServiceName,
                     style: subTitleTextStyle,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                       '${widget.supplierItemsAndServices.price.toString()} / ${widget.supplierItemsAndServices.measurement}')
                 ],
               ),
-              Divider(
+              const Divider(
                 color: primaryColor,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  amharic ? Text('ማስተካከል') : Text('Edit'),
+                  amharic ? const Text('ማስተካከል') : const Text('Edit'),
                   IconButton(
                     onPressed: () {
                       showDialog(
@@ -93,8 +95,8 @@ class _SupplierItemTileState extends State<SupplierItemTile> {
                           builder: (context) {
                             return AlertDialog(
                               title: amharic
-                                  ? Text('ዋጋ አስተካከል')
-                                  : Text('Edit Price'),
+                                  ? const Text('ዋጋ አስተካከል')
+                                  : const Text('Edit Price'),
                               content: Form(
                                 key: _formKey,
                                 child: Column(
@@ -106,14 +108,14 @@ class _SupplierItemTileState extends State<SupplierItemTile> {
                                             'የድሮ ዋጋ: ${widget.supplierItemsAndServices.price.toString()}')
                                         : Text(
                                             'Previous price: ${widget.supplierItemsAndServices.price.toString()}'),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     amharic
                                         ? TextFormField(
                                             decoration: userInputDecoration(
                                               'አዲሱ ዋጋ',
-                                              Icon(Icons
+                                              const Icon(Icons
                                                   .monetization_on_outlined),
                                             ),
                                             controller: _newPriceController,
@@ -124,6 +126,7 @@ class _SupplierItemTileState extends State<SupplierItemTile> {
                                                     ? 'አዲስ ዋጋ ያስፈልጋል'
                                                     : 'New Price is required';
                                               }
+                                              return null;
                                             },
                                             inputFormatters: [
                                               FilteringTextInputFormatter
@@ -134,19 +137,19 @@ class _SupplierItemTileState extends State<SupplierItemTile> {
                                         : TextFormField(
                                             decoration: userInputDecoration(
                                               'New Price',
-                                              Icon(Icons
+                                              const Icon(Icons
                                                   .monetization_on_outlined),
                                             ),
                                             controller: _newPriceController,
                                           ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     amharic
                                         ? TextFormField(
                                             decoration: userInputDecoration(
                                               'የተጠቃሚ ስም',
-                                              Icon(
+                                              const Icon(
                                                 Icons.person,
                                               ),
                                             ),
@@ -155,20 +158,20 @@ class _SupplierItemTileState extends State<SupplierItemTile> {
                                         : TextFormField(
                                             decoration: userInputDecoration(
                                               'UserName',
-                                              Icon(
+                                              const Icon(
                                                 Icons.person,
                                               ),
                                             ),
                                             controller: _userNameController,
                                           ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     amharic
                                         ? TextFormField(
                                             decoration: userInputDecoration(
                                               'የሚስጥር ቁጥር',
-                                              Icon(
+                                              const Icon(
                                                 Icons.password,
                                               ),
                                             ),
@@ -177,7 +180,7 @@ class _SupplierItemTileState extends State<SupplierItemTile> {
                                         : TextFormField(
                                             decoration: userInputDecoration(
                                               'Password',
-                                              Icon(
+                                              const Icon(
                                                 Icons.password,
                                               ),
                                             ),
@@ -191,13 +194,15 @@ class _SupplierItemTileState extends State<SupplierItemTile> {
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: amharic ? Text('ሰርዝ') : Text('Cancel'),
                                   style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStateProperty.all(
-                                              Color(0xFFB7B3B3))),
+                                              const Color(0xFFB7B3B3))),
+                                  child: amharic
+                                      ? const Text('ሰርዝ')
+                                      : const Text('Cancel'),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 ElevatedButton(
@@ -210,23 +215,24 @@ class _SupplierItemTileState extends State<SupplierItemTile> {
                                       _passwordController.clear();
                                     }
                                   },
-                                  child:
-                                      amharic ? Text('አስተካክል') : Text('Edit'),
                                   style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStateProperty.all(
                                               primaryColor)),
+                                  child: amharic
+                                      ? const Text('አስተካክል')
+                                      : const Text('Edit'),
                                 )
                               ],
                             );
                           });
                     },
-                    icon: Icon(Icons.edit),
+                    icon: const Icon(Icons.edit),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
-                  amharic ? Text('አጥፋ') : Text('Delete'),
+                  amharic ? const Text('አጥፋ') : const Text('Delete'),
                   IconButton(
                     onPressed: () {
                       showDialog(
@@ -234,19 +240,21 @@ class _SupplierItemTileState extends State<SupplierItemTile> {
                           builder: (context) {
                             return AlertDialog(
                               title: amharic
-                                  ? Text('ዕቃውን አጥፋ')
-                                  : Text('Delete Item'),
+                                  ? const Text('ዕቃውን አጥፋ')
+                                  : const Text('Delete Item'),
                               actions: [
                                 ElevatedButton(
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: amharic ? Text('ሰርዝ') : Text('Cancel'),
                                   style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStateProperty.all(
-                                    Color(0xFFB7B3B3),
+                                    const Color(0xFFB7B3B3),
                                   )),
+                                  child: amharic
+                                      ? const Text('ሰርዝ')
+                                      : const Text('Cancel'),
                                 ),
                                 ElevatedButton(
                                   onPressed: () {
@@ -257,12 +265,14 @@ class _SupplierItemTileState extends State<SupplierItemTile> {
                                           context, '/home_screen');
                                     }
                                   },
-                                  child: amharic ? Text('አጥፋ') : Text('Delete'),
                                   style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStateProperty.all(
                                     primaryColor,
                                   )),
+                                  child: amharic
+                                      ? const Text('አጥፋ')
+                                      : const Text('Delete'),
                                 )
                               ],
                               content: Form(
@@ -276,24 +286,24 @@ class _SupplierItemTileState extends State<SupplierItemTile> {
                                             'ለማጥፋት ${widget.supplierItemsAndServices.itemOrServiceName} ዕቃ ወስነሃል?')
                                         : Text(
                                             'Are you sure you want to delete ${widget.supplierItemsAndServices.itemOrServiceName} item?'),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     TextFormField(
                                       controller: _userNameController,
                                       decoration: userInputDecoration(
                                         amharic ? 'የተጠቃሚ ስም' : 'UserName',
-                                        Icon(Icons.person),
+                                        const Icon(Icons.person),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     TextFormField(
                                       controller: _passwordController,
                                       decoration: userInputDecoration(
                                         amharic ? 'የሚስጥር ቁጥር' : 'Password',
-                                        Icon(Icons.password),
+                                        const Icon(Icons.password),
                                       ),
                                     )
                                   ],
@@ -302,7 +312,7 @@ class _SupplierItemTileState extends State<SupplierItemTile> {
                             );
                           });
                     },
-                    icon: Icon(Icons.delete),
+                    icon: const Icon(Icons.delete),
                   ),
                 ],
               )

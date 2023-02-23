@@ -1,10 +1,10 @@
-import 'package:demakk_admin/screens/add_order_screen.dart';
+// import 'package:demakk_admin/screens/add_order_screen.dart';
 import 'package:demakk_admin/utilities/constants.dart';
 import 'package:demakk_admin/widgets/order_tile.dart';
 import 'package:flutter/material.dart';
 
 // import '../business_logic/order_processing.dart';
-import '../objects/order.dart';
+// import '../objects/order.dart';
 import '../view_model/order_screen_view_model.dart';
 import 'order_or_customer_order_screen.dart';
 
@@ -16,7 +16,7 @@ class OrdersScreen extends StatefulWidget {
 }
 
 class _OrdersScreenState extends State<OrdersScreen> {
-  OrderScreenViewModel _orderScreenViewModel = OrderScreenViewModel();
+  final OrderScreenViewModel _orderScreenViewModel = OrderScreenViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +37,14 @@ class _OrdersScreenState extends State<OrdersScreen> {
           stream: _orderScreenViewModel.uncompletedOrdersController.stream,
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              return Text('Error');
+              return const Text('Error');
             }
             switch (snapshot.connectionState) {
               case ConnectionState.waiting:
-                return Text('Loading');
+                return const Text('Loading');
               default:
                 if (!snapshot.hasData) {
-                  return Text('No data');
+                  return const Text('No data');
                 }
             }
             return ListView(
@@ -61,13 +61,13 @@ class _OrdersScreenState extends State<OrdersScreen> {
             context,
             MaterialPageRoute(
               builder: (context) {
-                return OrderOrCustomerOrderScreen();
+                return const OrderOrCustomerOrderScreen();
               },
             ),
           );
         },
-        child: const Icon(Icons.add),
         backgroundColor: primaryColor,
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterFloat,

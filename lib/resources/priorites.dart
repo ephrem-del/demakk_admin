@@ -1,5 +1,5 @@
 import '../objects/priority.dart';
-import '../objects/priorityType.dart';
+import '../objects/priority_type.dart';
 
 // List<Priority> priorities = <Priority>[
 //   Priority(priorityType: PriorityType(name: 'Low', priorityLevel: 0)),

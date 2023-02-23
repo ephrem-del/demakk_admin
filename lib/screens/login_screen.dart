@@ -54,6 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (value == null || value.isEmpty) {
                               return 'የተጠቃሚ ስም ማስገባት ግዴታ ነው!';
                             }
+                            return null;
                           },
                           controller: employeeNameController,
                           decoration: userInputDecoration(
@@ -68,6 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (value == null || value.isEmpty) {
                               return 'Username is required';
                             }
+                            return null;
                           },
                           controller: employeeNameController,
                           decoration: userInputDecoration(
@@ -86,6 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (value == null || value.isEmpty) {
                               return 'የሚስጥር ቁጥር ማስገባት ግዴታ ነው';
                             }
+                            return null;
                           },
                           controller: passwordController,
                           decoration: userInputDecoration(
@@ -100,6 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (value == null || value.isEmpty) {
                               return 'Password is required';
                             }
+                            return null;
                           },
                           controller: passwordController,
                           decoration: userInputDecoration(
@@ -116,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(primaryColor),
                   ),
-                  child: amharic ? Text('ግባ') : Text('LOGIN'),
+                  child: amharic ? const Text('ግባ') : const Text('LOGIN'),
                 )
               ],
             ),

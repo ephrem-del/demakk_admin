@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demakk_admin/objects/supplier_items_and_services.dart';
+import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../objects/supplier.dart';
@@ -58,9 +59,13 @@ class SupplierDetailScreenViewModel {
           transaction.update(secureSnapshot.reference, {'changed': true});
         });
       } on FirebaseException catch (e) {
-        print('here is the error: $e}');
+        if (kDebugMode) {
+          print('here is the error: $e}');
+        }
       } catch (e) {
-        print('here is the error: $e');
+        if (kDebugMode) {
+          print('here is the error: $e');
+        }
       }
     }
   }
@@ -80,9 +85,13 @@ class SupplierDetailScreenViewModel {
           .add(newSupplierItem.toMap());
       isUpdated = true;
     } on FirebaseException catch (e) {
-      print('here is the error: $e}');
+      if (kDebugMode) {
+        print('here is the error: $e}');
+      }
     } catch (e) {
-      print('here is the error: $e');
+      if (kDebugMode) {
+        print('here is the error: $e');
+      }
     }
     return isUpdated;
   }

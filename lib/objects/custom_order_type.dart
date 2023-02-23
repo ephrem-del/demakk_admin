@@ -1,6 +1,6 @@
 import 'package:demakk_admin/objects/order_type.dart';
 
-import 'customer.dart';
+// import 'customer.dart';
 
 class CustomOrderType extends OrderType {
   final String type;

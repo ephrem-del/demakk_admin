@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demakk_admin/objects/date_and_time.dart';
-import 'package:demakk_admin/objects/order.dart' as orderFromOrder;
+import 'package:demakk_admin/objects/order.dart' as order_from_order;
+import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../objects/customer.dart';
@@ -35,7 +36,7 @@ class AddOrderViewModel {
     double paid,
     String customerName,
   ) async {
-    orderFromOrder.Order order = orderFromOrder.Order(
+    order_from_order.Order order = order_from_order.Order(
       type: type,
       amount: amount,
       comment: comment,
@@ -56,11 +57,17 @@ class AddOrderViewModel {
           .collection('orders')
           .add(order.toMap());
       isSaved = true;
-      print('trying really trying');
+      if (kDebugMode) {
+        print('trying really trying');
+      }
     } on FirebaseException catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
     return isSaved;
   }

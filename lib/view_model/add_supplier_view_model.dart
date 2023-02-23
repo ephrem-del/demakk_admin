@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 
 import '../objects/supplier.dart';
 
@@ -14,9 +15,13 @@ class AddSupplierViewModel {
       FirebaseFirestore.instance.collection('suppliers').add(supplier.toMap());
       isSaved = true;
     } on FirebaseException catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
     return isSaved;
   }

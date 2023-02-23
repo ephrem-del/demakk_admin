@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demakk_admin/resources/order_resource.dart';
 
 import '../resources/priorites.dart';
-import 'customer.dart';
+// import 'customer.dart';
 import 'date_and_time.dart';
 
 class Order {

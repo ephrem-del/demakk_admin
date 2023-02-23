@@ -1,4 +1,4 @@
-import 'package:demakk_admin/resources/customer_list.dart';
+// import 'package:demakk_admin/resources/customer_list.dart';
 import 'package:demakk_admin/resources/order_resource.dart';
 import 'package:demakk_admin/resources/priorites.dart';
 import 'package:flutter/material.dart';
@@ -99,13 +99,13 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
   }
 
   String getCustomerName(List<Customer> customers) {
-    String _customerName = '';
+    String customerName = '';
     for (int i = 0; i < customers.length; i++) {
       if (_selectedCustomer == customers[i].id) {
-        _customerName = customers[i].name;
+        customerName = customers[i].name;
       }
     }
-    return _customerName;
+    return customerName;
   }
 
   @override
@@ -123,18 +123,18 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
       stream: _addOrderViewModel.customerList.stream,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Text('Error!');
+          return const Text('Error!');
         }
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return Text('Loading');
+            return const Text('Loading');
           default:
             if (!snapshot.hasData) {
-              return Text('No data');
+              return const Text('No data');
             }
         }
         List<Customer> customers = snapshot.data!;
-        List<DropdownMenuItem> _items = customers
+        List<DropdownMenuItem> items = customers
             .map((customer) => DropdownMenuItem(
                   value: customer.id,
                   child: Text(customer.name),
@@ -187,7 +187,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                     },
                                     autovalidateMode:
                                         AutovalidateMode.onUserInteraction,
-                                    items: _items,
+                                    items: items,
                                     value: _selectedCustomer,
                                     hint: amharic
                                         ? const Text('ደንበኛ')
@@ -211,7 +211,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                       'Choose Type',
                                       style: subTitleTextStyle,
                                     ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 50,
                               ),
                               Expanded(
@@ -222,6 +222,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                             ? 'የትዕዛዝ አይነት ምረጥ/ጪ'
                                             : 'Please select order type';
                                       }
+                                      return null;
                                     },
                                     items: _orderTypes,
                                     autovalidateMode:
@@ -230,8 +231,8 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                     hint: Row(
                                       children: [
                                         amharic
-                                            ? Text('የትዕዛዝ አይነት')
-                                            : Text('Order Type'),
+                                            ? const Text('የትዕዛዝ አይነት')
+                                            : const Text('Order Type'),
                                       ],
                                     ),
                                     onChanged: (selected) {
@@ -336,7 +337,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                                 'Tshirt Type',
                                                 style: subTitleTextStyle,
                                               ),
-                                        Spacer(),
+                                        const Spacer(),
                                         DropdownButton(
                                             items: _tshirtTypes,
                                             value: _selectedTshirt,
@@ -355,7 +356,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                           amharic ? 'ሳይዝ' : 'Size',
                                           style: subTitleTextStyle,
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 10,
                                         ),
                                         DropdownButton(
@@ -373,7 +374,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                           amharic ? 'ከለር' : 'Color',
                                           style: subTitleTextStyle,
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 10,
                                         ),
                                         DropdownButton(
@@ -398,7 +399,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                           : 'Flash stamp type',
                                       style: subTitleTextStyle,
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     DropdownButton(
                                       items: _flashStampTypes,
                                       onChanged: (selected) {
@@ -410,7 +411,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                     )
                                   ],
                                 )
-                              : SizedBox.shrink(),
+                              : const SizedBox.shrink(),
                           tshirtOrNot
                               ? const SizedBox.shrink()
                               : Row(
@@ -427,7 +428,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                             ),
                                     ),
                                     // const Spacer(),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 30,
                                     ),
                                     Expanded(
@@ -439,6 +440,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                                   ? 'ቅድሚያ የሚሰጠውን አስገባ'
                                                   : 'Priority is required';
                                             }
+                                            return null;
                                           },
                                           autovalidateMode: AutovalidateMode
                                               .onUserInteraction,
@@ -497,6 +499,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                           ? 'የተከፈለ ብር ማስገባት ግዴታ ነው'
                                           : 'Payment made is required';
                                     }
+                                    return null;
                                   },
                                   keyboardType: TextInputType.number,
                                   controller: _paymentController,
@@ -672,8 +675,8 @@ List<DropdownMenuItem> _shirtColors = colorSelection
 
 List<DropdownMenuItem> _flashStampTypes = flashStampTypes
     .map((flashStampType) => DropdownMenuItem(
+          value: flashStampType.name,
           child:
               Text(amharic ? flashStampType.amharicName : flashStampType.name),
-          value: flashStampType.name,
         ))
     .toList();

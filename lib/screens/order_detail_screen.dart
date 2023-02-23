@@ -3,7 +3,7 @@ import 'package:demakk_admin/utilities/constants.dart';
 import 'package:demakk_admin/view_model/order_screen_view_model.dart';
 import 'package:flutter/material.dart';
 
-import '../objects/customer.dart';
+// import '../objects/customer.dart';
 
 class OrderDetailScreen extends StatelessWidget {
   final OrderScreenViewModel _orderScreenViewModel = OrderScreenViewModel();
@@ -47,26 +47,26 @@ class OrderDetailScreen extends StatelessWidget {
                     style: subTitleTextStyle,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 amharic
-                    ? Text(
+                    ? const Text(
                         'የደንበኛ መረጃ',
                         style: titleTextStyle,
                       )
-                    : Text(
+                    : const Text(
                         'Customer Details',
                         style: titleTextStyle,
                       ),
                 Row(
                   children: [
                     amharic
-                        ? Text(
+                        ? const Text(
                             'የደንበኛ ስም :',
                             style: subTitleTextStyle,
                           )
-                        : Text(
+                        : const Text(
                             'Customer Name :',
                             style: subTitleTextStyle,
                           ),
@@ -82,11 +82,11 @@ class OrderDetailScreen extends StatelessWidget {
                 Row(
                   children: [
                     amharic
-                        ? Text(
+                        ? const Text(
                             'ስልክ ቁጥር :',
                             style: subTitleTextStyle,
                           )
-                        : Text(
+                        : const Text(
                             'Phone Number :',
                             style: subTitleTextStyle,
                           ),
@@ -102,11 +102,11 @@ class OrderDetailScreen extends StatelessWidget {
                 Row(
                   children: [
                     amharic
-                        ? Text(
+                        ? const Text(
                             'አድራሻ :',
                             style: subTitleTextStyle,
                           )
-                        : Text(
+                        : const Text(
                             'Address :',
                             style: subTitleTextStyle,
                           ),
@@ -123,22 +123,22 @@ class OrderDetailScreen extends StatelessWidget {
                   height: 20.0,
                 ),
                 amharic
-                    ? Text(
+                    ? const Text(
                         'የትዕዛዝ መግለጫ',
                         style: titleTextStyle,
                       )
-                    : Text(
+                    : const Text(
                         'Order Details',
                         style: titleTextStyle,
                       ),
                 Row(
                   children: [
                     amharic
-                        ? Text(
+                        ? const Text(
                             'አይነት :',
                             style: subTitleTextStyle,
                           )
-                        : Text(
+                        : const Text(
                             'Order Type :',
                             style: subTitleTextStyle,
                           ),
@@ -159,11 +159,11 @@ class OrderDetailScreen extends StatelessWidget {
                 Row(
                   children: [
                     amharic
-                        ? Text(
+                        ? const Text(
                             'ዋጋ :',
                             style: subTitleTextStyle,
                           )
-                        : Text(
+                        : const Text(
                             'Price :',
                             style: subTitleTextStyle,
                           ),
@@ -179,11 +179,11 @@ class OrderDetailScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: amharic
-                      ? Text(
+                      ? const Text(
                           'ተጨማሪ ማብራርያ :',
                           style: subTitleTextStyle,
                         )
-                      : Text(
+                      : const Text(
                           'Additional Comments :',
                           style: subTitleTextStyle,
                         ),
@@ -217,8 +217,8 @@ class OrderDetailScreen extends StatelessWidget {
                                             '${order.customerName.toUpperCase()} ${order.type.name.toUpperCase()}',
                                           ),
                                     content: amharic
-                                        ? Text('ትዕዛዙ ተጠናቋል?')
-                                        : Text('Is the order completed'),
+                                        ? const Text('ትዕዛዙ ተጠናቋል?')
+                                        : const Text('Is the order completed'),
                                     actions: [
                                       ElevatedButton(
                                         onPressed: () {
@@ -262,7 +262,9 @@ class OrderDetailScreen extends StatelessWidget {
                           style: ButtonStyle(
                               backgroundColor:
                                   MaterialStateProperty.all(primaryColor)),
-                          child: amharic ? Text('ተጠናቋል') : Text('Done'),
+                          child: amharic
+                              ? const Text('ተጠናቋል')
+                              : const Text('Done'),
                         ),
                       )
               ],

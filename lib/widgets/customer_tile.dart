@@ -32,11 +32,11 @@ class CustomerTile extends StatelessWidget {
                     ),
                     const Spacer(),
                     amharic
-                        ? Text(
+                        ? const Text(
                             'ያልተከፈለ ሂሳብ: ',
                             style: subTitleTextStyle,
                           )
-                        : Text(
+                        : const Text(
                             'Payment Left: ',
                             style: subTitleTextStyle,
                           ),
@@ -56,11 +56,11 @@ class CustomerTile extends StatelessWidget {
                 Row(
                   children: [
                     amharic
-                        ? Text(
+                        ? const Text(
                             'ስልክ ቁጥር:',
                             style: subTitleTextStyle,
                           )
-                        : Text(
+                        : const Text(
                             'Phone No:',
                             style: subTitleTextStyle,
                           ),
@@ -74,11 +74,11 @@ class CustomerTile extends StatelessWidget {
                 Row(
                   children: [
                     amharic
-                        ? Text(
+                        ? const Text(
                             'አድራሻ:',
                             style: subTitleTextStyle,
                           )
-                        : Text(
+                        : const Text(
                             'Address:',
                             style: subTitleTextStyle,
                           ),

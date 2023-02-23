@@ -41,13 +41,13 @@ class ExpenseTile extends StatelessWidget {
                 color: primaryColor,
               ),
               Text(
-                expense.price.toString() + ' Birr',
+                '${expense.price} Birr',
                 style: subTitleTextStyle,
               ),
               expense.paidOrNot
                   ? amharic
-                      ? Text('ክፍያ የተጠናቀቀ')
-                      : Text('Payment Made')
+                      ? const Text('ክፍያ የተጠናቀቀ')
+                      : const Text('Payment Made')
                   : ElevatedButton(
                       style: ButtonStyle(
                         backgroundColor:
@@ -58,26 +58,29 @@ class ExpenseTile extends StatelessWidget {
                             context: context,
                             builder: (context) {
                               return AlertDialog(
-                                title: amharic ? Text('ክፍያ') : Text('Payment'),
+                                title: amharic
+                                    ? const Text('ክፍያ')
+                                    : const Text('Payment'),
                                 content: amharic
-                                    ? Text('የዚን ወጪ ክፍያ ጨርሰሀል/ሻል?')
-                                    : Text(
+                                    ? const Text('የዚን ወጪ ክፍያ ጨርሰሀል/ሻል?')
+                                    : const Text(
                                         'Have you completed payment of this expense?'),
                                 actions: [
                                   ElevatedButton(
                                     onPressed: () {
                                       Navigator.pop(context);
                                     },
-                                    child:
-                                        amharic ? Text('ሰርዝ') : Text('Cancel'),
                                     style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStateProperty.all(
                                         const Color(0xFFC5C2C2),
                                       ),
                                     ),
+                                    child: amharic
+                                        ? const Text('ሰርዝ')
+                                        : const Text('Cancel'),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 15,
                                   ),
                                   ElevatedButton(
@@ -86,21 +89,23 @@ class ExpenseTile extends StatelessWidget {
                                       _expenseScreenViewModel
                                           .markAsPaid(expense);
                                     },
-                                    child: amharic ? Text('አዎ') : Text('Yes'),
                                     style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStateProperty.all(
                                               primaryColor),
                                     ),
+                                    child: amharic
+                                        ? const Text('አዎ')
+                                        : const Text('Yes'),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 11,
                                   ),
                                 ],
                               );
                             });
                       },
-                      child: amharic ? Text('ተከፍሏል') : Text('Paid'),
+                      child: amharic ? const Text('ተከፍሏል') : const Text('Paid'),
                     ),
             ],
           ),

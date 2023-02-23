@@ -17,30 +17,28 @@ class _AddStalkScreenState extends State<AddStalkScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: amharic ? Text('ዕቃ መጨመሪያ') : Text('Add Stalk'),
+        title: amharic ? const Text('ዕቃ መጨመሪያ') : const Text('Add Stalk'),
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
           child: SizedBox(
             height: 500,
             child: Card(
               elevation: 5,
               child: Padding(
-                padding: EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(15.0),
                 child: Column(
                   children: [
-                    Container(
-                      child: Column(children: getRows()),
-                    ),
+                    Column(children: getRows()),
                     Row(
                       children: [
                         amharic
-                            ? Text(
+                            ? const Text(
                                 'ብዛት',
                                 style: subTitleTextStyle,
                               )
-                            : Text(
+                            : const Text(
                                 'Amount',
                                 style: subTitleTextStyle,
                               ),
@@ -55,7 +53,7 @@ class _AddStalkScreenState extends State<AddStalkScreen> {
                             })
                       ],
                     ),
-                    Spacer(),
+                    const Spacer(),
                     ElevatedButton(
                       onPressed: () {
                         showDialog(
@@ -63,11 +61,11 @@ class _AddStalkScreenState extends State<AddStalkScreen> {
                             builder: (context) {
                               return AlertDialog(
                                 title: amharic
-                                    ? Text('ዕቃ በመጨመር ላይ')
-                                    : Text('Adding Stalk'),
+                                    ? const Text('ዕቃ በመጨመር ላይ')
+                                    : const Text('Adding Stalk'),
                                 content: amharic
-                                    ? Text('ዕቃ መጨመር ትፈልጋለህ/ሽ?')
-                                    : Text(
+                                    ? const Text('ዕቃ መጨመር ትፈልጋለህ/ሽ?')
+                                    : const Text(
                                         'Are you sure you want to add a Stalk?'),
                                 actions: [
                                   ElevatedButton(
@@ -80,8 +78,9 @@ class _AddStalkScreenState extends State<AddStalkScreen> {
                                         const Color(0xFFC5C2C2),
                                       ),
                                     ),
-                                    child:
-                                        amharic ? Text('ሰርዝ') : Text('Cancel'),
+                                    child: amharic
+                                        ? const Text('ሰርዝ')
+                                        : const Text('Cancel'),
                                   ),
                                   const SizedBox(
                                     width: 10,
@@ -96,7 +95,9 @@ class _AddStalkScreenState extends State<AddStalkScreen> {
                                         backgroundColor:
                                             MaterialStateProperty.all(
                                                 primaryColor)),
-                                    child: amharic ? Text('አዎ') : Text('Yes'),
+                                    child: amharic
+                                        ? const Text('አዎ')
+                                        : const Text('Yes'),
                                   ),
                                   const SizedBox(
                                     width: 11,
@@ -109,7 +110,9 @@ class _AddStalkScreenState extends State<AddStalkScreen> {
                         backgroundColor:
                             MaterialStateProperty.all(primaryColor),
                       ),
-                      child: amharic ? Text('ዕቃ ጨምር') : Text('Add Stalk'),
+                      child: amharic
+                          ? const Text('ዕቃ ጨምር')
+                          : const Text('Add Stalk'),
                     ),
                   ],
                 ),
@@ -187,18 +190,20 @@ class _AddStalkRowState extends State<AddStalkRow> {
           child: SizedBox(
             width: 30,
             child: DropdownButtonFormField(
-                hint: amharic ? Text('ምረጥ/ጪ') : Text('Choose'),
+                hint: amharic ? const Text('ምረጥ/ጪ') : const Text('Choose'),
                 items: widget.items,
                 value: widget.value,
                 decoration: InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    contentPadding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                     fillColor: primaryColor,
                     iconColor: Colors.yellowAccent,
-                    hintStyle: TextStyle(color: Colors.white),
+                    hintStyle: const TextStyle(color: Colors.white),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                     )),
-                validator: (value) {},
+                validator: (value) {
+                  return null;
+                },
                 onChanged: (selected) {
                   setState(() {
                     widget.value = selected!;
@@ -250,7 +255,7 @@ class _AddStalkRowState extends State<AddStalkRow> {
 //     .toList();
 bool otherSelected = false;
 List<Widget> getRows() {
-  List<Widget> _listOfRows = [];
+  List<Widget> listOfRows = [];
   for (int i = 0; i < stalkCategories.length; i++) {
     String? value;
 
@@ -266,13 +271,13 @@ List<Widget> getRows() {
         ? []
         : getStalks(stalkCategories[i])
             .map((stalk) => DropdownMenuItem(
+                  value: stalk.stockType.typeName,
                   child: amharic
                       ? Text(stalk.stockType.amharicTypeName)
                       : Text(stalk.stockType.typeName),
-                  value: stalk.stockType.typeName,
                 ))
             .toList();
-    _listOfRows.add(
+    listOfRows.add(
       AddStalkRow(
         stalkCategory: stalkCategories[i],
         items: items,
@@ -281,7 +286,7 @@ List<Widget> getRows() {
     );
     //_listOfRows.add(AddStalkRow(stalkCategories[i], items, value));
   }
-  return _listOfRows;
+  return listOfRows;
 }
 
 List<DropdownMenuItem> _amountList = amount

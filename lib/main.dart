@@ -31,25 +31,25 @@ class App extends StatelessWidget {
                 restorationScopeId: 'app',
                 theme: ThemeData.light().copyWith(
                   primaryColor: primaryColor,
-                  appBarTheme: AppBarTheme(
+                  appBarTheme: const AppBarTheme(
                     color: primaryColor,
                   ),
                 ),
                 routes: {
                   '/': (context) {
-                    return SplashScreen();
+                    return const SplashScreen();
                   },
                   '/home_screen': (context) {
-                    return HomeScreen();
+                    return const HomeScreen();
                   },
                   'login_screen': (context) {
-                    return LoginScreen();
+                    return const LoginScreen();
                   }
                 },
               );
             }
           }
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         });

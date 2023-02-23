@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rxdart/rxdart.dart';
-import '../objects/order.dart' as orderObject;
+import '../objects/order.dart' as order_object;
 
 class OrderScreenViewModel {
-  BehaviorSubject<List<orderObject.Order>> uncompletedOrdersController =
-      BehaviorSubject<List<orderObject.Order>>();
-  BehaviorSubject<List<orderObject.Order>> completedOrdersController =
-      BehaviorSubject<List<orderObject.Order>>();
+  BehaviorSubject<List<order_object.Order>> uncompletedOrdersController =
+      BehaviorSubject<List<order_object.Order>>();
+  BehaviorSubject<List<order_object.Order>> completedOrdersController =
+      BehaviorSubject<List<order_object.Order>>();
   OrderScreenViewModel() {
     _fetchUncompletedOrders();
     _fetchCompletedOrders();
@@ -19,11 +19,11 @@ class OrderScreenViewModel {
         .orderBy('dateAndTime', descending: true)
         .snapshots()
         .listen((snapshot) {
-      List<orderObject.Order> _orders = snapshot.docs
-          .map((doc) => orderObject.Order.fromSnapshot(doc))
+      List<order_object.Order> orders = snapshot.docs
+          .map((doc) => order_object.Order.fromSnapshot(doc))
           .toList();
-      _orders = reOrder(_orders);
-      uncompletedOrdersController.sink.add(_orders);
+      orders = reOrder(orders);
+      uncompletedOrdersController.sink.add(orders);
     });
   }
 
@@ -34,14 +34,14 @@ class OrderScreenViewModel {
         .orderBy('dateAndTime', descending: true)
         .snapshots()
         .listen((snapshot) {
-      List<orderObject.Order> _orders = snapshot.docs
-          .map((doc) => orderObject.Order.fromSnapshot(doc))
+      List<order_object.Order> orders = snapshot.docs
+          .map((doc) => order_object.Order.fromSnapshot(doc))
           .toList();
-      completedOrdersController.sink.add(_orders);
+      completedOrdersController.sink.add(orders);
     });
   }
 
-  Future<void> orderCompleted(orderObject.Order order) async {
+  Future<void> orderCompleted(order_object.Order order) async {
     await FirebaseFirestore.instance.runTransaction((transaction) async {
       final secureSnapshot = await transaction.get(FirebaseFirestore.instance
           .collection('customers')
@@ -52,13 +52,13 @@ class OrderScreenViewModel {
     });
   }
 
-  List<orderObject.Order> reOrder(List<orderObject.Order> orders) {
-    List<orderObject.Order> uncompletedOrders = orders;
-    List<orderObject.Order> urgentOrders = [];
-    List<orderObject.Order> veryHighOrders = [];
-    List<orderObject.Order> highOrders = [];
-    List<orderObject.Order> mediumOrders = [];
-    List<orderObject.Order> lowOrders = [];
+  List<order_object.Order> reOrder(List<order_object.Order> orders) {
+    List<order_object.Order> uncompletedOrders = orders;
+    List<order_object.Order> urgentOrders = [];
+    List<order_object.Order> veryHighOrders = [];
+    List<order_object.Order> highOrders = [];
+    List<order_object.Order> mediumOrders = [];
+    List<order_object.Order> lowOrders = [];
     for (int i = 0; i < uncompletedOrders.length; i++) {
       if (uncompletedOrders[i].priority.priorityType.priorityLevel == 4) {
         urgentOrders.add(uncompletedOrders[i]);
@@ -75,7 +75,7 @@ class OrderScreenViewModel {
         lowOrders.add(uncompletedOrders[i]);
       }
     }
-    List<orderObject.Order> uncompletedReorderedOrders =
+    List<order_object.Order> uncompletedReorderedOrders =
         urgentOrders + veryHighOrders + highOrders + mediumOrders + lowOrders;
 
     return uncompletedReorderedOrders;

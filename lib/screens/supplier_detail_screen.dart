@@ -8,7 +8,8 @@ import 'add_supplier_item_screen.dart';
 
 class SupplierDetailScreen extends StatefulWidget {
   final Supplier supplier;
-  SupplierDetailScreen({Key? key, required this.supplier}) : super(key: key);
+  const SupplierDetailScreen({Key? key, required this.supplier})
+      : super(key: key);
 
   @override
   State<SupplierDetailScreen> createState() => _SupplierDetailScreenState();
@@ -19,6 +20,7 @@ class _SupplierDetailScreenState extends State<SupplierDetailScreen> {
 
   @override
   void initState() {
+    super.initState();
     _supplierDetailScreenViewModel =
         SupplierDetailScreenViewModel(supplier: widget.supplier);
   }
@@ -42,24 +44,24 @@ class _SupplierDetailScreenState extends State<SupplierDetailScreen> {
                   ),
                 );
               },
-              icon: Icon(Icons.add))
+              icon: const Icon(Icons.add))
         ],
       ),
       body: Padding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: StreamBuilder<List<SupplierItemsAndServices>>(
               stream: _supplierDetailScreenViewModel
                   .suppliersDetailBehaviorSubjectController.stream,
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
-                  return Text('Error');
+                  return const Text('Error');
                 }
                 switch (snapshot.connectionState) {
                   case ConnectionState.waiting:
-                    return Text('Loading');
+                    return const Text('Loading');
                   default:
                     if (!snapshot.hasData) {
-                      return Text('No data');
+                      return const Text('No data');
                     }
                 }
                 return ListView(

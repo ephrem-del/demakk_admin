@@ -4,7 +4,7 @@ import '../business_logic/stalk_processing.dart';
 import '../objects/stalk_category.dart';
 import 'package:flutter/material.dart';
 
-import '../resources/stock_resource.dart';
+// import '../resources/stock_resource.dart';
 
 class StalkDetailScreen extends StatelessWidget {
   final StalkCategory stalkCategory;

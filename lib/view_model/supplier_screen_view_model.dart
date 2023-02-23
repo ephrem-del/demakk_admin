@@ -15,7 +15,7 @@ class SupplierScreenViewModel {
     _fetchSuppliers();
   }
 
-  void _initState() {
+  void initState() {
     _fetchSuppliers();
   }
 

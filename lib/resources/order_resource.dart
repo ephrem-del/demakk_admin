@@ -1,10 +1,10 @@
-import 'package:demakk_admin/objects/order.dart';
+// import 'package:demakk_admin/objects/order.dart';
 import 'package:demakk_admin/objects/order_type.dart';
-import 'package:demakk_admin/resources/priorites.dart';
+// import 'package:demakk_admin/resources/priorites.dart';
 
-import '../objects/custom_order_type.dart';
-import '../objects/date_and_time.dart';
-import 'customer_list.dart';
+// import '../objects/custom_order_type.dart';
+// import '../objects/date_and_time.dart';
+// import 'customer_list.dart';
 
 // List<Order> orders = <Order>[
 //   Order(

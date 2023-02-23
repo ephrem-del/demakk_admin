@@ -10,7 +10,7 @@ class StalkTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 5),
+      margin: const EdgeInsets.symmetric(vertical: 5),
       child: Card(
         elevation: 5.0,
         child: Padding(
@@ -26,7 +26,7 @@ class StalkTile extends StatelessWidget {
                       stalk.stockType.typeName,
                       style: titleTextStyle,
                     ),
-              Spacer(),
+              const Spacer(),
               Text(
                 stalk.amountLeft.toString(),
                 style: subTitleTextStyle,

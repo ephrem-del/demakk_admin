@@ -2,7 +2,7 @@ import 'package:demakk_admin/utilities/constants.dart';
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../objects/customer.dart';
+// import '../objects/customer.dart';
 import '../objects/order.dart';
 import '../screens/order_detail_screen.dart';
 
@@ -66,13 +66,13 @@ class HistoryTile extends StatelessWidget {
                   Row(
                     children: [
                       amharic
-                          ? Text(
+                          ? const Text(
                               'ስም :',
                               style: TextStyle(
                                 fontSize: 15,
                               ),
                             )
-                          : Text(
+                          : const Text(
                               'Name :',
                               style: TextStyle(
                                 fontSize: 15,
@@ -97,13 +97,13 @@ class HistoryTile extends StatelessWidget {
                   Row(
                     children: [
                       amharic
-                          ? Text(
+                          ? const Text(
                               'ዋጋ',
                               style: TextStyle(
                                 fontSize: 15,
                               ),
                             )
-                          : Text(
+                          : const Text(
                               'Price',
                               style: TextStyle(
                                 fontSize: 15,

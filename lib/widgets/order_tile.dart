@@ -2,7 +2,7 @@ import 'package:demakk_admin/utilities/constants.dart';
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../objects/customer.dart';
+// import '../objects/customer.dart';
 import '../objects/order.dart';
 import '../screens/order_detail_screen.dart';
 
@@ -29,8 +29,8 @@ class OrderTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 10,
+                const SizedBox(
+                  height: 15,
                 ),
                 Align(
                   alignment: Alignment.center,
@@ -59,13 +59,13 @@ class OrderTile extends StatelessWidget {
                 Row(
                   children: [
                     amharic
-                        ? Text(
+                        ? const Text(
                             'ስም :',
                             style: TextStyle(
                               fontSize: 15,
                             ),
                           )
-                        : Text(
+                        : const Text(
                             'Name :',
                             style: TextStyle(
                               fontSize: 15,
@@ -90,13 +90,13 @@ class OrderTile extends StatelessWidget {
                 Row(
                   children: [
                     amharic
-                        ? Text(
+                        ? const Text(
                             'ዋጋ',
                             style: TextStyle(
                               fontSize: 15,
                             ),
                           )
-                        : Text(
+                        : const Text(
                             'Price',
                             style: TextStyle(
                               fontSize: 15,
@@ -138,19 +138,28 @@ class OrderTile extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          margin: const EdgeInsets.all(20.0),
-          width: 100,
-          height: 20,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10.0),
-            color: order.priority.colorValue,
-          ),
-          child: Center(
-            child: amharic
-                ? Text(order.priority.priorityType.amharicName)
-                : Text(order.priority.priorityType.name),
-          ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(amharic ? 'አስቸኳይነት:' : 'Priority:'),
+            const SizedBox(
+              width: 5,
+            ),
+            Container(
+              margin: const EdgeInsets.all(20.0),
+              width: 100,
+              height: 20,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0),
+                color: order.priority.colorValue,
+              ),
+              child: Center(
+                child: amharic
+                    ? Text(order.priority.priorityType.amharicName)
+                    : Text(order.priority.priorityType.name),
+              ),
+            ),
+          ],
         ),
       ]),
     );

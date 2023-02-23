@@ -8,13 +8,12 @@ import '../view_model/customer_screen_view_model.dart';
 import '../view_model/supplier_screen_view_model.dart';
 import '../widgets/supplier_tile.dart';
 //import '../business_logic/customers_processing.dart';
-import '../resources/customer_list.dart';
-import '../resources/supplier_resource.dart';
+// import '../resources/customer_list.dart';
+// import '../resources/supplier_resource.dart';
 import '../widgets/customer_tile.dart';
 //import 'add_customer_screen.dart';
 import 'customer_detail_screen.dart';
 import 'customer_or_supplier_screen.dart';
-import '../utilities/constants.dart';
 
 class CustomersScreen extends StatefulWidget {
   const CustomersScreen({Key? key}) : super(key: key);
@@ -27,7 +26,9 @@ class _CustomersScreenState extends State<CustomersScreen> {
   late CustomerScreenViewModel _customerScreenViewModel;
   late SupplierScreenViewModel _supplierScreenViewModel;
 
+  @override
   void initState() {
+    super.initState();
     _customerScreenViewModel = CustomerScreenViewModel();
     _supplierScreenViewModel = SupplierScreenViewModel();
   }
@@ -57,17 +58,17 @@ class _CustomersScreenState extends State<CustomersScreen> {
                     labelStyle: subTitleTextStyle,
                     tabs: [
                       amharic
-                          ? Tab(
+                          ? const Tab(
                               text: 'ደንበኞች',
                             )
-                          : Tab(
+                          : const Tab(
                               text: 'Customers',
                             ),
                       amharic
-                          ? Tab(
+                          ? const Tab(
                               text: 'አቅራቢዎች',
                             )
-                          : Tab(
+                          : const Tab(
                               text: 'Suppliers',
                             ),
                     ],
@@ -95,15 +96,15 @@ Widget customerTab(context, CustomerScreenViewModel viewModel) {
         }
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return Text('Loading');
+            return const Text('Loading');
           default:
             if (!snapshot.hasData) {
-              return Text('No Data');
+              return const Text('No Data');
             }
         }
-        final List<Customer> _customers = snapshot.data!;
+        final List<Customer> customers = snapshot.data!;
         return ListView(
-            children: _customers
+            children: customers
                 .map((customer) => CustomerTile(
                       customer: customer,
                       onPressed: () {
@@ -131,20 +132,20 @@ Widget supplierTab(BuildContext context, SupplierScreenViewModel viewModel) {
       stream: viewModel.suppliersBehaviorSubjectController.stream,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Text('error ');
+          return const Text('error ');
         }
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return Text('Loading');
+            return const Text('Loading');
           default:
             if (!snapshot.hasData) {
-              return Text('No data');
+              return const Text('No data');
             }
         }
 
-        List<Supplier> _suppliers = snapshot.data!;
+        List<Supplier> suppliers = snapshot.data!;
         return ListView(
-          children: _suppliers
+          children: suppliers
               .map((supplier) => SupplierTile(
                     supplier: supplier,
                     onPressed: () {

@@ -24,7 +24,9 @@ class _AddSupplierScreenState extends State<AddSupplierScreen> {
 
   late AddSupplierViewModel _addSupplierViewModel;
 
+  @override
   void initState() {
+    super.initState();
     _addSupplierViewModel = AddSupplierViewModel();
   }
 
@@ -56,12 +58,12 @@ class _AddSupplierScreenState extends State<AddSupplierScreen> {
                   width: 15,
                 ),
                 ElevatedButton(
-                  onPressed: () async {
+                  onPressed: () {
                     String companyName = _nameController.text;
                     String address = _addressController.text;
                     String phoneNumber = _phoneNumberController.text;
                     String comment = _commentController.text;
-                    await _addSupplierViewModel.addSupplier(
+                    _addSupplierViewModel.addSupplier(
                         companyName, address, phoneNumber, comment);
                     Navigator.pop(context);
                     Navigator.pushNamed(context, '/home_screen');
@@ -116,6 +118,7 @@ class _AddSupplierScreenState extends State<AddSupplierScreen> {
                             ? 'የድርጅት ስም ማስገባት ግዴታ ነው'
                             : 'Company name is required';
                       }
+                      return null;
                     },
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: amharic
@@ -155,6 +158,7 @@ class _AddSupplierScreenState extends State<AddSupplierScreen> {
                             ? 'ስልክ ቁጥር 10ዲጅት መሆን አለበት'
                             : 'Phone number must be 10 digits';
                       }
+                      return null;
                     },
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     keyboardType: TextInputType.phone,
@@ -192,6 +196,7 @@ class _AddSupplierScreenState extends State<AddSupplierScreen> {
                             ? 'አድራሻ ማስገባት ግዴታ ነው'
                             : 'Address is required';
                       }
+                      return null;
                     },
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: amharic
@@ -230,6 +235,7 @@ class _AddSupplierScreenState extends State<AddSupplierScreen> {
                             ? 'አስተያየት ማስገባት ግዴታ ነው'
                             : 'Comment is required';
                       }
+                      return null;
                     },
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     keyboardType: TextInputType.text,

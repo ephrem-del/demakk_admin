@@ -1,11 +1,11 @@
 import 'dart:core' as core;
 import 'dart:core';
 
-import 'package:demakk_admin/business_logic/order_processing.dart';
+// import 'package:demakk_admin/business_logic/order_processing.dart';
 import 'package:demakk_admin/view_model/order_screen_view_model.dart';
 import 'package:flutter/material.dart';
 
-import '../objects/order.dart';
+// import '../objects/order.dart';
 import '../widgets/history_tile.dart';
 
 core.List<core.String> list = ['a', 'b', 'c'];
@@ -18,7 +18,7 @@ class HistoryScreen extends StatefulWidget {
 }
 
 class _HistoryScreenState extends State<HistoryScreen> {
-  OrderScreenViewModel _orderScreenViewModel = OrderScreenViewModel();
+  final OrderScreenViewModel _orderScreenViewModel = OrderScreenViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +26,14 @@ class _HistoryScreenState extends State<HistoryScreen> {
       stream: _orderScreenViewModel.completedOrdersController.stream,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Text('Error');
+          return const Text('Error');
         }
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return Text('Loading');
+            return const Text('Loading');
           default:
             if (!snapshot.hasData) {
-              return Text('No data');
+              return const Text('No data');
             }
         }
         List<HistoryTile> historyTiles =
@@ -44,14 +44,13 @@ class _HistoryScreenState extends State<HistoryScreen> {
         );
       },
     );
-    ;
   }
 }
 
 core.String? selected;
 core.List<DropdownMenuItem> items = list
     .map((item) => DropdownMenuItem(
-          child: Text(item),
           value: item,
+          child: Text(item),
         ))
     .toList();

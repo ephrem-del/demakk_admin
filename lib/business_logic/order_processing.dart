@@ -1,4 +1,4 @@
-// import 'package:demakk_admin/objects/priorityType.dart';
+// import 'package:demakk_admin/objects/priority_type.dart';
 // import 'package:demakk_admin/widgets/history_tile.dart';
 // import 'package:demakk_admin/widgets/order_tile.dart';
 //

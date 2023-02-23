@@ -2,7 +2,7 @@ import 'package:demakk_admin/utilities/constants.dart';
 import 'package:demakk_admin/widgets/expense_tile.dart';
 import 'package:flutter/material.dart';
 
-import '../business_logic/expense_processing.dart';
+// import '../business_logic/expense_processing.dart';
 import '../view_model/expense_screen_view_model.dart';
 import 'add_expense_screen.dart';
 
@@ -24,14 +24,14 @@ class ExpenseScreen extends StatelessWidget {
         stream: expense2Stream,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return Text('error');
+            return const Text('error');
           }
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
-              return Text('Loading');
+              return const Text('Loading');
             default:
               if (!snapshot.hasData) {
-                return Text('No data');
+                return const Text('No data');
               }
           }
           return ListView(
@@ -52,8 +52,8 @@ class ExpenseScreen extends StatelessWidget {
             return const AddExpenseScreen();
           }));
         },
-        child: Icon(Icons.add),
         backgroundColor: primaryColor,
+        child: const Icon(Icons.add),
       ),
     );
   }
