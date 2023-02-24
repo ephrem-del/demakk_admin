@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../utilities/constants.dart';
 
 class StalkTile extends StatelessWidget {
-  final Stock stalk;
+  final Stalk stalk;
   const StalkTile({Key? key, required this.stalk}) : super(key: key);
 
   @override
@@ -19,11 +19,11 @@ class StalkTile extends StatelessWidget {
             children: <Widget>[
               amharic
                   ? Text(
-                      stalk.stockType.amharicTypeName,
+                      stalk.stalkType.amharicTypeName,
                       style: titleTextStyle,
                     )
                   : Text(
-                      stalk.stockType.typeName,
+                      stalk.stalkType.typeName,
                       style: titleTextStyle,
                     ),
               const Spacer(),

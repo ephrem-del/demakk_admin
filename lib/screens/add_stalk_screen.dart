@@ -271,10 +271,10 @@ List<Widget> getRows() {
         ? []
         : getStalks(stalkCategories[i])
             .map((stalk) => DropdownMenuItem(
-                  value: stalk.stockType.typeName,
+                  value: stalk.stalkType.typeName,
                   child: amharic
-                      ? Text(stalk.stockType.amharicTypeName)
-                      : Text(stalk.stockType.typeName),
+                      ? Text(stalk.stalkType.amharicTypeName)
+                      : Text(stalk.stalkType.typeName),
                 ))
             .toList();
     listOfRows.add(

@@ -11,8 +11,11 @@ import '../objects/priority.dart';
 class AddOrderViewModel {
   final BehaviorSubject<List<Customer>> customerList =
       BehaviorSubject<List<Customer>>();
+  final BehaviorSubject<Map<String, int>> stalkAmountsController =
+      BehaviorSubject<Map<String, int>>();
   AddOrderViewModel() {
     _fetchCustomers();
+    _fetchStalkAmounts();
   }
 
   Future<void> _fetchCustomers() async {
@@ -70,5 +73,53 @@ class AddOrderViewModel {
       }
     }
     return isSaved;
+  }
+
+  void _fetchStalkAmounts() {
+    Map<String, int> stalkAmounts = {};
+    try {
+      FirebaseFirestore.instance
+          .collectionGroup('stalkTypes')
+          .snapshots()
+          .listen((data) {
+        List<_StalkSomething> stalkSomethings =
+            data.docs.map((doc) => _StalkSomething.fromSnapshot(doc)).toList();
+        stalkAmounts = {
+          for (_StalkSomething stalkSomething in stalkSomethings)
+            stalkSomething.name: stalkSomething.amountLeft
+        };
+        stalkAmountsController.sink.add(stalkAmounts);
+      });
+    } on FirebaseException {
+      if (kDebugMode) {
+        print(
+            'firebase exception eroooooooooooooooooooooooooooooooooooooooooooooooor');
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('eroooooooooooooooooooooooooooooooooooooooor');
+      }
+    }
+
+    //return stalkAmounts;
+  }
+}
+
+class _StalkSomething {
+  final String name;
+  final int amountLeft;
+  //final String categoryType;
+  _StalkSomething({
+    required this.name,
+    required this.amountLeft,
+    // required this.categoryType
+  });
+
+  factory _StalkSomething.fromSnapshot(QueryDocumentSnapshot doc) {
+    return _StalkSomething(
+      name: doc['typeName'],
+      amountLeft: doc['amountLeft'],
+      // categoryType: doc['categoryType'],
+    );
   }
 }

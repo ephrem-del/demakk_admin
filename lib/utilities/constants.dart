@@ -37,7 +37,7 @@ InputDecoration userInputDecoration(
 final List<int> amount = List<int>.generate(499, (index) => index + 1);
 
 final List<String> tshirtSizes = <String>[
-  'S',
+  //'S',
   'M',
   'L',
   'XL',

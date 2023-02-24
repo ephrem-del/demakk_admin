@@ -283,21 +283,23 @@ Map<String, OrderType> mugTypesMap = <String, OrderType>{
 };
 
 List<OrderType> mugTypes = <OrderType>[
-  OrderType(name: 'White', price: 270, amharicName: 'ነጭ'),
-  OrderType(name: 'Magic', price: 300, amharicName: 'ማጂክ'),
+  OrderType(name: 'White Mug', price: 270, amharicName: 'ነጭ'),
+  OrderType(name: 'Magic Mug', price: 300, amharicName: 'ማጂክ'),
 ];
 
 Map<String, OrderType> tshirtTypesMap = <String, OrderType>{
-  'Poly-Cotton':
-      OrderType(name: 'Poly-Cotton', price: 180, amharicName: 'ኮተን ሰብሊሜሽን'),
-  'Flatbag': OrderType(name: 'Flatbag', price: 70, amharicName: 'ፍላት ባግ'),
-  'MG': OrderType(name: 'MG', price: 150, amharicName: 'ኤምጂ'),
+  'Poly-Cotton Shirt': OrderType(
+      name: 'Poly-Cotton Shirt', price: 180, amharicName: 'ኮተን ሰብሊሜሽን'),
+  'Flat-bag Shirt':
+      OrderType(name: 'Flat-bag Shirt', price: 70, amharicName: 'ፍላት ባግ'),
+  'Polyester Shirt':
+      OrderType(name: 'Polyester Shirt', price: 150, amharicName: 'ኤምጂ'),
 };
 
 List<OrderType> tshirtTypes = <OrderType>[
-  OrderType(name: 'Poly-Cotton', price: 180, amharicName: 'ኮተን ሰብሊሜሽን'),
-  OrderType(name: 'Flatbag', price: 70, amharicName: 'ፍላት ባግ'),
-  OrderType(name: 'MG', price: 150, amharicName: 'ኤምጂ'),
+  OrderType(name: 'Poly-Cotton Shirt', price: 180, amharicName: 'ኮተን ሰብሊሜሽን'),
+  OrderType(name: 'Flat-Bag Shirt', price: 70, amharicName: 'ፍላት ባግ'),
+  OrderType(name: 'Polyester Shirt', price: 150, amharicName: 'ፖሊስተር'),
 ];
 
 Map<String, OrderType> flashStampTypesMap = <String, OrderType>{

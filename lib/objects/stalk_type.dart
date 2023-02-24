@@ -1,11 +1,11 @@
 import 'package:demakk_admin/objects/stalk_category.dart';
 
-class StockType {
+class StalkType {
   final StalkCategory stalkCategory;
   final String typeName;
   final String amharicTypeName;
   final int price;
-  StockType({
+  StalkType({
     required this.typeName,
     required this.price,
     required this.stalkCategory,
