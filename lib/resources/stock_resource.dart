@@ -11,6 +11,7 @@ const List<StalkCategory> stalkCategories = <StalkCategory>[
       categoryTitle: 'Flat-bag Shirt', amharicCategoryTitle: 'ፍላት ባግ ቲሸርት'),
   StalkCategory(
       categoryTitle: 'Polyester Shirt', amharicCategoryTitle: 'ፖሊኢስተር ቲሸርት'),
+  StalkCategory(categoryTitle: 'Plot', amharicCategoryTitle: 'ፕሎት'),
 ];
 
 // const Map<String, StalkCategory> _categories = <String, StalkCategory>{

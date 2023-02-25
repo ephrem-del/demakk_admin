@@ -47,10 +47,11 @@ final List<String> tshirtSizes = <String>[
 final List<ColorObject> colorSelection = <ColorObject>[
   ColorObject(color: Colors.white, name: 'White', amharicName: 'ነጭ'),
   ColorObject(color: Colors.black87, name: 'Black', amharicName: 'ጥቁር'),
-  ColorObject(color: Colors.red, name: 'Red', amharicName: 'ቀይ'),
-  ColorObject(
-      color: const Color(0xFFFF6200), name: 'Orange', amharicName: 'ብርትኳናማ'),
-  ColorObject(color: Colors.yellow, name: 'Yellow', amharicName: 'ቢጫ'),
+  //unhide when other colors are needed
+  // ColorObject(color: Colors.red, name: 'Red', amharicName: 'ቀይ'),
+  // ColorObject(
+  //     color: const Color(0xFFFF6200), name: 'Orange', amharicName: 'ብርትኳናማ'),
+  // ColorObject(color: Colors.yellow, name: 'Yellow', amharicName: 'ቢጫ'),
 ];
 
 // final List<Color> colorSelection = <Color>[

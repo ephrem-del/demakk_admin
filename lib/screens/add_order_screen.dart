@@ -28,38 +28,89 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
   bool flashStampOrNot = false;
   bool whiteMugOrNot = false;
   bool magicMugOrNot = false;
-  bool flatBagXxlOrNot = false;
-  bool flatBagXlOrNot = false;
-  bool flatBagLOrNot = false;
-  bool flatBagMOrNot = false;
-  bool polyesterXxlOrNot = false;
-  bool polyesterXlOrNot = false;
-  bool polyesterLOrNot = false;
-  bool polyesterMOrNot = false;
-  bool polyCottonXxlOrNot = false;
-  bool polyCottonXlOrNot = false;
-  bool polyCottonLOrNot = false;
-  bool polyCottonMOrNot = false;
+
+  bool flatBagXxlWhiteOrNot = false;
+  bool flatBagXlWhiteOrNot = false;
+  bool flatBagLWhiteOrNot = false;
+  bool flatBagMWhiteOrNot = false;
+
+  bool flatBagXxlBlackOrNot = false;
+  bool flatBagXlBlackOrNot = false;
+  bool flatBagLBlackOrNot = false;
+  bool flatBagMBlackOrNot = false;
+
+  bool polyesterXxlWhiteOrNot = false;
+  bool polyesterXlWhiteOrNot = false;
+  bool polyesterLWhiteOrNot = false;
+  bool polyesterMWhiteOrNot = false;
+
+  bool polyesterXxlBlackOrNot = false;
+  bool polyesterXlBlackOrNot = false;
+  bool polyesterLBlackOrNot = false;
+  bool polyesterMBlackOrNot = false;
+
+  bool polyCottonXxlWhiteOrNot = false;
+  bool polyCottonXlWhiteOrNot = false;
+  bool polyCottonLWhiteOrNot = false;
+  bool polyCottonMWhiteOrNot = false;
+
+  bool polyCottonXxlBlackOrNot = false;
+  bool polyCottonXlBlackOrNot = false;
+  bool polyCottonLBlackOrNot = false;
+  bool polyCottonMBlackOrNot = false;
+
   bool ovalStampOrNot = false;
   bool headStampOrNOt = false;
   bool fortyByTwentyStampOrNot = false;
+
+  bool goldenOrNot = false;
+  bool goldenShineOrNot = false;
+  bool whiteOrNot = false;
+  bool blackOrNot = false;
+  bool glassStickerOrNot = false;
+
   int whiteMugAmount = 0;
   int magicMugAmount = 0;
-  int flatBagXxlAmount = 0;
-  int flatBagXlAmount = 0;
-  int flatBagLAmount = 0;
-  int flatBagMAmount = 0;
-  int polyesterXxlAmount = 0;
-  int polyesterXlAmount = 0;
-  int polyesterLAmount = 0;
-  int polyesterMAmount = 0;
-  int polyCottonXxlAmount = 0;
-  int polyCottonXlAmount = 0;
-  int polyCottonLAmount = 0;
-  int polyCottonMAmount = 0;
+
+  int flatBagXxlWhiteAmount = 0;
+  int flatBagXlWhiteAmount = 0;
+  int flatBagLWhiteAmount = 0;
+  int flatBagMWhiteAmount = 0;
+
+  int flatBagXxlBlackAmount = 0;
+  int flatBagXlBlackAmount = 0;
+  int flatBagLBlackAmount = 0;
+  int flatBagMBlackAmount = 0;
+
+  int polyesterXxlWhiteAmount = 0;
+  int polyesterXlWhiteAmount = 0;
+  int polyesterLWhiteAmount = 0;
+  int polyesterMWhiteAmount = 0;
+
+  int polyesterXxlBlackAmount = 0;
+  int polyesterXlBlackAmount = 0;
+  int polyesterLBlackAmount = 0;
+  int polyesterMBlackAmount = 0;
+
+  int polyCottonXxlWhiteAmount = 0;
+  int polyCottonXlWhiteAmount = 0;
+  int polyCottonLWhiteAmount = 0;
+  int polyCottonMWhiteAmount = 0;
+
+  int polyCottonXxlBlackAmount = 0;
+  int polyCottonXlBlackAmount = 0;
+  int polyCottonLBlackAmount = 0;
+  int polyCottonMBlackAmount = 0;
+
   int ovalStampAmount = 0;
   int headStampAmount = 0;
   int fortyByTwentyStampAmount = 0;
+
+  int goldenAmount = 0;
+  int goldenShineAmount = 0;
+  int whiteAmount = 0;
+  int blackAmount = 0;
+  int glassStickerAmount = 0;
 
   late OrderType type;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -156,45 +207,83 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
           List<int>.generate(fortyByTwentyStampAmount, (index) => index + 1);
     } else if (headStampOrNOt) {
       _amount = List<int>.generate(headStampAmount, (index) => index + 1);
-    } else if (polyCottonXxlOrNot) {
-      _amount = List<int>.generate(polyCottonXxlAmount, (index) => index + 1);
-    } else if (polyCottonXlOrNot) {
-      _amount = List<int>.generate(polyCottonXlAmount, (index) => index + 1);
-    } else if (polyCottonLOrNot) {
-      _amount = List<int>.generate(polyCottonLAmount, (index) => index + 1);
-    } else if (polyCottonMOrNot) {
-      _amount = List<int>.generate(polyCottonMAmount, (index) => index + 1);
-    } else if (polyesterXxlOrNot) {
-      _amount = List<int>.generate(polyesterXxlAmount, (index) => index + 1);
-    } else if (polyesterXlOrNot) {
-      _amount = List<int>.generate(polyesterXlAmount, (index) => index + 1);
-    } else if (polyesterLOrNot) {
-      _amount = List<int>.generate(polyesterLAmount, (index) => index + 1);
-    } else if (polyesterMOrNot) {
-      _amount = List<int>.generate(polyesterMAmount, (index) => index + 1);
-    } else if (flatBagXxlOrNot) {
-      _amount = List<int>.generate(flatBagXxlAmount, (index) => index + 1);
-    } else if (flatBagXlOrNot) {
-      _amount = List<int>.generate(flatBagXlAmount, (index) => index + 1);
-    } else if (flatBagLOrNot) {
-      _amount = List<int>.generate(flatBagLAmount, (index) => index + 1);
-    } else if (flatBagMOrNot) {
-      _amount = List<int>.generate(flatBagMAmount, (index) => index + 1);
+    } else if (polyCottonXxlWhiteOrNot) {
+      _amount =
+          List<int>.generate(polyCottonXxlWhiteAmount, (index) => index + 1);
+    } else if (polyCottonXlWhiteOrNot) {
+      _amount =
+          List<int>.generate(polyCottonXlWhiteAmount, (index) => index + 1);
+    } else if (polyCottonLWhiteOrNot) {
+      _amount =
+          List<int>.generate(polyCottonLWhiteAmount, (index) => index + 1);
+    } else if (polyCottonMWhiteOrNot) {
+      _amount =
+          List<int>.generate(polyCottonMWhiteAmount, (index) => index + 1);
+    } else if (polyCottonXxlBlackOrNot) {
+      _amount =
+          List<int>.generate(polyCottonXxlBlackAmount, (index) => index + 1);
+    } else if (polyCottonXlBlackOrNot) {
+      _amount =
+          List<int>.generate(polyCottonXlBlackAmount, (index) => index + 1);
+    } else if (polyCottonLBlackOrNot) {
+      _amount =
+          List<int>.generate(polyCottonLBlackAmount, (index) => index + 1);
+    } else if (polyCottonMBlackOrNot) {
+      _amount =
+          List<int>.generate(polyCottonMBlackAmount, (index) => index + 1);
+    } else if (polyesterXxlWhiteOrNot) {
+      _amount =
+          List<int>.generate(polyesterXxlWhiteAmount, (index) => index + 1);
+    } else if (polyesterXlWhiteOrNot) {
+      _amount =
+          List<int>.generate(polyesterXlWhiteAmount, (index) => index + 1);
+    } else if (polyesterLWhiteOrNot) {
+      _amount = List<int>.generate(polyesterLWhiteAmount, (index) => index + 1);
+    } else if (polyesterMWhiteOrNot) {
+      _amount = List<int>.generate(polyesterMWhiteAmount, (index) => index + 1);
+    } else if (polyesterXxlBlackOrNot) {
+      _amount =
+          List<int>.generate(polyesterXxlBlackAmount, (index) => index + 1);
+    } else if (polyesterXlBlackOrNot) {
+      _amount =
+          List<int>.generate(polyesterXlBlackAmount, (index) => index + 1);
+    } else if (polyesterLBlackOrNot) {
+      _amount = List<int>.generate(polyesterLBlackAmount, (index) => index + 1);
+    } else if (polyesterMBlackOrNot) {
+      _amount = List<int>.generate(polyesterMBlackAmount, (index) => index + 1);
+    } else if (flatBagXxlWhiteOrNot) {
+      _amount = List<int>.generate(flatBagXxlWhiteAmount, (index) => index + 1);
+    } else if (flatBagXlWhiteOrNot) {
+      _amount = List<int>.generate(flatBagXlWhiteAmount, (index) => index + 1);
+    } else if (flatBagLWhiteOrNot) {
+      _amount = List<int>.generate(flatBagLWhiteAmount, (index) => index + 1);
+    } else if (flatBagMWhiteOrNot) {
+      _amount = List<int>.generate(flatBagMWhiteAmount, (index) => index + 1);
+    } else if (flatBagXxlBlackOrNot) {
+      _amount = List<int>.generate(flatBagXxlBlackAmount, (index) => index + 1);
+    } else if (flatBagXlBlackOrNot) {
+      _amount = List<int>.generate(flatBagXlBlackAmount, (index) => index + 1);
+    } else if (flatBagLBlackOrNot) {
+      _amount = List<int>.generate(flatBagLBlackAmount, (index) => index + 1);
+    } else if (flatBagMBlackOrNot) {
+      _amount = List<int>.generate(flatBagMBlackAmount, (index) => index + 1);
+    } else if (goldenOrNot) {
+      _amount = List<int>.generate(goldenAmount, (index) => index + 1);
+    } else if (goldenShineOrNot) {
+      _amount = List<int>.generate(goldenShineAmount, (index) => index + 1);
+    } else if (whiteOrNot) {
+      _amount = List<int>.generate(whiteAmount, (index) => index + 1);
+    } else if (blackOrNot) {
+      _amount = List<int>.generate(blackAmount, (index) => index + 1);
+    } else if (glassStickerOrNot) {
+      _amount = List<int>.generate(glassStickerAmount, (index) => index + 1);
     }
+
     return _amount;
   }
 
   @override
   Widget build(BuildContext context) {
-    // List<Customer> customers = _addOrderViewModel.customerList.stream.value;
-
-    // List<DropdownMenuItem> _items = customers
-    //     .map((customer) => DropdownMenuItem(
-    //           value: customer.name,
-    //           child: Text(customer.name),
-    //         ))
-    //     .toList();
-
     return StreamBuilder<List<Customer>>(
       stream: _addOrderViewModel.customerList.stream,
       builder: (context, snapshot) {
@@ -209,17 +298,6 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
               return const Text('No data');
             }
         }
-
-        List<DropdownMenuItem> _amountList = getAvailableAmount()
-            .map(
-              (amount) => DropdownMenuItem(
-                value: amount,
-                child: Text(
-                  amount.toString(),
-                ),
-              ),
-            )
-            .toList();
 
         List<Customer> customers = snapshot.data!;
         List<DropdownMenuItem> items = customers
@@ -328,13 +406,14 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                         _selectedOrderType = selected;
                                         if (selected == 'Mug') {
                                           whiteMugOrNot = true;
-                                          polyCottonLOrNot = false;
+                                          polyCottonLWhiteOrNot = false;
                                           ovalStampOrNot = false;
                                           mugOrNot = true;
                                           plotOrNot = false;
                                           tshirtOrNot = false;
                                           flashStampOrNot = false;
                                         } else if (selected == 'Plot') {
+                                          whiteMugOrNot = false;
                                           plotOrNot = true;
                                           mugOrNot = false;
                                           tshirtOrNot = false;
@@ -344,7 +423,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
 
                                           ovalStampOrNot = false;
 
-                                          polyCottonLOrNot = true;
+                                          polyCottonLWhiteOrNot = true;
                                           tshirtOrNot = true;
                                           mugOrNot = false;
                                           plotOrNot = false;
@@ -353,7 +432,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                           ovalStampOrNot = true;
                                           whiteMugOrNot = false;
 
-                                          polyCottonLOrNot = false;
+                                          polyCottonLWhiteOrNot = false;
 
                                           tshirtOrNot = false;
                                           flashStampOrNot = true;
@@ -370,68 +449,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                               ),
                             ],
                           ),
-                          mugOrNot
-                              ? Row(
-                                  children: [
-                                    amharic
-                                        ? const Text(
-                                            'የኩባያ አይነት',
-                                            style: subTitleTextStyle,
-                                          )
-                                        : const Text(
-                                            'Mug Type',
-                                            style: subTitleTextStyle,
-                                          ),
-                                    const Spacer(),
-                                    DropdownButton(
-                                        items: _mugTypes,
-                                        value: _selectedMug,
-                                        onChanged: (selected) {
-                                          setState(() {
-                                            _selectedMug = selected;
-
-                                            if (selected == 'Magic Mug') {
-                                              whiteMugOrNot = false;
-                                              magicMugOrNot = true;
-                                              flatBagXxlOrNot = false;
-                                              flatBagXlOrNot = false;
-                                              flatBagLOrNot = false;
-                                              flatBagMOrNot = false;
-                                              polyesterXxlOrNot = false;
-                                              polyesterXlOrNot = false;
-                                              polyesterLOrNot = false;
-                                              polyesterMOrNot = false;
-                                              polyCottonXxlOrNot = false;
-                                              polyCottonXlOrNot = false;
-                                              polyCottonLOrNot = false;
-                                              polyCottonMOrNot = false;
-                                              ovalStampOrNot = false;
-                                              headStampOrNOt = false;
-                                              fortyByTwentyStampOrNot = false;
-                                            } else {
-                                              whiteMugOrNot = true;
-                                              magicMugOrNot = false;
-                                              flatBagXxlOrNot = false;
-                                              flatBagXlOrNot = false;
-                                              flatBagLOrNot = false;
-                                              flatBagMOrNot = false;
-                                              polyesterXxlOrNot = false;
-                                              polyesterXlOrNot = false;
-                                              polyesterLOrNot = false;
-                                              polyesterMOrNot = false;
-                                              polyCottonXxlOrNot = false;
-                                              polyCottonXlOrNot = false;
-                                              polyCottonLOrNot = false;
-                                              polyCottonMOrNot = false;
-                                              ovalStampOrNot = false;
-                                              headStampOrNOt = false;
-                                              fortyByTwentyStampOrNot = false;
-                                            }
-                                          });
-                                        })
-                                  ],
-                                )
-                              : const SizedBox.shrink(),
+                          mugOrNot ? mugTypesWidget() : const SizedBox.shrink(),
                           plotOrNot
                               ? Row(
                                   children: [
@@ -461,456 +479,10 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                 )
                               : const SizedBox.shrink(),
                           tshirtOrNot
-                              ? Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        amharic
-                                            ? const Text(
-                                                'የቲሸርት አይነት',
-                                                style: subTitleTextStyle,
-                                              )
-                                            : const Text(
-                                                'Tshirt Type',
-                                                style: subTitleTextStyle,
-                                              ),
-                                        const Spacer(),
-                                        DropdownButton(
-                                            items: _tshirtTypes,
-                                            value: _selectedTshirt,
-                                            onChanged: (selected) {
-                                              setState(() {
-                                                _selectedTshirt = selected;
-                                                if (selected ==
-                                                    'Polyester Shirt') {
-                                                  _selectedTshirtSize =
-                                                      tshirtSizes[1];
-                                                  whiteMugOrNot = false;
-                                                  magicMugOrNot = false;
-                                                  flatBagXxlOrNot = false;
-                                                  flatBagXlOrNot = false;
-                                                  flatBagLOrNot = false;
-                                                  flatBagMOrNot = false;
-                                                  polyesterXxlOrNot = false;
-                                                  polyesterXlOrNot = false;
-                                                  polyesterLOrNot = true;
-                                                  polyesterMOrNot = false;
-                                                  polyCottonXxlOrNot = false;
-                                                  polyCottonXlOrNot = false;
-                                                  polyCottonLOrNot = false;
-                                                  polyCottonMOrNot = false;
-                                                  ovalStampOrNot = false;
-                                                  headStampOrNOt = false;
-                                                  fortyByTwentyStampOrNot =
-                                                      false;
-                                                } else if (selected ==
-                                                    'Flat-Bag Shirt') {
-                                                  _selectedTshirtSize =
-                                                      tshirtSizes[1];
-                                                  whiteMugOrNot = false;
-                                                  magicMugOrNot = false;
-                                                  flatBagXxlOrNot = false;
-                                                  flatBagXlOrNot = false;
-                                                  flatBagLOrNot = true;
-                                                  flatBagMOrNot = false;
-                                                  polyesterXxlOrNot = false;
-                                                  polyesterXlOrNot = false;
-                                                  polyesterLOrNot = false;
-                                                  polyesterMOrNot = false;
-                                                  polyCottonXxlOrNot = false;
-                                                  polyCottonXlOrNot = false;
-                                                  polyCottonLOrNot = false;
-                                                  polyCottonMOrNot = false;
-                                                  ovalStampOrNot = false;
-                                                  headStampOrNOt = false;
-                                                  fortyByTwentyStampOrNot =
-                                                      false;
-                                                } else {
-                                                  _selectedTshirtSize =
-                                                      tshirtSizes[1];
-                                                  whiteMugOrNot = false;
-                                                  magicMugOrNot = false;
-                                                  flatBagXxlOrNot = false;
-                                                  flatBagXlOrNot = false;
-                                                  flatBagLOrNot = false;
-                                                  flatBagMOrNot = false;
-                                                  polyesterXxlOrNot = false;
-                                                  polyesterXlOrNot = false;
-                                                  polyesterLOrNot = false;
-                                                  polyesterMOrNot = false;
-                                                  polyCottonXxlOrNot = false;
-                                                  polyCottonXlOrNot = false;
-                                                  polyCottonLOrNot = true;
-                                                  polyCottonMOrNot = false;
-                                                  ovalStampOrNot = false;
-                                                  headStampOrNOt = false;
-                                                  fortyByTwentyStampOrNot =
-                                                      false;
-                                                }
-                                              });
-                                            })
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          amharic ? 'ሳይዝ' : 'Size',
-                                          style: subTitleTextStyle,
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        DropdownButton(
-                                            items: _tshirtSizes,
-                                            value: _selectedTshirtSize,
-                                            onChanged: (selected) {
-                                              setState(() {
-                                                _selectedTshirtSize = selected;
-                                                if (_selectedTshirt ==
-                                                    'Polyester Shirt') {
-                                                  if (selected == 'M') {
-                                                    whiteMugOrNot = false;
-                                                    magicMugOrNot = false;
-                                                    flatBagXxlOrNot = false;
-                                                    flatBagXlOrNot = false;
-                                                    flatBagLOrNot = false;
-                                                    flatBagMOrNot = false;
-                                                    polyesterXxlOrNot = false;
-                                                    polyesterXlOrNot = false;
-                                                    polyesterLOrNot = false;
-                                                    polyesterMOrNot = true;
-                                                    polyCottonXxlOrNot = false;
-                                                    polyCottonXlOrNot = false;
-                                                    polyCottonLOrNot = false;
-                                                    polyCottonMOrNot = false;
-                                                    ovalStampOrNot = false;
-                                                    headStampOrNOt = false;
-                                                    fortyByTwentyStampOrNot =
-                                                        false;
-                                                  } else if (selected == 'XL') {
-                                                    whiteMugOrNot = false;
-                                                    magicMugOrNot = false;
-                                                    flatBagXxlOrNot = false;
-                                                    flatBagXlOrNot = false;
-                                                    flatBagLOrNot = false;
-                                                    flatBagMOrNot = false;
-                                                    polyesterXxlOrNot = false;
-                                                    polyesterXlOrNot = true;
-                                                    polyesterLOrNot = false;
-                                                    polyesterMOrNot = false;
-                                                    polyCottonXxlOrNot = false;
-                                                    polyCottonXlOrNot = false;
-                                                    polyCottonLOrNot = false;
-                                                    polyCottonMOrNot = false;
-                                                    ovalStampOrNot = false;
-                                                    headStampOrNOt = false;
-                                                    fortyByTwentyStampOrNot =
-                                                        false;
-                                                  } else if (selected ==
-                                                      'XXL') {
-                                                    whiteMugOrNot = false;
-                                                    magicMugOrNot = false;
-                                                    flatBagXxlOrNot = false;
-                                                    flatBagXlOrNot = false;
-                                                    flatBagLOrNot = false;
-                                                    flatBagMOrNot = false;
-                                                    polyesterXxlOrNot = true;
-                                                    polyesterXlOrNot = false;
-                                                    polyesterLOrNot = false;
-                                                    polyesterMOrNot = false;
-                                                    polyCottonXxlOrNot = false;
-                                                    polyCottonXlOrNot = false;
-                                                    polyCottonLOrNot = false;
-                                                    polyCottonMOrNot = false;
-                                                    ovalStampOrNot = false;
-                                                    headStampOrNOt = false;
-                                                    fortyByTwentyStampOrNot =
-                                                        false;
-                                                  } else {
-                                                    whiteMugOrNot = false;
-                                                    magicMugOrNot = false;
-                                                    flatBagXxlOrNot = false;
-                                                    flatBagXlOrNot = false;
-                                                    flatBagLOrNot = false;
-                                                    flatBagMOrNot = false;
-                                                    polyesterXxlOrNot = false;
-                                                    polyesterXlOrNot = false;
-                                                    polyesterLOrNot = true;
-                                                    polyesterMOrNot = false;
-                                                    polyCottonXxlOrNot = false;
-                                                    polyCottonXlOrNot = false;
-                                                    polyCottonLOrNot = false;
-                                                    polyCottonMOrNot = false;
-                                                    ovalStampOrNot = false;
-                                                    headStampOrNOt = false;
-                                                    fortyByTwentyStampOrNot =
-                                                        false;
-                                                  }
-                                                } else if (_selectedTshirt ==
-                                                    'Flat-Bag Shirt') {
-                                                  if (selected == 'M') {
-                                                    whiteMugOrNot = false;
-                                                    magicMugOrNot = false;
-                                                    flatBagXxlOrNot = false;
-                                                    flatBagXlOrNot = false;
-                                                    flatBagLOrNot = false;
-                                                    flatBagMOrNot = true;
-                                                    polyesterXxlOrNot = false;
-                                                    polyesterXlOrNot = false;
-                                                    polyesterLOrNot = false;
-                                                    polyesterMOrNot = false;
-                                                    polyCottonXxlOrNot = false;
-                                                    polyCottonXlOrNot = false;
-                                                    polyCottonLOrNot = false;
-                                                    polyCottonMOrNot = false;
-                                                    ovalStampOrNot = false;
-                                                    headStampOrNOt = false;
-                                                    fortyByTwentyStampOrNot =
-                                                        false;
-                                                  } else if (selected == 'XL') {
-                                                    whiteMugOrNot = false;
-                                                    magicMugOrNot = false;
-                                                    flatBagXxlOrNot = false;
-                                                    flatBagXlOrNot = true;
-                                                    flatBagLOrNot = false;
-                                                    flatBagMOrNot = false;
-                                                    polyesterXxlOrNot = false;
-                                                    polyesterXlOrNot = false;
-                                                    polyesterLOrNot = false;
-                                                    polyesterMOrNot = false;
-                                                    polyCottonXxlOrNot = false;
-                                                    polyCottonXlOrNot = false;
-                                                    polyCottonLOrNot = false;
-                                                    polyCottonMOrNot = false;
-                                                    ovalStampOrNot = false;
-                                                    headStampOrNOt = false;
-                                                    fortyByTwentyStampOrNot =
-                                                        false;
-                                                  } else if (selected ==
-                                                      'XXL') {
-                                                    whiteMugOrNot = false;
-                                                    magicMugOrNot = false;
-                                                    flatBagXxlOrNot = true;
-                                                    flatBagXlOrNot = false;
-                                                    flatBagLOrNot = false;
-                                                    flatBagMOrNot = false;
-                                                    polyesterXxlOrNot = false;
-                                                    polyesterXlOrNot = false;
-                                                    polyesterLOrNot = false;
-                                                    polyesterMOrNot = false;
-                                                    polyCottonXxlOrNot = false;
-                                                    polyCottonXlOrNot = false;
-                                                    polyCottonLOrNot = false;
-                                                    polyCottonMOrNot = false;
-                                                    ovalStampOrNot = false;
-                                                    headStampOrNOt = false;
-                                                    fortyByTwentyStampOrNot =
-                                                        false;
-                                                  } else {
-                                                    whiteMugOrNot = false;
-                                                    magicMugOrNot = false;
-                                                    flatBagXxlOrNot = false;
-                                                    flatBagXlOrNot = false;
-                                                    flatBagLOrNot = true;
-                                                    flatBagMOrNot = false;
-                                                    polyesterXxlOrNot = false;
-                                                    polyesterXlOrNot = false;
-                                                    polyesterLOrNot = false;
-                                                    polyesterMOrNot = false;
-                                                    polyCottonXxlOrNot = false;
-                                                    polyCottonXlOrNot = false;
-                                                    polyCottonLOrNot = false;
-                                                    polyCottonMOrNot = false;
-                                                    ovalStampOrNot = false;
-                                                    headStampOrNOt = false;
-                                                    fortyByTwentyStampOrNot =
-                                                        false;
-                                                  }
-                                                } else {
-                                                  if (selected == 'M') {
-                                                    whiteMugOrNot = false;
-                                                    magicMugOrNot = false;
-                                                    flatBagXxlOrNot = false;
-                                                    flatBagXlOrNot = false;
-                                                    flatBagLOrNot = false;
-                                                    flatBagMOrNot = false;
-                                                    polyesterXxlOrNot = false;
-                                                    polyesterXlOrNot = false;
-                                                    polyesterLOrNot = false;
-                                                    polyesterMOrNot = false;
-                                                    polyCottonXxlOrNot = false;
-                                                    polyCottonXlOrNot = false;
-                                                    polyCottonLOrNot = false;
-                                                    polyCottonMOrNot = true;
-                                                    ovalStampOrNot = false;
-                                                    headStampOrNOt = false;
-                                                    fortyByTwentyStampOrNot =
-                                                        false;
-                                                  } else if (selected == 'XL') {
-                                                    whiteMugOrNot = false;
-                                                    magicMugOrNot = false;
-                                                    flatBagXxlOrNot = false;
-                                                    flatBagXlOrNot = false;
-                                                    flatBagLOrNot = false;
-                                                    flatBagMOrNot = false;
-                                                    polyesterXxlOrNot = false;
-                                                    polyesterXlOrNot = false;
-                                                    polyesterLOrNot = false;
-                                                    polyesterMOrNot = false;
-                                                    polyCottonXxlOrNot = false;
-                                                    polyCottonXlOrNot = true;
-                                                    polyCottonLOrNot = false;
-                                                    polyCottonMOrNot = false;
-                                                    ovalStampOrNot = false;
-                                                    headStampOrNOt = false;
-                                                    fortyByTwentyStampOrNot =
-                                                        false;
-                                                  } else if (selected ==
-                                                      'XXL') {
-                                                    whiteMugOrNot = false;
-                                                    magicMugOrNot = false;
-                                                    flatBagXxlOrNot = false;
-                                                    flatBagXlOrNot = false;
-                                                    flatBagLOrNot = false;
-                                                    flatBagMOrNot = false;
-                                                    polyesterXxlOrNot = false;
-                                                    polyesterXlOrNot = false;
-                                                    polyesterLOrNot = false;
-                                                    polyesterMOrNot = false;
-                                                    polyCottonXxlOrNot = true;
-                                                    polyCottonXlOrNot = false;
-                                                    polyCottonLOrNot = false;
-                                                    polyCottonMOrNot = false;
-                                                    ovalStampOrNot = false;
-                                                    headStampOrNOt = false;
-                                                    fortyByTwentyStampOrNot =
-                                                        false;
-                                                  } else {
-                                                    whiteMugOrNot = false;
-                                                    magicMugOrNot = false;
-                                                    flatBagXxlOrNot = false;
-                                                    flatBagXlOrNot = false;
-                                                    flatBagLOrNot = false;
-                                                    flatBagMOrNot = false;
-                                                    polyesterXxlOrNot = false;
-                                                    polyesterXlOrNot = false;
-                                                    polyesterLOrNot = false;
-                                                    polyesterMOrNot = false;
-                                                    polyCottonXxlOrNot = false;
-                                                    polyCottonXlOrNot = false;
-                                                    polyCottonLOrNot = true;
-                                                    polyCottonMOrNot = false;
-                                                    ovalStampOrNot = false;
-                                                    headStampOrNOt = false;
-                                                    fortyByTwentyStampOrNot =
-                                                        false;
-                                                  }
-                                                }
-                                              });
-                                            }),
-                                        const SizedBox(
-                                          width: 20,
-                                        ),
-                                        Text(
-                                          amharic ? 'ከለር' : 'Color',
-                                          style: subTitleTextStyle,
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        DropdownButton(
-                                            items: _shirtColors,
-                                            value: _selectedColor,
-                                            onChanged: (selected) {
-                                              setState(() {
-                                                _selectedColor = selected;
-                                              });
-                                            }),
-                                      ],
-                                    )
-                                  ],
-                                )
+                              ? tshirtTypesWidget()
                               : const SizedBox.shrink(),
                           flashStampOrNot
-                              ? Row(
-                                  children: [
-                                    Text(
-                                      amharic
-                                          ? 'የማህተም አይነት'
-                                          : 'Flash stamp type',
-                                      style: subTitleTextStyle,
-                                    ),
-                                    const Spacer(),
-                                    DropdownButton(
-                                      items: _flashStampTypes,
-                                      onChanged: (selected) {
-                                        setState(() {
-                                          _selectedStamp = selected;
-                                          if (selected == '40x20 Stamp') {
-                                            whiteMugOrNot = false;
-                                            magicMugOrNot = false;
-                                            flatBagXxlOrNot = false;
-                                            flatBagXlOrNot = false;
-                                            flatBagLOrNot = false;
-                                            flatBagMOrNot = false;
-                                            polyesterXxlOrNot = false;
-                                            polyesterXlOrNot = false;
-                                            polyesterLOrNot = false;
-                                            polyesterMOrNot = false;
-                                            polyCottonXxlOrNot = false;
-                                            polyCottonXlOrNot = false;
-                                            polyCottonLOrNot = false;
-                                            polyCottonMOrNot = false;
-                                            ovalStampOrNot = false;
-                                            headStampOrNOt = false;
-                                            fortyByTwentyStampOrNot = true;
-                                          } else if (selected == 'Head Stamp') {
-                                            whiteMugOrNot = false;
-                                            magicMugOrNot = false;
-                                            flatBagXxlOrNot = false;
-                                            flatBagXlOrNot = false;
-                                            flatBagLOrNot = false;
-                                            flatBagMOrNot = false;
-                                            polyesterXxlOrNot = false;
-                                            polyesterXlOrNot = false;
-                                            polyesterLOrNot = false;
-                                            polyesterMOrNot = false;
-                                            polyCottonXxlOrNot = false;
-                                            polyCottonXlOrNot = false;
-                                            polyCottonLOrNot = false;
-                                            polyCottonMOrNot = false;
-                                            ovalStampOrNot = false;
-                                            headStampOrNOt = true;
-                                            fortyByTwentyStampOrNot = false;
-                                          } else {
-                                            whiteMugOrNot = false;
-                                            magicMugOrNot = false;
-                                            flatBagXxlOrNot = false;
-                                            flatBagXlOrNot = false;
-                                            flatBagLOrNot = false;
-                                            flatBagMOrNot = false;
-                                            polyesterXxlOrNot = false;
-                                            polyesterXlOrNot = false;
-                                            polyesterLOrNot = false;
-                                            polyesterMOrNot = false;
-                                            polyCottonXxlOrNot = false;
-                                            polyCottonXlOrNot = false;
-                                            polyCottonLOrNot = false;
-                                            polyCottonMOrNot = false;
-                                            ovalStampOrNot = true;
-                                            headStampOrNOt = false;
-                                            fortyByTwentyStampOrNot = false;
-                                          }
-                                        });
-                                      },
-                                      value: _selectedStamp,
-                                    )
-                                  ],
-                                )
+                              ? flashStampTypesWidget()
                               : const SizedBox.shrink(),
                           tshirtOrNot
                               ? const SizedBox.shrink()
@@ -953,68 +525,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                     )
                                   ],
                                 ),
-                          Row(
-                            children: [
-                              amharic
-                                  ? const Text(
-                                      'ብዛት',
-                                      style: subTitleTextStyle,
-                                    )
-                                  : const Text(
-                                      'Amount',
-                                      style: subTitleTextStyle,
-                                    ),
-                              const Spacer(),
-                              StreamBuilder(
-                                stream: _addOrderViewModel
-                                    .stalkAmountsController.stream,
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasError) {
-                                    return Text('erroor');
-                                  }
-                                  switch (snapshot.connectionState) {
-                                    case ConnectionState.waiting:
-                                      return Text('Loading');
-                                    default:
-                                      if (!snapshot.hasData) {
-                                        return Text('No data');
-                                      }
-                                  }
-                                  Map<String, int> stalkAmounts =
-                                      snapshot.data!;
-
-                                  whiteMugAmount = stalkAmounts['White Mug']!;
-                                  magicMugAmount = stalkAmounts['Magic Mug']!;
-                                  ovalStampAmount = stalkAmounts['Oval Stamp']!;
-                                  fortyByTwentyStampAmount =
-                                      stalkAmounts['40x20 Stamp']!;
-                                  headStampAmount = stalkAmounts['Head Stamp']!;
-                                  polyCottonLAmount = stalkAmounts['L-PCS']!;
-                                  polyCottonMAmount = stalkAmounts['M-PCS']!;
-                                  polyCottonXlAmount = stalkAmounts['XL-PCS']!;
-                                  polyCottonXxlAmount =
-                                      stalkAmounts['XXL-PCS']!;
-                                  polyesterLAmount = stalkAmounts['L-PS']!;
-                                  polyesterXlAmount = stalkAmounts['XL-PS']!;
-                                  polyesterMAmount = stalkAmounts['M-PS']!;
-                                  polyesterXxlAmount = stalkAmounts['XXL-PS']!;
-                                  flatBagLAmount = stalkAmounts['L-FS']!;
-                                  flatBagXlAmount = stalkAmounts['XL-FS']!;
-                                  flatBagXxlAmount = stalkAmounts['XXL-FS']!;
-                                  flatBagMAmount = stalkAmounts['M-FS']!;
-
-                                  return DropdownButton(
-                                      items: _amountList,
-                                      value: _selectedAmount,
-                                      onChanged: (selected) {
-                                        setState(() {
-                                          _selectedAmount = selected;
-                                        });
-                                      });
-                                },
-                              )
-                            ],
-                          ),
+                          amountWidget(),
                           Row(
                             children: [
                               amharic
@@ -1096,6 +607,1531 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
           ),
         );
       },
+    );
+  }
+
+  Widget tshirtTypesWidget() {
+    return Column(children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          amharic
+              ? const Text(
+                  'የቲሸርት አይነት',
+                  style: subTitleTextStyle,
+                )
+              : const Text(
+                  'Tshirt Type',
+                  style: subTitleTextStyle,
+                ),
+          const Spacer(),
+          DropdownButton(
+              items: _tshirtTypes,
+              value: _selectedTshirt,
+              onChanged: (selected) {
+                setState(() {
+                  _selectedTshirt = selected;
+                  if (selected == 'Polyester Shirt') {
+                    _selectedTshirtSize = tshirtSizes[1];
+                    if (_selectedColor == 'Black') {
+                      polyesterLBlackOrNot = true;
+                    } else {
+                      polyesterLWhiteOrNot = true;
+                    }
+                    whiteMugOrNot = false;
+                    magicMugOrNot = false;
+
+                    flatBagXxlWhiteOrNot = false;
+                    flatBagXlWhiteOrNot = false;
+                    flatBagLWhiteOrNot = false;
+                    flatBagMWhiteOrNot = false;
+
+                    polyesterXxlWhiteOrNot = false;
+                    polyesterXlWhiteOrNot = false;
+
+                    polyesterMWhiteOrNot = false;
+
+                    polyCottonXxlWhiteOrNot = false;
+                    polyCottonXlWhiteOrNot = false;
+                    polyCottonLWhiteOrNot = false;
+                    polyCottonMWhiteOrNot = false;
+
+                    flatBagXxlBlackOrNot = false;
+                    flatBagXlBlackOrNot = false;
+                    flatBagLBlackOrNot = false;
+                    flatBagMWhiteOrNot = false;
+
+                    polyesterXxlBlackOrNot = false;
+                    polyesterXlBlackOrNot = false;
+
+                    polyesterMBlackOrNot = false;
+
+                    polyCottonXxlBlackOrNot = false;
+                    polyCottonXlBlackOrNot = false;
+                    polyCottonLBlackOrNot = false;
+                    polyCottonMBlackOrNot = false;
+
+                    ovalStampOrNot = false;
+                    headStampOrNOt = false;
+                    fortyByTwentyStampOrNot = false;
+                  } else if (selected == 'Flat-Bag Shirt') {
+                    _selectedTshirtSize = tshirtSizes[1];
+                    if (_selectedColor == 'Black') {
+                      flatBagLBlackOrNot = true;
+                    } else {
+                      flatBagLWhiteOrNot = true;
+                    }
+                    whiteMugOrNot = false;
+                    magicMugOrNot = false;
+                    flatBagXxlWhiteOrNot = false;
+                    flatBagXlWhiteOrNot = false;
+
+                    flatBagMWhiteOrNot = false;
+                    polyesterXxlWhiteOrNot = false;
+                    polyesterXlWhiteOrNot = false;
+                    polyesterLWhiteOrNot = false;
+                    polyesterMWhiteOrNot = false;
+                    polyCottonXxlWhiteOrNot = false;
+                    polyCottonXlWhiteOrNot = false;
+                    polyCottonLWhiteOrNot = false;
+                    polyCottonMWhiteOrNot = false;
+                    ovalStampOrNot = false;
+                    headStampOrNOt = false;
+                    fortyByTwentyStampOrNot = false;
+
+                    flatBagXxlBlackOrNot = false;
+                    flatBagXlBlackOrNot = false;
+
+                    flatBagMWhiteOrNot = false;
+
+                    polyesterXxlBlackOrNot = false;
+                    polyesterXlBlackOrNot = false;
+                    polyesterLBlackOrNot = false;
+                    polyesterMBlackOrNot = false;
+
+                    polyCottonXxlBlackOrNot = false;
+                    polyCottonXlBlackOrNot = false;
+                    polyCottonLBlackOrNot = false;
+                    polyCottonMBlackOrNot = false;
+                  } else {
+                    _selectedTshirtSize = tshirtSizes[1];
+                    if (_selectedColor == 'Black') {
+                      polyCottonLBlackOrNot = true;
+                    } else {
+                      polyCottonLWhiteOrNot = true;
+                    }
+                    whiteMugOrNot = false;
+                    magicMugOrNot = false;
+                    flatBagXxlWhiteOrNot = false;
+                    flatBagXlWhiteOrNot = false;
+                    flatBagLWhiteOrNot = false;
+                    flatBagMWhiteOrNot = false;
+                    polyesterXxlWhiteOrNot = false;
+                    polyesterXlWhiteOrNot = false;
+                    polyesterLWhiteOrNot = false;
+                    polyesterMWhiteOrNot = false;
+                    polyCottonXxlWhiteOrNot = false;
+                    polyCottonXlWhiteOrNot = false;
+
+                    polyCottonMWhiteOrNot = false;
+                    ovalStampOrNot = false;
+                    headStampOrNOt = false;
+                    fortyByTwentyStampOrNot = false;
+
+                    flatBagXxlBlackOrNot = false;
+                    flatBagXlBlackOrNot = false;
+                    flatBagLBlackOrNot = false;
+                    flatBagMWhiteOrNot = false;
+
+                    polyesterXxlBlackOrNot = false;
+                    polyesterXlBlackOrNot = false;
+                    polyesterLBlackOrNot = false;
+                    polyesterMBlackOrNot = false;
+
+                    polyCottonXxlBlackOrNot = false;
+                    polyCottonXlBlackOrNot = false;
+
+                    polyCottonMBlackOrNot = false;
+                  }
+                });
+              })
+        ],
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            amharic ? 'ሳይዝ' : 'Size',
+            style: subTitleTextStyle,
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          DropdownButton(
+              items: _tshirtSizes,
+              value: _selectedTshirtSize,
+              onChanged: (selected) {
+                setState(() {
+                  _selectedTshirtSize = selected;
+                  if (_selectedTshirt == 'Polyester Shirt') {
+                    if (_selectedColor == 'Black') {
+                      if (selected == 'M') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = true;
+
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else if (selected == 'XL') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = true;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else if (selected == 'XXL') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+
+                        polyesterXxlBlackOrNot = true;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = true;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      }
+                    } else {
+                      //this else is for when color selected is white
+                      if (selected == 'M') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = true;
+
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else if (selected == 'XL') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = true;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else if (selected == 'XXL') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = true;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = true;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      }
+                    }
+                  } else if (_selectedTshirt == 'Flat-Bag Shirt') {
+                    if (_selectedColor == 'Black') {
+                      if (selected == 'M') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = true;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else if (selected == 'XL') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = true;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else if (selected == 'XXL') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = true;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = true;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      }
+                    } else {
+                      if (selected == 'M') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = true;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else if (selected == 'XL') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = true;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else if (selected == 'XXL') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = true;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = true;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      }
+                    }
+                  } else {
+                    //selected tshirt is polycotton
+
+                    if (_selectedColor == 'Black') {
+                      if (selected == 'M') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = true;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else if (selected == 'XL') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = true;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else if (selected == 'XXL') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = true;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = true;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      }
+                    } else {
+                      if (selected == 'M') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = true;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else if (selected == 'XL') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = true;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else if (selected == 'XXL') {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = true;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = false;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      } else {
+                        whiteMugOrNot = false;
+                        magicMugOrNot = false;
+                        flatBagXxlWhiteOrNot = false;
+                        flatBagXlWhiteOrNot = false;
+                        flatBagLWhiteOrNot = false;
+                        flatBagMWhiteOrNot = false;
+                        polyesterXxlWhiteOrNot = false;
+                        polyesterXlWhiteOrNot = false;
+                        polyesterLWhiteOrNot = false;
+                        polyesterMWhiteOrNot = false;
+                        polyCottonXxlWhiteOrNot = false;
+                        polyCottonXlWhiteOrNot = false;
+                        polyCottonLWhiteOrNot = true;
+                        polyCottonMWhiteOrNot = false;
+
+                        flatBagXxlBlackOrNot = false;
+                        flatBagXlBlackOrNot = false;
+                        flatBagLBlackOrNot = false;
+                        flatBagMBlackOrNot = false;
+
+                        polyesterXxlBlackOrNot = false;
+                        polyesterXlBlackOrNot = false;
+                        polyesterLBlackOrNot = false;
+                        polyesterMBlackOrNot = false;
+
+                        polyCottonXxlBlackOrNot = false;
+                        polyCottonXlBlackOrNot = false;
+                        polyCottonLBlackOrNot = false;
+                        polyCottonMBlackOrNot = false;
+
+                        ovalStampOrNot = false;
+                        headStampOrNOt = false;
+                        fortyByTwentyStampOrNot = false;
+                      }
+                    }
+                  }
+                });
+              }), //here lies sizes
+          const SizedBox(
+            width: 20,
+          ),
+          Text(
+            amharic ? 'ከለር' : 'Color',
+            style: subTitleTextStyle,
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          DropdownButton(
+              items: _shirtColors,
+              value: _selectedColor,
+              onChanged: (selected) {
+                setState(() {
+                  _selectedColor = selected;
+                  _selectedTshirtSize = tshirtSizes[1];
+                  if (selected == "Black") {
+                    if (_selectedTshirt == 'Flat-Bag Shirt') {
+                      flatBagXxlWhiteOrNot = false;
+                      flatBagXlWhiteOrNot = false;
+                      flatBagLWhiteOrNot = false;
+                      flatBagMWhiteOrNot = false;
+                      polyesterXxlWhiteOrNot = false;
+                      polyesterXlWhiteOrNot = false;
+                      polyesterLWhiteOrNot = false;
+                      polyesterMWhiteOrNot = false;
+                      polyCottonXxlWhiteOrNot = false;
+                      polyCottonXlWhiteOrNot = false;
+                      polyCottonLWhiteOrNot = false;
+                      polyCottonMWhiteOrNot = false;
+
+                      flatBagXxlBlackOrNot = false;
+                      flatBagXlBlackOrNot = false;
+                      flatBagLBlackOrNot = true;
+                      flatBagMBlackOrNot = false;
+
+                      polyesterXxlBlackOrNot = false;
+                      polyesterXlBlackOrNot = false;
+                      polyesterLBlackOrNot = false;
+                      polyesterMBlackOrNot = false;
+
+                      polyCottonXxlBlackOrNot = false;
+                      polyCottonXlBlackOrNot = false;
+                      polyCottonLBlackOrNot = false;
+                      polyCottonMBlackOrNot = false;
+                    } else if (_selectedTshirt == 'Polyester Shirt') {
+                      flatBagXxlWhiteOrNot = false;
+                      flatBagXlWhiteOrNot = false;
+                      flatBagLWhiteOrNot = false;
+                      flatBagMWhiteOrNot = false;
+                      polyesterXxlWhiteOrNot = false;
+                      polyesterXlWhiteOrNot = false;
+                      polyesterLWhiteOrNot = false;
+                      polyesterMWhiteOrNot = false;
+                      polyCottonXxlWhiteOrNot = false;
+                      polyCottonXlWhiteOrNot = false;
+                      polyCottonLWhiteOrNot = false;
+                      polyCottonMWhiteOrNot = false;
+
+                      flatBagXxlBlackOrNot = false;
+                      flatBagXlBlackOrNot = false;
+                      flatBagLBlackOrNot = false;
+                      flatBagMBlackOrNot = false;
+
+                      polyesterXxlBlackOrNot = false;
+                      polyesterXlBlackOrNot = false;
+                      polyesterLBlackOrNot = true;
+                      polyesterMBlackOrNot = false;
+
+                      polyCottonXxlBlackOrNot = false;
+                      polyCottonXlBlackOrNot = false;
+                      polyCottonLBlackOrNot = false;
+                      polyCottonMBlackOrNot = false;
+                    } else {
+                      flatBagXxlWhiteOrNot = false;
+                      flatBagXlWhiteOrNot = false;
+                      flatBagLWhiteOrNot = false;
+                      flatBagMWhiteOrNot = false;
+                      polyesterXxlWhiteOrNot = false;
+                      polyesterXlWhiteOrNot = false;
+                      polyesterLWhiteOrNot = false;
+                      polyesterMWhiteOrNot = false;
+                      polyCottonXxlWhiteOrNot = false;
+                      polyCottonXlWhiteOrNot = false;
+                      polyCottonLWhiteOrNot = false;
+                      polyCottonMWhiteOrNot = false;
+
+                      flatBagXxlBlackOrNot = false;
+                      flatBagXlBlackOrNot = false;
+                      flatBagLBlackOrNot = false;
+                      flatBagMBlackOrNot = false;
+
+                      polyesterXxlBlackOrNot = false;
+                      polyesterXlBlackOrNot = false;
+                      polyesterLBlackOrNot = false;
+                      polyesterMBlackOrNot = false;
+
+                      polyCottonXxlBlackOrNot = false;
+                      polyCottonXlBlackOrNot = false;
+                      polyCottonLBlackOrNot = true;
+                      polyCottonMBlackOrNot = false;
+                    }
+                  } else {
+                    if (_selectedTshirt == 'Flat-Bag Shirt') {
+                      flatBagXxlWhiteOrNot = false;
+                      flatBagXlWhiteOrNot = false;
+                      flatBagLWhiteOrNot = true;
+                      flatBagMWhiteOrNot = false;
+                      polyesterXxlWhiteOrNot = false;
+                      polyesterXlWhiteOrNot = false;
+                      polyesterLWhiteOrNot = false;
+                      polyesterMWhiteOrNot = false;
+                      polyCottonXxlWhiteOrNot = false;
+                      polyCottonXlWhiteOrNot = false;
+                      polyCottonLWhiteOrNot = false;
+                      polyCottonMWhiteOrNot = false;
+
+                      flatBagXxlBlackOrNot = false;
+                      flatBagXlBlackOrNot = false;
+                      flatBagLBlackOrNot = false;
+                      flatBagMBlackOrNot = false;
+
+                      polyesterXxlBlackOrNot = false;
+                      polyesterXlBlackOrNot = false;
+                      polyesterLBlackOrNot = false;
+                      polyesterMBlackOrNot = false;
+
+                      polyCottonXxlBlackOrNot = false;
+                      polyCottonXlBlackOrNot = false;
+                      polyCottonLBlackOrNot = false;
+                      polyCottonMBlackOrNot = false;
+                    } else if (_selectedTshirt == 'Polyester Shirt') {
+                      flatBagXxlWhiteOrNot = false;
+                      flatBagXlWhiteOrNot = false;
+                      flatBagLWhiteOrNot = false;
+                      flatBagMWhiteOrNot = false;
+                      polyesterXxlWhiteOrNot = false;
+                      polyesterXlWhiteOrNot = false;
+                      polyesterLWhiteOrNot = true;
+                      polyesterMWhiteOrNot = false;
+                      polyCottonXxlWhiteOrNot = false;
+                      polyCottonXlWhiteOrNot = false;
+                      polyCottonLWhiteOrNot = false;
+                      polyCottonMWhiteOrNot = false;
+
+                      flatBagXxlBlackOrNot = false;
+                      flatBagXlBlackOrNot = false;
+                      flatBagLBlackOrNot = false;
+                      flatBagMBlackOrNot = false;
+
+                      polyesterXxlBlackOrNot = false;
+                      polyesterXlBlackOrNot = false;
+                      polyesterLBlackOrNot = false;
+                      polyesterMBlackOrNot = false;
+
+                      polyCottonXxlBlackOrNot = false;
+                      polyCottonXlBlackOrNot = false;
+                      polyCottonLBlackOrNot = false;
+                      polyCottonMBlackOrNot = false;
+                    } else {
+                      flatBagXxlWhiteOrNot = false;
+                      flatBagXlWhiteOrNot = false;
+                      flatBagLWhiteOrNot = false;
+                      flatBagMWhiteOrNot = false;
+                      polyesterXxlWhiteOrNot = false;
+                      polyesterXlWhiteOrNot = false;
+                      polyesterLWhiteOrNot = false;
+                      polyesterMWhiteOrNot = false;
+                      polyCottonXxlWhiteOrNot = false;
+                      polyCottonXlWhiteOrNot = false;
+                      polyCottonLWhiteOrNot = true;
+                      polyCottonMWhiteOrNot = false;
+
+                      flatBagXxlBlackOrNot = false;
+                      flatBagXlBlackOrNot = false;
+                      flatBagLBlackOrNot = false;
+                      flatBagMBlackOrNot = false;
+
+                      polyesterXxlBlackOrNot = false;
+                      polyesterXlBlackOrNot = false;
+                      polyesterLBlackOrNot = false;
+                      polyesterMBlackOrNot = false;
+
+                      polyCottonXxlBlackOrNot = false;
+                      polyCottonXlBlackOrNot = false;
+                      polyCottonLBlackOrNot = false;
+                      polyCottonMBlackOrNot = false;
+                    }
+                  }
+                });
+              }),
+        ],
+      )
+    ]);
+  }
+
+  Widget amountWidget() {
+    return Row(
+      children: [
+        amharic
+            ? const Text(
+                'ብዛት',
+                style: subTitleTextStyle,
+              )
+            : const Text(
+                'Amount',
+                style: subTitleTextStyle,
+              ),
+        const Spacer(),
+        StreamBuilder(
+          stream: _addOrderViewModel.stalkAmountsController.stream,
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return const Text('erroor');
+            }
+            switch (snapshot.connectionState) {
+              case ConnectionState.waiting:
+                return const Text('Loading');
+              default:
+                if (!snapshot.hasData) {
+                  return const Text('No data');
+                }
+            }
+            Map<String, int> stalkAmounts = snapshot.data!;
+
+            whiteMugAmount = stalkAmounts['White Mug']!;
+            magicMugAmount = stalkAmounts['Magic Mug']!;
+            ovalStampAmount = stalkAmounts['Oval Stamp']!;
+            fortyByTwentyStampAmount = stalkAmounts['40x20 Stamp']!;
+            headStampAmount = stalkAmounts['Head Stamp']!;
+
+            polyCottonLWhiteAmount = stalkAmounts['L-PCS-White']!;
+            polyCottonMWhiteAmount = stalkAmounts['M-PCS-White']!;
+            polyCottonXlWhiteAmount = stalkAmounts['XL-PCS-White']!;
+            polyCottonXxlWhiteAmount = stalkAmounts['XXL-PCS-White']!;
+
+            polyCottonLBlackAmount = stalkAmounts['L-PCS-Black']!;
+            polyCottonMBlackAmount = stalkAmounts['M-PCS-Black']!;
+            polyCottonXlBlackAmount = stalkAmounts['XL-PCS-Black']!;
+            polyCottonXxlBlackAmount = stalkAmounts['XXL-PCS-Black']!;
+
+            polyesterLWhiteAmount = stalkAmounts['L-PS-White']!;
+            polyesterXlWhiteAmount = stalkAmounts['XL-PS-White']!;
+            polyesterMWhiteAmount = stalkAmounts['M-PS-White']!;
+            polyesterXxlWhiteAmount = stalkAmounts['XXL-PS-White']!;
+
+            polyesterLBlackAmount = stalkAmounts['L-PS-Black']!;
+            polyesterXlBlackAmount = stalkAmounts['XL-PS-Black']!;
+            polyesterMBlackAmount = stalkAmounts['M-PS-Black']!;
+            polyesterXxlBlackAmount = stalkAmounts['XXL-PS-Black']!;
+
+            flatBagLWhiteAmount = stalkAmounts['L-FS-White']!;
+            flatBagXlWhiteAmount = stalkAmounts['XL-FS-White']!;
+            flatBagXxlWhiteAmount = stalkAmounts['XXL-FS-White']!;
+            flatBagMWhiteAmount = stalkAmounts['M-FS-White']!;
+
+            flatBagLBlackAmount = stalkAmounts['L-FS-Black']!;
+            flatBagXlBlackAmount = stalkAmounts['XL-FS-Black']!;
+            flatBagXxlBlackAmount = stalkAmounts['XXL-FS-Black']!;
+            flatBagMBlackAmount = stalkAmounts['M-FS-Black']!;
+
+            List<DropdownMenuItem> _amountList = getAvailableAmount()
+                .map(
+                  (amount) => DropdownMenuItem(
+                    value: amount,
+                    child: Text(
+                      amount.toString(),
+                    ),
+                  ),
+                )
+                .toList();
+
+            return DropdownButton(
+                items: _amountList,
+                value: _selectedAmount,
+                onChanged: (selected) {
+                  setState(() {
+                    _selectedAmount = selected;
+                  });
+                });
+          },
+        )
+      ],
+    );
+  }
+
+  Widget flashStampTypesWidget() {
+    return Row(
+      children: [
+        Text(
+          amharic ? 'የማህተም አይነት' : 'Flash stamp type',
+          style: subTitleTextStyle,
+        ),
+        const Spacer(),
+        DropdownButton(
+          items: _flashStampTypes,
+          onChanged: (selected) {
+            setState(() {
+              _selectedStamp = selected;
+              if (selected == '40x20 Stamp') {
+                whiteMugOrNot = false;
+                magicMugOrNot = false;
+                flatBagXxlWhiteOrNot = false;
+                flatBagXlWhiteOrNot = false;
+                flatBagLWhiteOrNot = false;
+                flatBagMWhiteOrNot = false;
+                polyesterXxlWhiteOrNot = false;
+                polyesterXlWhiteOrNot = false;
+                polyesterLWhiteOrNot = false;
+                polyesterMWhiteOrNot = false;
+                polyCottonXxlWhiteOrNot = false;
+                polyCottonXlWhiteOrNot = false;
+                polyCottonLWhiteOrNot = false;
+                polyCottonMWhiteOrNot = false;
+
+                flatBagXxlBlackOrNot = false;
+                flatBagXlBlackOrNot = false;
+                flatBagLBlackOrNot = false;
+                flatBagMWhiteOrNot = false;
+
+                polyesterXxlBlackOrNot = false;
+                polyesterXlBlackOrNot = false;
+                polyesterLBlackOrNot = false;
+                polyesterMBlackOrNot = false;
+
+                polyCottonXxlBlackOrNot = false;
+                polyCottonXlBlackOrNot = false;
+                polyCottonLBlackOrNot = false;
+                polyCottonMBlackOrNot = false;
+
+                ovalStampOrNot = false;
+                headStampOrNOt = false;
+                fortyByTwentyStampOrNot = true;
+              } else if (selected == 'Head Stamp') {
+                whiteMugOrNot = false;
+                magicMugOrNot = false;
+                flatBagXxlWhiteOrNot = false;
+                flatBagXlWhiteOrNot = false;
+                flatBagLWhiteOrNot = false;
+                flatBagMWhiteOrNot = false;
+                polyesterXxlWhiteOrNot = false;
+                polyesterXlWhiteOrNot = false;
+                polyesterLWhiteOrNot = false;
+                polyesterMWhiteOrNot = false;
+                polyCottonXxlWhiteOrNot = false;
+                polyCottonXlWhiteOrNot = false;
+                polyCottonLWhiteOrNot = false;
+                polyCottonMWhiteOrNot = false;
+
+                flatBagXxlBlackOrNot = false;
+                flatBagXlBlackOrNot = false;
+                flatBagLBlackOrNot = false;
+                flatBagMWhiteOrNot = false;
+
+                polyesterXxlBlackOrNot = false;
+                polyesterXlBlackOrNot = false;
+                polyesterLBlackOrNot = false;
+                polyesterMBlackOrNot = false;
+
+                polyCottonXxlBlackOrNot = false;
+                polyCottonXlBlackOrNot = false;
+                polyCottonLBlackOrNot = false;
+                polyCottonMBlackOrNot = false;
+
+                ovalStampOrNot = false;
+                headStampOrNOt = true;
+                fortyByTwentyStampOrNot = false;
+              } else {
+                whiteMugOrNot = false;
+                magicMugOrNot = false;
+                flatBagXxlWhiteOrNot = false;
+                flatBagXlWhiteOrNot = false;
+                flatBagLWhiteOrNot = false;
+                flatBagMWhiteOrNot = false;
+                polyesterXxlWhiteOrNot = false;
+                polyesterXlWhiteOrNot = false;
+                polyesterLWhiteOrNot = false;
+                polyesterMWhiteOrNot = false;
+                polyCottonXxlWhiteOrNot = false;
+                polyCottonXlWhiteOrNot = false;
+                polyCottonLWhiteOrNot = false;
+                polyCottonMWhiteOrNot = false;
+
+                flatBagXxlBlackOrNot = false;
+                flatBagXlBlackOrNot = false;
+                flatBagLBlackOrNot = false;
+                flatBagMWhiteOrNot = false;
+
+                polyesterXxlBlackOrNot = false;
+                polyesterXlBlackOrNot = false;
+                polyesterLBlackOrNot = false;
+                polyesterMBlackOrNot = false;
+
+                polyCottonXxlBlackOrNot = false;
+                polyCottonXlBlackOrNot = false;
+                polyCottonLBlackOrNot = false;
+                polyCottonMBlackOrNot = false;
+
+                ovalStampOrNot = true;
+                headStampOrNOt = false;
+                fortyByTwentyStampOrNot = false;
+              }
+            });
+          },
+          value: _selectedStamp,
+        )
+      ],
+    );
+  }
+
+  Widget mugTypesWidget() {
+    return Row(
+      children: [
+        amharic
+            ? const Text(
+                'የኩባያ አይነት',
+                style: subTitleTextStyle,
+              )
+            : const Text(
+                'Mug Type',
+                style: subTitleTextStyle,
+              ),
+        const Spacer(),
+        DropdownButton(
+            items: _mugTypes,
+            value: _selectedMug,
+            onChanged: (selected) {
+              setState(() {
+                _selectedMug = selected;
+
+                if (selected == 'Magic Mug') {
+                  whiteMugOrNot = false;
+                  magicMugOrNot = true;
+
+                  flatBagXxlWhiteOrNot = false;
+                  flatBagXlWhiteOrNot = false;
+                  flatBagLWhiteOrNot = false;
+                  flatBagMWhiteOrNot = false;
+
+                  flatBagXxlBlackOrNot = false;
+                  flatBagXlBlackOrNot = false;
+                  flatBagLBlackOrNot = false;
+                  flatBagMBlackOrNot = false;
+
+                  polyesterXxlWhiteOrNot = false;
+                  polyesterXlWhiteOrNot = false;
+                  polyesterLWhiteOrNot = false;
+                  polyesterMWhiteOrNot = false;
+
+                  polyesterXxlBlackOrNot = false;
+                  polyesterXlBlackOrNot = false;
+                  polyesterLBlackOrNot = false;
+                  polyesterMBlackOrNot = false;
+
+                  polyCottonXxlWhiteOrNot = false;
+                  polyCottonXlWhiteOrNot = false;
+                  polyCottonLWhiteOrNot = false;
+                  polyCottonMWhiteOrNot = false;
+
+                  polyCottonXxlBlackOrNot = false;
+                  polyCottonXlBlackOrNot = false;
+                  polyCottonLBlackOrNot = false;
+                  polyCottonMBlackOrNot = false;
+
+                  ovalStampOrNot = false;
+                  headStampOrNOt = false;
+                  fortyByTwentyStampOrNot = false;
+                } else {
+                  whiteMugOrNot = true;
+                  magicMugOrNot = false;
+
+                  flatBagXxlWhiteOrNot = false;
+                  flatBagXlWhiteOrNot = false;
+                  flatBagLWhiteOrNot = false;
+                  flatBagMWhiteOrNot = false;
+
+                  flatBagXxlBlackOrNot = false;
+                  flatBagXlBlackOrNot = false;
+                  flatBagLBlackOrNot = false;
+                  flatBagMBlackOrNot = false;
+
+                  polyesterXxlWhiteOrNot = false;
+                  polyesterXlWhiteOrNot = false;
+                  polyesterLWhiteOrNot = false;
+                  polyesterMWhiteOrNot = false;
+
+                  polyesterXxlBlackOrNot = false;
+                  polyesterXlBlackOrNot = false;
+                  polyesterLBlackOrNot = false;
+                  polyesterMBlackOrNot = false;
+
+                  polyCottonXxlWhiteOrNot = false;
+                  polyCottonXlWhiteOrNot = false;
+                  polyCottonLWhiteOrNot = false;
+                  polyCottonMWhiteOrNot = false;
+
+                  polyCottonXxlBlackOrNot = false;
+                  polyCottonXlBlackOrNot = false;
+                  polyCottonLBlackOrNot = false;
+                  polyCottonMBlackOrNot = false;
+
+                  ovalStampOrNot = false;
+                  headStampOrNOt = false;
+                  fortyByTwentyStampOrNot = false;
+                }
+              });
+            })
+      ],
     );
   }
 }
