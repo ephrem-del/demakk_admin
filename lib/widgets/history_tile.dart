@@ -44,6 +44,7 @@ class HistoryTile extends StatelessWidget {
                     child: amharic
                         ? Text(
                             order.type.amharicName,
+                            textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontSize: 30.0,
                               fontWeight: FontWeight.bold,
@@ -52,6 +53,7 @@ class HistoryTile extends StatelessWidget {
                           )
                         : Text(
                             order.type.name.toUpperCase(),
+                            textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontSize: 30.0,
                               fontWeight: FontWeight.bold,

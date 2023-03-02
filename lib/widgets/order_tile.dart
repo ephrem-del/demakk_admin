@@ -24,19 +24,22 @@ class OrderTile extends StatelessWidget {
           elevation: 5.0,
           child: Container(
             padding: const EdgeInsets.all(15),
-            height: 190,
+            //height: 190,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 Align(
                   alignment: Alignment.center,
                   child: amharic
                       ? Text(
-                          order.type.amharicName.toUpperCase(),
+                          order.type.amharicName,
+                          textAlign: TextAlign.center,
+                          //maxLines: 1,
+                          overflow: TextOverflow.fade,
                           style: const TextStyle(
                             fontSize: 30.0,
                             fontWeight: FontWeight.bold,
@@ -45,6 +48,7 @@ class OrderTile extends StatelessWidget {
                         )
                       : Text(
                           order.type.name.toUpperCase(),
+                          textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontSize: 30.0,
                             fontWeight: FontWeight.bold,

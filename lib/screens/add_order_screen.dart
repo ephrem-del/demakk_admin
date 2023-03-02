@@ -20,6 +20,17 @@ class AddOrderScreen extends StatefulWidget {
 }
 
 class _AddOrderScreenState extends State<AddOrderScreen> {
+  String? _selectedCustomer;
+  String? _selectedOrderType;
+  String _selectedMug = mugTypes[0].name;
+  String _selectedPlot = plotTypes[0].name;
+  String _selectedTshirt = tshirtTypes[0].name;
+  String _selectedTshirtSize = tshirtSizes[1];
+  String _selectedColor = colorSelection[0].name;
+  String _selectedStamp = flashStampTypes[0].name;
+  String _selectedPriority = priorities2[2].priorityType.name;
+  int _selectedAmount = 1;
+
   final TextEditingController _paymentController = TextEditingController();
   final TextEditingController _commentController = TextEditingController();
   bool plotOrNot = false;
@@ -152,20 +163,134 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                     int amount = _selectedAmount;
                     String customerId = _selectedCustomer!;
                     Priority priority = priorities[_selectedPriority]!;
+                    //String categoryType = _selectedOrderType!;
+                    String categoryTypeForFunction = '';
                     if (plotOrNot) {
                       type = plotTypesMap[_selectedPlot]!;
                     } else if (mugOrNot) {
                       type = mugTypesMap[_selectedMug]!;
                     } else if (tshirtOrNot) {
-                      type = tshirtTypesMap[_selectedTshirt]!;
+                      //check if poly-cotton or not here
+                      // check whites here
+                      if (polyCottonMWhiteOrNot) {
+                        type = allOrderTypesMap['Poly-Cotton White M']!;
+                      } else if (polyCottonLWhiteOrNot) {
+                        type = allOrderTypesMap['Poly-Cotton White L']!;
+                      } else if (polyCottonXlWhiteOrNot) {
+                        type = allOrderTypesMap['Poly-Cotton White XL']!;
+                      } else if (polyCottonXxlWhiteOrNot) {
+                        type = allOrderTypesMap['Poly-Cotton White XXL']!;
+                      }
+                      //check blacks here
+                      else if (polyCottonMBlackOrNot) {
+                        type = allOrderTypesMap['Poly-Cotton Black M']!;
+                      } else if (polyCottonLBlackOrNot) {
+                        type = allOrderTypesMap['Poly-Cotton Black L']!;
+                      } else if (polyCottonXlBlackOrNot) {
+                        type = allOrderTypesMap['Poly-Cotton Black XL']!;
+                      } else if (polyCottonXxlBlackOrNot) {
+                        type = allOrderTypesMap['Poly-Cotton Black XXL']!;
+                      }
+
+                      //check if flat-bag or not
+                      //check whites here
+                      else if (flatBagMWhiteOrNot) {
+                        type = allOrderTypesMap['Flat-Bag White M']!;
+                      } else if (flatBagLWhiteOrNot) {
+                        type = allOrderTypesMap['Flat-Bag White L']!;
+                      } else if (flatBagXlWhiteOrNot) {
+                        type = allOrderTypesMap['Flat-Bag White XL']!;
+                      } else if (flatBagXxlWhiteOrNot) {
+                        type = allOrderTypesMap['Flat-Bag White XXL']!;
+                      }
+                      //check blacks here
+                      else if (flatBagMBlackOrNot) {
+                        type = allOrderTypesMap['Flat-Bag Black M']!;
+                      } else if (flatBagLBlackOrNot) {
+                        type = allOrderTypesMap['Flat-Bag Black L']!;
+                      } else if (flatBagXlBlackOrNot) {
+                        type = allOrderTypesMap['Flat-Bag Black XL']!;
+                      } else if (flatBagXxlBlackOrNot) {
+                        type = allOrderTypesMap['Flat-Bag Black XXL']!;
+                      }
+
+                      //check if polyester or not
+                      //check whites here
+                      else if (polyesterMWhiteOrNot) {
+                        type = allOrderTypesMap['Polyester White M']!;
+                      } else if (polyesterLWhiteOrNot) {
+                        type = allOrderTypesMap['Polyester White L']!;
+                      } else if (polyesterXlWhiteOrNot) {
+                        type = allOrderTypesMap['Polyester White XL']!;
+                      } else if (polyesterXxlWhiteOrNot) {
+                        type = allOrderTypesMap['Polyester White XXL']!;
+                      }
+                      //check blacks here
+                      else if (polyesterMBlackOrNot) {
+                        type = allOrderTypesMap['Polyester Black M']!;
+                      } else if (polyesterLBlackOrNot) {
+                        type = allOrderTypesMap['Polyester Black L']!;
+                      } else if (polyesterXlBlackOrNot) {
+                        type = allOrderTypesMap['Polyester Black XL']!;
+                      } else if (polyesterXxlBlackOrNot) {
+                        type = allOrderTypesMap['Polyester Black XXL']!;
+                      }
+
+                      //type = tshirtTypesMap[_selectedTshirt]!;
                     } else if (flashStampOrNot) {
                       type = flashStampTypesMap[_selectedStamp]!;
                     } else {
                       type = orderTypesMap['Other']!;
                     }
 
-                    bool added = await _addOrderViewModel.addOrder(type, amount,
-                        comment, priority, customerId, paid, customerName);
+                    if (mugOrNot) {
+                      categoryTypeForFunction = 'Mug';
+                    } else if (plotOrNot) {
+                      categoryTypeForFunction = 'Plot';
+                    } else if (tshirtOrNot) {
+                      if (polyCottonLBlackOrNot ||
+                          polyCottonLWhiteOrNot ||
+                          polyCottonMBlackOrNot ||
+                          polyCottonMWhiteOrNot ||
+                          polyCottonXlBlackOrNot ||
+                          polyCottonXlWhiteOrNot ||
+                          polyCottonXxlBlackOrNot ||
+                          polyCottonXxlWhiteOrNot) {
+                        categoryTypeForFunction = 'Poly-Cotton Shirt';
+                      } else if (polyesterMWhiteOrNot ||
+                          polyesterMBlackOrNot ||
+                          polyesterLWhiteOrNot ||
+                          polyesterLBlackOrNot ||
+                          polyesterXlWhiteOrNot ||
+                          polyesterXlBlackOrNot ||
+                          polyesterXxlWhiteOrNot ||
+                          polyesterXxlBlackOrNot) {
+                        categoryTypeForFunction = 'Polyester Shirt';
+                      } else {
+                        categoryTypeForFunction = 'Flat-bag Shirt';
+                      }
+                    } else if (flashStampOrNot) {
+                      categoryTypeForFunction = 'Flash Stamp';
+                    }
+
+                    print(type);
+                    print(amount);
+                    print(comment);
+                    print(priority.priorityType.name);
+                    print(customerId);
+                    print(paid);
+                    print(customerName);
+                    print(categoryTypeForFunction);
+                    //bool added = true;
+                    bool added = await _addOrderViewModel.addOrder(
+                        type,
+                        amount,
+                        comment,
+                        priority,
+                        customerId,
+                        paid,
+                        customerName,
+                        categoryTypeForFunction);
                     if (added) {
                       Navigator.pop(context);
                       Navigator.pushNamed(context, '/home_screen');
@@ -412,21 +537,24 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                           plotOrNot = false;
                                           tshirtOrNot = false;
                                           flashStampOrNot = false;
+                                          goldenOrNot = false;
                                         } else if (selected == 'Plot') {
                                           whiteMugOrNot = false;
+                                          polyCottonLWhiteOrNot = false;
+                                          ovalStampOrNot = false;
                                           plotOrNot = true;
+                                          goldenOrNot = true;
                                           mugOrNot = false;
                                           tshirtOrNot = false;
                                           flashStampOrNot = false;
                                         } else if (selected == 'T-shirt') {
                                           whiteMugOrNot = false;
-
                                           ovalStampOrNot = false;
-
                                           polyCottonLWhiteOrNot = true;
                                           tshirtOrNot = true;
                                           mugOrNot = false;
                                           plotOrNot = false;
+                                          goldenOrNot = false;
                                           flashStampOrNot = false;
                                         } else if (selected == 'Flash Stamp') {
                                           ovalStampOrNot = true;
@@ -438,6 +566,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                                           flashStampOrNot = true;
                                           mugOrNot = false;
                                           plotOrNot = false;
+                                          goldenOrNot = false;
                                         } else if (selected == 'Others') {
                                           tshirtOrNot = false;
                                           mugOrNot = false;
@@ -451,32 +580,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                           ),
                           mugOrNot ? mugTypesWidget() : const SizedBox.shrink(),
                           plotOrNot
-                              ? Row(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        amharic
-                                            ? const Text(
-                                                'የፕሎት አይነት',
-                                                style: subTitleTextStyle,
-                                              )
-                                            : const Text(
-                                                'Plot Type',
-                                                style: subTitleTextStyle,
-                                              ),
-                                      ],
-                                    ),
-                                    const Spacer(),
-                                    DropdownButton(
-                                        items: _plotTypes,
-                                        value: _selectedPlot,
-                                        onChanged: (selected) {
-                                          setState(() {
-                                            _selectedPlot = selected;
-                                          });
-                                        })
-                                  ],
-                                )
+                              ? plotTypesWidget()
                               : const SizedBox.shrink(),
                           tshirtOrNot
                               ? tshirtTypesWidget()
@@ -610,6 +714,252 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
     );
   }
 
+  Widget plotTypesWidget() {
+    return Row(
+      children: [
+        Row(
+          children: [
+            amharic
+                ? const Text(
+                    'የፕሎት አይነት',
+                    style: subTitleTextStyle,
+                  )
+                : const Text(
+                    'Plot Type',
+                    style: subTitleTextStyle,
+                  ),
+          ],
+        ),
+        const Spacer(),
+        DropdownButton(
+            items: _plotTypes,
+            value: _selectedPlot,
+            onChanged: (selected) {
+              setState(() {
+                _selectedPlot = selected;
+                _selectedAmount = 1;
+                if (selected == 'Golden Shine Vinyl') {
+                  whiteMugOrNot = false;
+                  magicMugOrNot = false;
+
+                  flatBagXxlWhiteOrNot = false;
+                  flatBagXlWhiteOrNot = false;
+                  flatBagLWhiteOrNot = false;
+                  flatBagMWhiteOrNot = false;
+
+                  flatBagXxlBlackOrNot = false;
+                  flatBagXlBlackOrNot = false;
+                  flatBagLBlackOrNot = false;
+                  flatBagMBlackOrNot = false;
+
+                  polyesterXxlWhiteOrNot = false;
+                  polyesterXlWhiteOrNot = false;
+                  polyesterLWhiteOrNot = false;
+                  polyesterMWhiteOrNot = false;
+
+                  polyesterXxlBlackOrNot = false;
+                  polyesterXlBlackOrNot = false;
+                  polyesterLBlackOrNot = false;
+                  polyesterMBlackOrNot = false;
+
+                  polyCottonXxlWhiteOrNot = false;
+                  polyCottonXlWhiteOrNot = false;
+                  polyCottonLWhiteOrNot = false;
+                  polyCottonMWhiteOrNot = false;
+
+                  polyCottonXxlBlackOrNot = false;
+                  polyCottonXlBlackOrNot = false;
+                  polyCottonLBlackOrNot = false;
+                  polyCottonMBlackOrNot = false;
+
+                  ovalStampOrNot = false;
+                  headStampOrNOt = false;
+                  fortyByTwentyStampOrNot = false;
+
+                  goldenOrNot = false;
+                  goldenShineOrNot = true;
+                  whiteOrNot = false;
+                  blackOrNot = false;
+                  glassStickerOrNot = false;
+                } else if (selected == 'White Vinyl') {
+                  whiteMugOrNot = false;
+                  magicMugOrNot = false;
+
+                  flatBagXxlWhiteOrNot = false;
+                  flatBagXlWhiteOrNot = false;
+                  flatBagLWhiteOrNot = false;
+                  flatBagMWhiteOrNot = false;
+
+                  flatBagXxlBlackOrNot = false;
+                  flatBagXlBlackOrNot = false;
+                  flatBagLBlackOrNot = false;
+                  flatBagMBlackOrNot = false;
+
+                  polyesterXxlWhiteOrNot = false;
+                  polyesterXlWhiteOrNot = false;
+                  polyesterLWhiteOrNot = false;
+                  polyesterMWhiteOrNot = false;
+
+                  polyesterXxlBlackOrNot = false;
+                  polyesterXlBlackOrNot = false;
+                  polyesterLBlackOrNot = false;
+                  polyesterMBlackOrNot = false;
+
+                  polyCottonXxlWhiteOrNot = false;
+                  polyCottonXlWhiteOrNot = false;
+                  polyCottonLWhiteOrNot = false;
+                  polyCottonMWhiteOrNot = false;
+
+                  polyCottonXxlBlackOrNot = false;
+                  polyCottonXlBlackOrNot = false;
+                  polyCottonLBlackOrNot = false;
+                  polyCottonMBlackOrNot = false;
+
+                  ovalStampOrNot = false;
+                  headStampOrNOt = false;
+                  fortyByTwentyStampOrNot = false;
+
+                  goldenOrNot = false;
+                  goldenShineOrNot = false;
+                  whiteOrNot = true;
+                  blackOrNot = false;
+                  glassStickerOrNot = false;
+                } else if (selected == 'Black Vinyl') {
+                  whiteMugOrNot = false;
+                  magicMugOrNot = false;
+
+                  flatBagXxlWhiteOrNot = false;
+                  flatBagXlWhiteOrNot = false;
+                  flatBagLWhiteOrNot = false;
+                  flatBagMWhiteOrNot = false;
+
+                  flatBagXxlBlackOrNot = false;
+                  flatBagXlBlackOrNot = false;
+                  flatBagLBlackOrNot = false;
+                  flatBagMBlackOrNot = false;
+
+                  polyesterXxlWhiteOrNot = false;
+                  polyesterXlWhiteOrNot = false;
+                  polyesterLWhiteOrNot = false;
+                  polyesterMWhiteOrNot = false;
+
+                  polyesterXxlBlackOrNot = false;
+                  polyesterXlBlackOrNot = false;
+                  polyesterLBlackOrNot = false;
+                  polyesterMBlackOrNot = false;
+
+                  polyCottonXxlWhiteOrNot = false;
+                  polyCottonXlWhiteOrNot = false;
+                  polyCottonLWhiteOrNot = false;
+                  polyCottonMWhiteOrNot = false;
+
+                  polyCottonXxlBlackOrNot = false;
+                  polyCottonXlBlackOrNot = false;
+                  polyCottonLBlackOrNot = false;
+                  polyCottonMBlackOrNot = false;
+
+                  ovalStampOrNot = false;
+                  headStampOrNOt = false;
+                  fortyByTwentyStampOrNot = false;
+
+                  goldenOrNot = false;
+                  goldenShineOrNot = false;
+                  whiteOrNot = false;
+                  blackOrNot = true;
+                  glassStickerOrNot = false;
+                } else if (selected == 'Glass Sticker') {
+                  whiteMugOrNot = false;
+                  magicMugOrNot = false;
+
+                  flatBagXxlWhiteOrNot = false;
+                  flatBagXlWhiteOrNot = false;
+                  flatBagLWhiteOrNot = false;
+                  flatBagMWhiteOrNot = false;
+
+                  flatBagXxlBlackOrNot = false;
+                  flatBagXlBlackOrNot = false;
+                  flatBagLBlackOrNot = false;
+                  flatBagMBlackOrNot = false;
+
+                  polyesterXxlWhiteOrNot = false;
+                  polyesterXlWhiteOrNot = false;
+                  polyesterLWhiteOrNot = false;
+                  polyesterMWhiteOrNot = false;
+
+                  polyesterXxlBlackOrNot = false;
+                  polyesterXlBlackOrNot = false;
+                  polyesterLBlackOrNot = false;
+                  polyesterMBlackOrNot = false;
+
+                  polyCottonXxlWhiteOrNot = false;
+                  polyCottonXlWhiteOrNot = false;
+                  polyCottonLWhiteOrNot = false;
+                  polyCottonMWhiteOrNot = false;
+
+                  polyCottonXxlBlackOrNot = false;
+                  polyCottonXlBlackOrNot = false;
+                  polyCottonLBlackOrNot = false;
+                  polyCottonMBlackOrNot = false;
+
+                  ovalStampOrNot = false;
+                  headStampOrNOt = false;
+                  fortyByTwentyStampOrNot = false;
+
+                  goldenOrNot = false;
+                  goldenShineOrNot = false;
+                  whiteOrNot = false;
+                  blackOrNot = false;
+                  glassStickerOrNot = true;
+                } else {
+                  whiteMugOrNot = false;
+                  magicMugOrNot = false;
+
+                  flatBagXxlWhiteOrNot = false;
+                  flatBagXlWhiteOrNot = false;
+                  flatBagLWhiteOrNot = false;
+                  flatBagMWhiteOrNot = false;
+
+                  flatBagXxlBlackOrNot = false;
+                  flatBagXlBlackOrNot = false;
+                  flatBagLBlackOrNot = false;
+                  flatBagMBlackOrNot = false;
+
+                  polyesterXxlWhiteOrNot = false;
+                  polyesterXlWhiteOrNot = false;
+                  polyesterLWhiteOrNot = false;
+                  polyesterMWhiteOrNot = false;
+
+                  polyesterXxlBlackOrNot = false;
+                  polyesterXlBlackOrNot = false;
+                  polyesterLBlackOrNot = false;
+                  polyesterMBlackOrNot = false;
+
+                  polyCottonXxlWhiteOrNot = false;
+                  polyCottonXlWhiteOrNot = false;
+                  polyCottonLWhiteOrNot = false;
+                  polyCottonMWhiteOrNot = false;
+
+                  polyCottonXxlBlackOrNot = false;
+                  polyCottonXlBlackOrNot = false;
+                  polyCottonLBlackOrNot = false;
+                  polyCottonMBlackOrNot = false;
+
+                  ovalStampOrNot = false;
+                  headStampOrNOt = false;
+                  fortyByTwentyStampOrNot = false;
+
+                  goldenOrNot = true;
+                  goldenShineOrNot = false;
+                  whiteOrNot = false;
+                  blackOrNot = false;
+                  glassStickerOrNot = false;
+                }
+              });
+            })
+      ],
+    );
+  }
+
   Widget tshirtTypesWidget() {
     return Column(children: [
       Row(
@@ -631,6 +981,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
               onChanged: (selected) {
                 setState(() {
                   _selectedTshirt = selected;
+                  _selectedAmount = 1;
                   if (selected == 'Polyester Shirt') {
                     _selectedTshirtSize = tshirtSizes[1];
                     if (_selectedColor == 'Black') {
@@ -674,6 +1025,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                     ovalStampOrNot = false;
                     headStampOrNOt = false;
                     fortyByTwentyStampOrNot = false;
+
+                    goldenOrNot = false;
+                    goldenShineOrNot = false;
+                    whiteOrNot = false;
+                    blackOrNot = false;
+                    glassStickerOrNot = false;
                   } else if (selected == 'Flat-Bag Shirt') {
                     _selectedTshirtSize = tshirtSizes[1];
                     if (_selectedColor == 'Black') {
@@ -713,6 +1070,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                     polyCottonXlBlackOrNot = false;
                     polyCottonLBlackOrNot = false;
                     polyCottonMBlackOrNot = false;
+
+                    goldenOrNot = false;
+                    goldenShineOrNot = false;
+                    whiteOrNot = false;
+                    blackOrNot = false;
+                    glassStickerOrNot = false;
                   } else {
                     _selectedTshirtSize = tshirtSizes[1];
                     if (_selectedColor == 'Black') {
@@ -750,8 +1113,14 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
 
                     polyCottonXxlBlackOrNot = false;
                     polyCottonXlBlackOrNot = false;
-
                     polyCottonMBlackOrNot = false;
+                    polyCottonLBlackOrNot = false;
+
+                    goldenOrNot = false;
+                    goldenShineOrNot = false;
+                    whiteOrNot = false;
+                    blackOrNot = false;
+                    glassStickerOrNot = false;
                   }
                 });
               })
@@ -773,6 +1142,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
               onChanged: (selected) {
                 setState(() {
                   _selectedTshirtSize = selected;
+                  _selectedAmount = 1;
                   if (_selectedTshirt == 'Polyester Shirt') {
                     if (_selectedColor == 'Black') {
                       if (selected == 'M') {
@@ -812,6 +1182,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else if (selected == 'XL') {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -849,6 +1225,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else if (selected == 'XXL') {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -886,6 +1268,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -918,6 +1306,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       }
                     } else {
                       //this else is for when color selected is white
@@ -958,6 +1352,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else if (selected == 'XL') {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -992,6 +1392,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else if (selected == 'XXL') {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -1026,6 +1432,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -1060,6 +1472,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       }
                     }
                   } else if (_selectedTshirt == 'Flat-Bag Shirt') {
@@ -1098,6 +1516,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else if (selected == 'XL') {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -1132,6 +1556,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else if (selected == 'XXL') {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -1166,6 +1596,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -1200,6 +1636,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       }
                     } else {
                       if (selected == 'M') {
@@ -1236,6 +1678,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else if (selected == 'XL') {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -1270,6 +1718,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else if (selected == 'XXL') {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -1304,6 +1758,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -1338,6 +1798,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       }
                     }
                   } else {
@@ -1378,6 +1844,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else if (selected == 'XL') {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -1412,6 +1884,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else if (selected == 'XXL') {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -1446,6 +1924,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -1480,6 +1964,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       }
                     } else {
                       if (selected == 'M') {
@@ -1516,6 +2006,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else if (selected == 'XL') {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -1550,6 +2046,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else if (selected == 'XXL') {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -1584,6 +2086,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       } else {
                         whiteMugOrNot = false;
                         magicMugOrNot = false;
@@ -1618,6 +2126,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                         ovalStampOrNot = false;
                         headStampOrNOt = false;
                         fortyByTwentyStampOrNot = false;
+
+                        goldenOrNot = false;
+                        goldenShineOrNot = false;
+                        whiteOrNot = false;
+                        blackOrNot = false;
+                        glassStickerOrNot = false;
                       }
                     }
                   }
@@ -1640,6 +2154,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                 setState(() {
                   _selectedColor = selected;
                   _selectedTshirtSize = tshirtSizes[1];
+                  _selectedAmount = 1;
                   if (selected == "Black") {
                     if (_selectedTshirt == 'Flat-Bag Shirt') {
                       flatBagXxlWhiteOrNot = false;
@@ -1669,6 +2184,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                       polyCottonXlBlackOrNot = false;
                       polyCottonLBlackOrNot = false;
                       polyCottonMBlackOrNot = false;
+
+                      goldenOrNot = false;
+                      goldenShineOrNot = false;
+                      whiteOrNot = false;
+                      blackOrNot = false;
+                      glassStickerOrNot = false;
                     } else if (_selectedTshirt == 'Polyester Shirt') {
                       flatBagXxlWhiteOrNot = false;
                       flatBagXlWhiteOrNot = false;
@@ -1697,6 +2218,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                       polyCottonXlBlackOrNot = false;
                       polyCottonLBlackOrNot = false;
                       polyCottonMBlackOrNot = false;
+
+                      goldenOrNot = false;
+                      goldenShineOrNot = false;
+                      whiteOrNot = false;
+                      blackOrNot = false;
+                      glassStickerOrNot = false;
                     } else {
                       flatBagXxlWhiteOrNot = false;
                       flatBagXlWhiteOrNot = false;
@@ -1725,6 +2252,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                       polyCottonXlBlackOrNot = false;
                       polyCottonLBlackOrNot = true;
                       polyCottonMBlackOrNot = false;
+
+                      goldenOrNot = false;
+                      goldenShineOrNot = false;
+                      whiteOrNot = false;
+                      blackOrNot = false;
+                      glassStickerOrNot = false;
                     }
                   } else {
                     if (_selectedTshirt == 'Flat-Bag Shirt') {
@@ -1755,6 +2288,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                       polyCottonXlBlackOrNot = false;
                       polyCottonLBlackOrNot = false;
                       polyCottonMBlackOrNot = false;
+
+                      goldenOrNot = false;
+                      goldenShineOrNot = false;
+                      whiteOrNot = false;
+                      blackOrNot = false;
+                      glassStickerOrNot = false;
                     } else if (_selectedTshirt == 'Polyester Shirt') {
                       flatBagXxlWhiteOrNot = false;
                       flatBagXlWhiteOrNot = false;
@@ -1783,6 +2322,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                       polyCottonXlBlackOrNot = false;
                       polyCottonLBlackOrNot = false;
                       polyCottonMBlackOrNot = false;
+
+                      goldenOrNot = false;
+                      goldenShineOrNot = false;
+                      whiteOrNot = false;
+                      blackOrNot = false;
+                      glassStickerOrNot = false;
                     } else {
                       flatBagXxlWhiteOrNot = false;
                       flatBagXlWhiteOrNot = false;
@@ -1811,6 +2356,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                       polyCottonXlBlackOrNot = false;
                       polyCottonLBlackOrNot = false;
                       polyCottonMBlackOrNot = false;
+
+                      goldenOrNot = false;
+                      goldenShineOrNot = false;
+                      whiteOrNot = false;
+                      blackOrNot = false;
+                      glassStickerOrNot = false;
                     }
                   }
                 });
@@ -1885,6 +2436,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
             flatBagXxlBlackAmount = stalkAmounts['XXL-FS-Black']!;
             flatBagMBlackAmount = stalkAmounts['M-FS-Black']!;
 
+            goldenAmount = stalkAmounts['Golden Vinyl']!;
+            goldenShineAmount = stalkAmounts['Golden Shine Vinyl']!;
+            whiteAmount = stalkAmounts['White Vinyl']!;
+            blackAmount = stalkAmounts['Black Vinyl']!;
+            glassStickerAmount = stalkAmounts['Glass Sticker']!;
+
             List<DropdownMenuItem> _amountList = getAvailableAmount()
                 .map(
                   (amount) => DropdownMenuItem(
@@ -1923,6 +2480,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
           onChanged: (selected) {
             setState(() {
               _selectedStamp = selected;
+              _selectedAmount = 1;
               if (selected == '40x20 Stamp') {
                 whiteMugOrNot = false;
                 magicMugOrNot = false;
@@ -1957,6 +2515,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                 ovalStampOrNot = false;
                 headStampOrNOt = false;
                 fortyByTwentyStampOrNot = true;
+
+                goldenOrNot = false;
+                goldenShineOrNot = false;
+                whiteOrNot = false;
+                blackOrNot = false;
+                glassStickerOrNot = false;
               } else if (selected == 'Head Stamp') {
                 whiteMugOrNot = false;
                 magicMugOrNot = false;
@@ -1991,6 +2555,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                 ovalStampOrNot = false;
                 headStampOrNOt = true;
                 fortyByTwentyStampOrNot = false;
+
+                goldenOrNot = false;
+                goldenShineOrNot = false;
+                whiteOrNot = false;
+                blackOrNot = false;
+                glassStickerOrNot = false;
               } else {
                 whiteMugOrNot = false;
                 magicMugOrNot = false;
@@ -2025,6 +2595,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                 ovalStampOrNot = true;
                 headStampOrNOt = false;
                 fortyByTwentyStampOrNot = false;
+
+                goldenOrNot = false;
+                goldenShineOrNot = false;
+                whiteOrNot = false;
+                blackOrNot = false;
+                glassStickerOrNot = false;
               }
             });
           },
@@ -2053,6 +2629,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
             onChanged: (selected) {
               setState(() {
                 _selectedMug = selected;
+                _selectedAmount = 1;
 
                 if (selected == 'Magic Mug') {
                   whiteMugOrNot = false;
@@ -2091,6 +2668,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                   ovalStampOrNot = false;
                   headStampOrNOt = false;
                   fortyByTwentyStampOrNot = false;
+
+                  goldenOrNot = false;
+                  goldenShineOrNot = false;
+                  whiteOrNot = false;
+                  blackOrNot = false;
+                  glassStickerOrNot = false;
                 } else {
                   whiteMugOrNot = true;
                   magicMugOrNot = false;
@@ -2128,6 +2711,12 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                   ovalStampOrNot = false;
                   headStampOrNOt = false;
                   fortyByTwentyStampOrNot = false;
+
+                  goldenOrNot = false;
+                  goldenShineOrNot = false;
+                  whiteOrNot = false;
+                  blackOrNot = false;
+                  glassStickerOrNot = false;
                 }
               });
             })
@@ -2135,17 +2724,6 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
     );
   }
 }
-
-String? _selectedCustomer;
-String? _selectedOrderType;
-String _selectedMug = mugTypes[0].name;
-String _selectedPlot = plotTypes[0].name;
-String _selectedTshirt = tshirtTypes[0].name;
-String _selectedTshirtSize = tshirtSizes[1];
-String _selectedColor = colorSelection[0].name;
-String _selectedStamp = flashStampTypes[0].name;
-String _selectedPriority = priorities2[2].priorityType.name;
-int _selectedAmount = 1;
 
 List<DropdownMenuItem> _orderTypes = orderTypes
     .map((orderType) => DropdownMenuItem(

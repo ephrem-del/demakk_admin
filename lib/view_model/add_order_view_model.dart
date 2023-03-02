@@ -1,12 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demakk_admin/objects/date_and_time.dart';
 import 'package:demakk_admin/objects/order.dart' as order_from_order;
+import 'package:demakk_admin/objects/stalk_category.dart';
 import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../objects/customer.dart';
 import '../objects/order_type.dart';
 import '../objects/priority.dart';
+import '../objects/stalkTypeSimplified.dart';
 
 class AddOrderViewModel {
   final BehaviorSubject<List<Customer>> customerList =
@@ -30,6 +32,9 @@ class AddOrderViewModel {
     });
   }
 
+  List<StalkCategory> stalkCategories = [];
+  String categoryDocumentId = '';
+
   Future<bool> addOrder(
     OrderType type,
     int amount,
@@ -38,6 +43,7 @@ class AddOrderViewModel {
     String customerId,
     double paid,
     String customerName,
+    String categoryType,
   ) async {
     order_from_order.Order order = order_from_order.Order(
       type: type,
@@ -52,27 +58,91 @@ class AddOrderViewModel {
         dateTime: DateTime.now(),
       ),
     );
+
     bool isSaved = false;
-    try {
-      FirebaseFirestore.instance
-          .collection('customers')
-          .doc(customerId)
-          .collection('orders')
-          .add(order.toMap());
-      isSaved = true;
-      if (kDebugMode) {
-        print('trying really trying');
-      }
-    } on FirebaseException catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
-    } catch (e) {
-      if (kDebugMode) {
-        print(e);
+
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('stalk_categories').get();
+    stalkCategories = querySnapshot.docs
+        .map((doc) => StalkCategory.fromSnapshot(doc))
+        .toList();
+
+    for (int i = 0; i < stalkCategories.length; i++) {
+      if (stalkCategories[i].categoryTitle == categoryType) {
+        categoryDocumentId = stalkCategories[i].docId;
       }
     }
+
+    bool stalkUpdated = await _updateStalk(
+      categoryType: categoryType,
+      type: type,
+      stalkDecreased: amount,
+      categoryDocumentId: categoryDocumentId,
+    );
+    if (stalkUpdated) {
+      try {
+        FirebaseFirestore.instance
+            .collection('customers')
+            .doc(customerId)
+            .collection('orders')
+            .add(order.toMap());
+
+        isSaved = true;
+        if (kDebugMode) {
+          print('trying really trying');
+        }
+      } on FirebaseException catch (e) {
+        if (kDebugMode) {
+          print(e);
+        }
+      } catch (e) {
+        if (kDebugMode) {
+          print(e);
+        }
+      }
+    }
+
     return isSaved;
+  }
+
+  Future<bool> _updateStalk(
+      {required String categoryType,
+      required OrderType type,
+      required int stalkDecreased,
+      required String categoryDocumentId}) async {
+    String stalkTypeDocId = '';
+    categoryDocumentId = categoryDocumentId;
+    print(categoryDocumentId);
+
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection('stalk_categories')
+        .doc(categoryDocumentId)
+        .collection('stalkTypes')
+        .get();
+    List<StalkTypeSimplified> stalkTypes = querySnapshot.docs
+        .map((doc) => StalkTypeSimplified.fromSnapshot(doc))
+        .toList();
+    for (int i = 0; i < stalkTypes.length; i++) {
+      print(stalkTypes[i].name);
+      print(type.name);
+      if (stalkTypes[i].name == type.name) {
+        stalkTypeDocId = stalkTypes[i].docId;
+      }
+    }
+
+    final databaseReference = FirebaseFirestore.instance
+        .collection('stalk_categories')
+        .doc(categoryDocumentId)
+        .collection('stalkTypes')
+        .doc(stalkTypeDocId);
+    bool isAdded =
+        await FirebaseFirestore.instance.runTransaction((transaction) async {
+      final snapshot = await transaction.get(databaseReference);
+      final newAmountLeft = snapshot.get('amountLeft') - stalkDecreased;
+      transaction.update(databaseReference, {'amountLeft': newAmountLeft});
+      return true;
+    });
+    return isAdded;
   }
 
   void _fetchStalkAmounts() {
@@ -82,10 +152,11 @@ class AddOrderViewModel {
           .collectionGroup('stalkTypes')
           .snapshots()
           .listen((data) {
-        List<_StalkSomething> stalkSomethings =
-            data.docs.map((doc) => _StalkSomething.fromSnapshot(doc)).toList();
+        List<StalkTypeSimplified> stalkSomethings = data.docs
+            .map((doc) => StalkTypeSimplified.fromSnapshot(doc))
+            .toList();
         stalkAmounts = {
-          for (_StalkSomething stalkSomething in stalkSomethings)
+          for (StalkTypeSimplified stalkSomething in stalkSomethings)
             stalkSomething.name: stalkSomething.amountLeft
         };
         stalkAmountsController.sink.add(stalkAmounts);
@@ -102,24 +173,5 @@ class AddOrderViewModel {
     }
 
     //return stalkAmounts;
-  }
-}
-
-class _StalkSomething {
-  final String name;
-  final int amountLeft;
-  //final String categoryType;
-  _StalkSomething({
-    required this.name,
-    required this.amountLeft,
-    // required this.categoryType
-  });
-
-  factory _StalkSomething.fromSnapshot(QueryDocumentSnapshot doc) {
-    return _StalkSomething(
-      name: doc['typeName'],
-      amountLeft: doc['amountLeft'],
-      // categoryType: doc['categoryType'],
-    );
   }
 }
