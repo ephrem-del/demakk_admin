@@ -9,8 +9,11 @@ import 'package:flutter/services.dart';
 import '../objects/customer.dart';
 import '../objects/order_type.dart';
 import '../objects/priority.dart';
+import '../resources/order_resource.dart';
 import '../utilities/constants.dart';
 import '../view_model/add_order_view_model.dart';
+
+import '../main.dart';
 
 class AddOrderScreen extends StatefulWidget {
   const AddOrderScreen({Key? key}) : super(key: key);
@@ -22,12 +25,12 @@ class AddOrderScreen extends StatefulWidget {
 class _AddOrderScreenState extends State<AddOrderScreen> {
   String? _selectedCustomer;
   String? _selectedOrderType;
-  String _selectedMug = mugTypes[0].name;
-  String _selectedPlot = plotTypes[0].name;
+  late String _selectedMug;
+  late String _selectedPlot;
   String _selectedTshirt = tshirtTypes[0].name;
   String _selectedTshirtSize = tshirtSizes[1];
   String _selectedColor = colorSelection[0].name;
-  String _selectedStamp = flashStampTypes[0].name;
+  late String _selectedStamp; // = flashStampTypes[0].name;
   String _selectedPriority = priorities2[2].priorityType.name;
   int _selectedAmount = 1;
 
@@ -124,8 +127,25 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
   int glassStickerAmount = 0;
 
   late OrderType type;
+  late OrderResource orderResource;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   late String customerName;
+
+  // _AddOrderScreenState(){
+  //   orderResource = OrderResource();
+  // }
+
+  @override
+  void initState() {
+    orderResource = OrderResource();
+    _selectedMug = mugTypes[0]
+        .name; //orderResource.mugTypesList[0].name; //mugTypes[0].name;
+    _selectedPlot = plotTypes[0]
+        .name; //orderResource.plotTypesList[0].name; //plotTypes[0].name;
+    _selectedStamp = flashStampTypes[0].name;
+    //orderResource.flashStampTypesList[0].name; //flashStampTypes[0].name;
+    super.initState();
+  }
 
   final AddOrderViewModel _addOrderViewModel = AddOrderViewModel();
 
@@ -166,81 +186,114 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
                     //String categoryType = _selectedOrderType!;
                     String categoryTypeForFunction = '';
                     if (plotOrNot) {
-                      type = plotTypesMap[_selectedPlot]!;
+                      //print('selectedPlot: $_selectedPlot');
+                      //print(OrderResource().plotTypesMap[_selectedPlot]!);
+                      //print(orderResource.plotTypesMap);
+                      type = orderResource.plotTypesMap[_selectedPlot]!;
                     } else if (mugOrNot) {
-                      type = mugTypesMap[_selectedMug]!;
+                      type = OrderResource().allOrderTypesMap[//mugTypesMap[
+                          _selectedMug]!; //mugTypesMap[_selectedMug]!;
                     } else if (tshirtOrNot) {
                       //check if poly-cotton or not here
                       // check whites here
                       if (polyCottonMWhiteOrNot) {
-                        type = allOrderTypesMap['Poly-Cotton White M']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Poly-Cotton White M']!;
                       } else if (polyCottonLWhiteOrNot) {
-                        type = allOrderTypesMap['Poly-Cotton White L']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Poly-Cotton White L']!;
                       } else if (polyCottonXlWhiteOrNot) {
-                        type = allOrderTypesMap['Poly-Cotton White XL']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Poly-Cotton White XL']!;
                       } else if (polyCottonXxlWhiteOrNot) {
-                        type = allOrderTypesMap['Poly-Cotton White XXL']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Poly-Cotton White XXL']!;
                       }
                       //check blacks here
                       else if (polyCottonMBlackOrNot) {
-                        type = allOrderTypesMap['Poly-Cotton Black M']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Poly-Cotton Black M']!;
                       } else if (polyCottonLBlackOrNot) {
-                        type = allOrderTypesMap['Poly-Cotton Black L']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Poly-Cotton Black L']!;
                       } else if (polyCottonXlBlackOrNot) {
-                        type = allOrderTypesMap['Poly-Cotton Black XL']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Poly-Cotton Black XL']!;
                       } else if (polyCottonXxlBlackOrNot) {
-                        type = allOrderTypesMap['Poly-Cotton Black XXL']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Poly-Cotton Black XXL']!;
                       }
 
                       //check if flat-bag or not
                       //check whites here
                       else if (flatBagMWhiteOrNot) {
-                        type = allOrderTypesMap['Flat-Bag White M']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Flat-Bag White M']!;
                       } else if (flatBagLWhiteOrNot) {
-                        type = allOrderTypesMap['Flat-Bag White L']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Flat-Bag White L']!;
                       } else if (flatBagXlWhiteOrNot) {
-                        type = allOrderTypesMap['Flat-Bag White XL']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Flat-Bag White XL']!;
                       } else if (flatBagXxlWhiteOrNot) {
-                        type = allOrderTypesMap['Flat-Bag White XXL']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Flat-Bag White XXL']!;
                       }
                       //check blacks here
                       else if (flatBagMBlackOrNot) {
-                        type = allOrderTypesMap['Flat-Bag Black M']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Flat-Bag Black M']!;
                       } else if (flatBagLBlackOrNot) {
-                        type = allOrderTypesMap['Flat-Bag Black L']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Flat-Bag Black L']!;
                       } else if (flatBagXlBlackOrNot) {
-                        type = allOrderTypesMap['Flat-Bag Black XL']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Flat-Bag Black XL']!;
                       } else if (flatBagXxlBlackOrNot) {
-                        type = allOrderTypesMap['Flat-Bag Black XXL']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Flat-Bag Black XXL']!;
                       }
 
                       //check if polyester or not
                       //check whites here
                       else if (polyesterMWhiteOrNot) {
-                        type = allOrderTypesMap['Polyester White M']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Polyester White M']!;
                       } else if (polyesterLWhiteOrNot) {
-                        type = allOrderTypesMap['Polyester White L']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Polyester White L']!;
                       } else if (polyesterXlWhiteOrNot) {
-                        type = allOrderTypesMap['Polyester White XL']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Polyester White XL']!;
                       } else if (polyesterXxlWhiteOrNot) {
-                        type = allOrderTypesMap['Polyester White XXL']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Polyester White XXL']!;
                       }
                       //check blacks here
                       else if (polyesterMBlackOrNot) {
-                        type = allOrderTypesMap['Polyester Black M']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Polyester Black M']!;
                       } else if (polyesterLBlackOrNot) {
-                        type = allOrderTypesMap['Polyester Black L']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Polyester Black L']!;
                       } else if (polyesterXlBlackOrNot) {
-                        type = allOrderTypesMap['Polyester Black XL']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Polyester Black XL']!;
                       } else if (polyesterXxlBlackOrNot) {
-                        type = allOrderTypesMap['Polyester Black XXL']!;
+                        type = OrderResource()
+                            .allOrderTypesMap['Polyester Black XXL']!;
                       }
 
                       //type = tshirtTypesMap[_selectedTshirt]!;
                     } else if (flashStampOrNot) {
-                      type = flashStampTypesMap[_selectedStamp]!;
+                      print('selected stamp: ${_selectedStamp}');
+                      print(
+                          'ordertype: ${OrderResource().allOrderTypesMap[_selectedStamp]?.name}');
+                      type = OrderResource().flashStampTypesMap[
+                          _selectedStamp]!; //flashStampTypesMap[_selectedStamp]!;
                     } else {
-                      type = orderTypesMap['Other']!;
+                      type = OrderResource().allOrderTypesMap[
+                          'Other']!; //orderTypesMap['Other']!;
                     }
 
                     if (mugOrNot) {
@@ -2406,35 +2459,35 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
             fortyByTwentyStampAmount = stalkAmounts['40x20 Stamp']!;
             headStampAmount = stalkAmounts['Head Stamp']!;
 
-            polyCottonLWhiteAmount = stalkAmounts['L-PCS-White']!;
-            polyCottonMWhiteAmount = stalkAmounts['M-PCS-White']!;
-            polyCottonXlWhiteAmount = stalkAmounts['XL-PCS-White']!;
-            polyCottonXxlWhiteAmount = stalkAmounts['XXL-PCS-White']!;
+            polyCottonLWhiteAmount = stalkAmounts['Poly-Cotton White L']!;
+            polyCottonMWhiteAmount = stalkAmounts['Poly-Cotton White M']!;
+            polyCottonXlWhiteAmount = stalkAmounts['Poly-Cotton White XL']!;
+            polyCottonXxlWhiteAmount = stalkAmounts['Poly-Cotton White XXL']!;
 
-            polyCottonLBlackAmount = stalkAmounts['L-PCS-Black']!;
-            polyCottonMBlackAmount = stalkAmounts['M-PCS-Black']!;
-            polyCottonXlBlackAmount = stalkAmounts['XL-PCS-Black']!;
-            polyCottonXxlBlackAmount = stalkAmounts['XXL-PCS-Black']!;
+            polyCottonLBlackAmount = stalkAmounts['Poly-Cotton Black L']!;
+            polyCottonMBlackAmount = stalkAmounts['Poly-Cotton Black M']!;
+            polyCottonXlBlackAmount = stalkAmounts['Poly-Cotton Black XL']!;
+            polyCottonXxlBlackAmount = stalkAmounts['Poly-Cotton Black XXL']!;
 
-            polyesterLWhiteAmount = stalkAmounts['L-PS-White']!;
-            polyesterXlWhiteAmount = stalkAmounts['XL-PS-White']!;
-            polyesterMWhiteAmount = stalkAmounts['M-PS-White']!;
-            polyesterXxlWhiteAmount = stalkAmounts['XXL-PS-White']!;
+            polyesterLWhiteAmount = stalkAmounts['Polyester White L']!;
+            polyesterXlWhiteAmount = stalkAmounts['Polyester White XL']!;
+            polyesterMWhiteAmount = stalkAmounts['Polyester White M']!;
+            polyesterXxlWhiteAmount = stalkAmounts['Polyester White XXL']!;
 
-            polyesterLBlackAmount = stalkAmounts['L-PS-Black']!;
-            polyesterXlBlackAmount = stalkAmounts['XL-PS-Black']!;
-            polyesterMBlackAmount = stalkAmounts['M-PS-Black']!;
-            polyesterXxlBlackAmount = stalkAmounts['XXL-PS-Black']!;
+            polyesterLBlackAmount = stalkAmounts['Polyester Black L']!;
+            polyesterXlBlackAmount = stalkAmounts['Polyester Black XL']!;
+            polyesterMBlackAmount = stalkAmounts['Polyester Black M']!;
+            polyesterXxlBlackAmount = stalkAmounts['Polyester Black XXL']!;
 
-            flatBagLWhiteAmount = stalkAmounts['L-FS-White']!;
-            flatBagXlWhiteAmount = stalkAmounts['XL-FS-White']!;
-            flatBagXxlWhiteAmount = stalkAmounts['XXL-FS-White']!;
-            flatBagMWhiteAmount = stalkAmounts['M-FS-White']!;
+            flatBagLWhiteAmount = stalkAmounts['Flat-Bag White L']!;
+            flatBagXlWhiteAmount = stalkAmounts['Flat-Bag White XL']!;
+            flatBagXxlWhiteAmount = stalkAmounts['Flat-Bag White XXL']!;
+            flatBagMWhiteAmount = stalkAmounts['Flat-Bag White M']!;
 
-            flatBagLBlackAmount = stalkAmounts['L-FS-Black']!;
-            flatBagXlBlackAmount = stalkAmounts['XL-FS-Black']!;
-            flatBagXxlBlackAmount = stalkAmounts['XXL-FS-Black']!;
-            flatBagMBlackAmount = stalkAmounts['M-FS-Black']!;
+            flatBagLBlackAmount = stalkAmounts['Flat-Bag Black L']!;
+            flatBagXlBlackAmount = stalkAmounts['Flat-Bag Black XL']!;
+            flatBagXxlBlackAmount = stalkAmounts['Flat-Bag Black XXL']!;
+            flatBagMBlackAmount = stalkAmounts['Flat-Bag Black M']!;
 
             goldenAmount = stalkAmounts['Golden Vinyl']!;
             goldenShineAmount = stalkAmounts['Golden Shine Vinyl']!;
@@ -2743,26 +2796,30 @@ List<DropdownMenuItem> _priorities = priorities2
     )
     .toList();
 
-List<DropdownMenuItem> _mugTypes = mugTypes
-    .map(
-      (mugType) => DropdownMenuItem(
-        value: mugType.name,
-        child: amharic
-            ? Text(mugType.amharicName)
-            : Text(
-                mugType.name,
-              ),
-      ),
-    )
-    .toList();
-List<DropdownMenuItem> _plotTypes = plotTypes
-    .map(
-      (plotType) => DropdownMenuItem(
-        value: plotType.name,
-        child: amharic ? Text(plotType.amharicName) : Text(plotType.name),
-      ),
-    )
-    .toList();
+List<DropdownMenuItem> _mugTypes = //OrderResource().
+    mugTypes
+        //.mugTypesList //mugTypes
+        .map(
+          (mugType) => DropdownMenuItem(
+            value: mugType.name,
+            child: amharic
+                ? Text(mugType.amharicName)
+                : Text(
+                    mugType.name,
+                  ),
+          ),
+        )
+        .toList();
+List<DropdownMenuItem> _plotTypes = //OrderResource().
+    plotTypes
+        //.plotTypesList //plotTypes
+        .map(
+          (plotType) => DropdownMenuItem(
+            value: plotType.name,
+            child: amharic ? Text(plotType.amharicName) : Text(plotType.name),
+          ),
+        )
+        .toList();
 
 List<DropdownMenuItem> _tshirtTypes = tshirtTypes
     .map(
@@ -2815,10 +2872,12 @@ List<DropdownMenuItem> _shirtColors = colorSelection
     )
     .toList();
 
-List<DropdownMenuItem> _flashStampTypes = flashStampTypes
-    .map((flashStampType) => DropdownMenuItem(
-          value: flashStampType.name,
-          child:
-              Text(amharic ? flashStampType.amharicName : flashStampType.name),
-        ))
-    .toList();
+List<DropdownMenuItem> _flashStampTypes = //OrderResource()
+    flashStampTypes
+        //.flashStampTypesList //flashStampTypes
+        .map((flashStampType) => DropdownMenuItem(
+              value: flashStampType.name,
+              child: Text(
+                  amharic ? flashStampType.amharicName : flashStampType.name),
+            ))
+        .toList();

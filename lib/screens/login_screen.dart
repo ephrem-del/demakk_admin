@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
 
+import '../main.dart';
+import '../view_model/login_screen_view_model.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -12,12 +15,18 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController employeeNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  LoginScreenViewModel loginScreenViewModel = LoginScreenViewModel();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   // void authenticate(BuildContext context) {
+  //   String employeeName = employeeNameController.text;
+  //   String password = passwordController.text;
   //   if (_formKey.currentState!.validate()) {
-  //     Navigator.pop(context);
-  //     Navigator.pushNamed(context, '/home_screen');
+  //     bool authenticated = loginScreenViewModel.authenticateLogin(employeeName, password);
+  //     if(authenticated){
+  //       //Navigator.pop(context);
+  //       Navigator.popAndPushNamed(context, '/home_screen');
+  //     }
   //   }
   // }
   void authenticate(BuildContext context) {
@@ -67,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Username is required';
+                              return 'Employee Name is required';
                             }
                             return null;
                           },

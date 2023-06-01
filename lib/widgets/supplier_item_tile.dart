@@ -6,6 +6,8 @@ import '../objects/supplier.dart';
 import '../objects/supplier_items_and_services.dart';
 import '../view_model/supplier_detail_screen_view_model.dart';
 
+import '../main.dart';
+
 class SupplierItemTile extends StatefulWidget {
   final SupplierItemsAndServices supplierItemsAndServices;
   final Supplier supplier;

@@ -9,6 +9,8 @@ import '../objects/stalkTypeSimplified.dart';
 import '../utilities/constants.dart';
 import '../view_model/add_stalk_view_model.dart';
 
+import '../main.dart';
+
 class AddStalkScreen extends StatefulWidget {
   const AddStalkScreen({Key? key}) : super(key: key);
 
@@ -311,28 +313,6 @@ class _AddStalkScreenState extends State<AddStalkScreen> {
 
 int _selectedAmount = 1;
 
-// Widget addStalkRow(StalkCategory stalkCategory, items, value) {
-//
-//   String _value = value;
-//   // final StalkCategory stalkCategory;
-//   return Row(
-//     children: [
-//       Text(
-//         stalkCategory.categoryTitle,
-//         style: subTitleTextStyle,
-//       ),
-//       Spacer(),
-//       DropdownButton(
-//           items: items,
-//           value: _value,
-//           onChanged: (selected) {
-//
-//             _value = selected!;
-//           })
-//     ],
-//   );
-// }
-
 class AddStalkRow extends StatefulWidget {
   final StalkCategory stalkCategory;
   final List<DropdownMenuItem> items;
@@ -400,43 +380,6 @@ class _AddStalkRowState extends State<AddStalkRow> {
   }
 }
 
-// class StalkRow extends StatefulWidget {
-//   final StalkCategory stalkCategory;
-//   const StalkRow({Key? key, required this.stalkCategory}) : super(key: key);
-//
-//   @override
-//   State<StalkRow> createState() => _StalkRowState();
-// }
-//
-// class _StalkRowState extends State<StalkRow> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       children: [
-//         Text(
-//           widget.stalkCategory.categoryTitle,
-//           style: subTitleTextStyle,
-//         ),
-//         Spacer(),
-//         DropdownButton(
-//             items: _items,
-//             value: value,
-//             onChanged: (selected) {
-//               value = selected;
-//             })
-//       ],
-//     );
-//   }
-// }
-
-//String value = 'White Mug';
-//List<DropdownMenuItem> items = [];
-// List<DropdownMenuItem> _items = getStalks(stalkCategories[0])
-//     .map((stalk) => DropdownMenuItem(
-//           child: Text(stalk.stalkType.typeName),
-//           value: stalk.stalkType.typeName,
-//         ))
-//     .toList();
 bool otherSelected = false;
 List<Widget> getRows() {
   List<Widget> listOfRows = [];

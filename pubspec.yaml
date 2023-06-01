@@ -37,6 +37,11 @@ dependencies:
   firebase_core: ^2.4.1
   cloud_firestore: ^4.3.1
   rxdart: ^0.27.7
+  shared_preferences: ^2.0.18
+  firebase_storage: ^11.0.14
+  image_picker: ^0.8.6+4
+  uuid: ^3.0.7
+  restart_app: ^1.1.2
 
 dev_dependencies:
   flutter_test:

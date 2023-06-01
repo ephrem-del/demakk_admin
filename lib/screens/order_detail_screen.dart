@@ -3,6 +3,8 @@ import 'package:demakk_admin/utilities/constants.dart';
 import 'package:demakk_admin/view_model/order_screen_view_model.dart';
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
 // import '../objects/customer.dart';
 
 class OrderDetailScreen extends StatelessWidget {
@@ -43,7 +45,7 @@ class OrderDetailScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.topRight,
                   child: Text(
-                    '${order.dateAndTime.month()}, ${order.dateAndTime.day()} ${order.dateAndTime.hour()}:${order.dateAndTime.minute()}',
+                    '${order.dateAndTime.month()} ${order.dateAndTime.day()} ${order.dateAndTime.hour()}:${order.dateAndTime.minute()}',
                     style: subTitleTextStyle,
                   ),
                 ),

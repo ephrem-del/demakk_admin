@@ -6,6 +6,8 @@ import '../objects/customer.dart';
 import '../utilities/constants.dart';
 import 'customer_history_screen.dart';
 
+import '../main.dart';
+
 class CustomerDetailScreen extends StatefulWidget {
   final Customer customer;
   const CustomerDetailScreen({Key? key, required this.customer})

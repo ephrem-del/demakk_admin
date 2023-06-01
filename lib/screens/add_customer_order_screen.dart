@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import '../objects/customer.dart';
 import '../utilities/constants.dart';
 import '../view_model/add_order_view_model.dart';
+import '../main.dart';
 
 class AddCustomerOrderScreen extends StatefulWidget {
   const AddCustomerOrderScreen({Key? key}) : super(key: key);
@@ -599,10 +600,25 @@ class _AddCustomerOrderScreenState extends State<AddCustomerOrderScreen> {
 }
 
 String _selectedStamp = flashStampTypes[0].name;
+// OrderResource().flashStampTypesList[0].name; //flashStampTypes[0].name;
 String? _selectedCustomer;
 String? _selectedOrderType;
-String _selectedMug = amharic ? mugTypes[0].amharicName : mugTypes[0].name;
-String _selectedPlot = amharic ? plotTypes[0].amharicName : plotTypes[0].name;
+String _selectedMug = amharic
+    ?
+// OrderResource().mugTypesList[0].amharicName
+//     : OrderResource()
+//         .mugTypesList[0]
+//         .name; //
+    mugTypes[0].amharicName
+    : mugTypes[0].name;
+String _selectedPlot = amharic
+    ?
+// OrderResource().plotTypesList[0].amharicName
+//     : OrderResource()
+//         .plotTypesList[0]
+//         .name;
+    plotTypes[0].amharicName
+    : plotTypes[0].name;
 String _selectedTshirt =
     amharic ? tshirtTypes[0].amharicName : tshirtTypes[0].name;
 String _selectedTshirtSize = tshirtSizes[2];
@@ -646,6 +662,8 @@ List<DropdownMenuItem> _amountList = amount
     .toList();
 
 List<DropdownMenuItem> _mugTypes = mugTypes
+// OrderResource()
+//     .mugTypesList //mugTypes
     .map(
       (mugType) => DropdownMenuItem(
         value: amharic ? mugType.amharicName : mugType.name,
@@ -660,6 +678,8 @@ List<DropdownMenuItem> _mugTypes = mugTypes
     )
     .toList();
 List<DropdownMenuItem> _plotTypes = plotTypes
+// OrderResource()
+//     .plotTypesList // plotTypes
     .map(
       (plotType) => DropdownMenuItem(
         value: amharic ? plotType.amharicName : plotType.name,
@@ -722,6 +742,8 @@ List<DropdownMenuItem> _shirtColors = colorSelection
     .toList();
 
 List<DropdownMenuItem> _flashStampTypes = flashStampTypes
+// OrderResource()
+//     .flashStampTypesList // flashStampTypes
     .map((flashStampType) => DropdownMenuItem(
           value: flashStampType.name,
           child:

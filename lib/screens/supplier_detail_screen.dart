@@ -47,44 +47,55 @@ class _SupplierDetailScreenState extends State<SupplierDetailScreen> {
               icon: const Icon(Icons.add))
         ],
       ),
-      body: Padding(
-          padding: const EdgeInsets.all(10),
-          child: StreamBuilder<List<SupplierItemsAndServices>>(
-              stream: _supplierDetailScreenViewModel
-                  .suppliersDetailBehaviorSubjectController.stream,
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return const Text('Error');
-                }
-                switch (snapshot.connectionState) {
-                  case ConnectionState.waiting:
-                    return const Text('Loading');
-                  default:
-                    if (!snapshot.hasData) {
-                      return const Text('No data');
-                    }
-                }
-                return ListView(
-                  children: snapshot.data!
-                      .map(
-                        (supplierItem) => SupplierItemTile(
-                          supplierItemsAndServices: supplierItem,
-                          supplier: widget.supplier,
-                        ),
-                      )
-                      .toList(),
-                );
-              })
-          // Column(
-          //   children: widget.supplier.supplierItemsAndServices
-          //       .map(
-          //         (supplierItem) => SupplierItemTile(
-          //           supplierItemsAndServices: supplierItem,
-          //         ),
-          //       )
-          //       .toList(),
-          // ),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 400,
+            width: MediaQuery.of(context).size.width * 0.8,
+            child: Image.network(widget.supplier.imageDownloadUrl),
           ),
+          Expanded(
+            child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: StreamBuilder<List<SupplierItemsAndServices>>(
+                    stream: _supplierDetailScreenViewModel
+                        .suppliersDetailBehaviorSubjectController.stream,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasError) {
+                        return const Text('Error');
+                      }
+                      switch (snapshot.connectionState) {
+                        case ConnectionState.waiting:
+                          return const Text('Loading');
+                        default:
+                          if (!snapshot.hasData) {
+                            return const Text('No data');
+                          }
+                      }
+                      return ListView(
+                        children: snapshot.data!
+                            .map(
+                              (supplierItem) => SupplierItemTile(
+                                supplierItemsAndServices: supplierItem,
+                                supplier: widget.supplier,
+                              ),
+                            )
+                            .toList(),
+                      );
+                    })
+                // Column(
+                //   children: widget.supplier.supplierItemsAndServices
+                //       .map(
+                //         (supplierItem) => SupplierItemTile(
+                //           supplierItemsAndServices: supplierItem,
+                //         ),
+                //       )
+                //       .toList(),
+                // ),
+                ),
+          ),
+        ],
+      ),
     );
   }
 }

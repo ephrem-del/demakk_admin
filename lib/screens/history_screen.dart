@@ -6,9 +6,13 @@ import 'package:demakk_admin/view_model/order_screen_view_model.dart';
 import 'package:flutter/material.dart';
 
 // import '../objects/order.dart';
+import '../utilities/constants.dart';
 import '../widgets/history_tile.dart';
 
-core.List<core.String> list = ['a', 'b', 'c'];
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:restart_app/restart_app.dart';
+
+import '../main.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({Key? key}) : super(key: key);
@@ -46,11 +50,3 @@ class _HistoryScreenState extends State<HistoryScreen> {
     );
   }
 }
-
-core.String? selected;
-core.List<DropdownMenuItem> items = list
-    .map((item) => DropdownMenuItem(
-          value: item,
-          child: Text(item),
-        ))
-    .toList();

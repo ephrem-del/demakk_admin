@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import '../widgets/stalk_category_tile.dart';
 import 'add_stalk_screen.dart';
 
+import '../main.dart';
+
 class StalkScreen extends StatefulWidget {
   const StalkScreen({Key? key}) : super(key: key);
 

@@ -5,6 +5,8 @@ import '../objects/supplier.dart';
 import '../utilities/constants.dart';
 import '../view_model/add_supplier_item_view_model.dart';
 
+import '../main.dart';
+
 class AddSupplierItemScreen extends StatefulWidget {
   final Supplier supplier;
   const AddSupplierItemScreen({Key? key, required this.supplier})

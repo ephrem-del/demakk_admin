@@ -10,6 +10,8 @@ import '../widgets/stalk_tile.dart';
 
 // import '../resources/stock_resource.dart';
 
+import '../main.dart';
+
 class StalkDetailScreen extends StatefulWidget {
   final StalkCategory stalkCategory;
   const StalkDetailScreen({Key? key, required this.stalkCategory})

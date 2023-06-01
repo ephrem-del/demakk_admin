@@ -9,7 +9,8 @@ class DateAndTime {
 
   core.String day() {
     core.String day = convertWeekDay(dateTime);
-    return day;
+    core.String date = dateTime.day.toString();
+    return '$date, $day';
   }
 
   core.String year() {
