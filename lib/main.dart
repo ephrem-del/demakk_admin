@@ -1,5 +1,6 @@
 import 'package:demakk_admin/screens/employee_management_screen.dart';
 import 'package:demakk_admin/screens/settings_screen.dart';
+import 'package:demakk_admin/screens/work_log_entry_screen.dart';
 import 'package:demakk_admin/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
@@ -56,10 +57,10 @@ class App extends StatelessWidget {
                     return const LoginScreen();
                   },
                   'settings_screen': (context) {
-                    return SettingsScreen();
+                    return const SettingsScreen();
                   },
-                  'employee_management_screen': (context) {
-                    return EmployeeManagementScreen();
+                  'work_log_entry_screen': (context) {
+                    return const WorkLogEntryScreen();
                   }
                 },
               );

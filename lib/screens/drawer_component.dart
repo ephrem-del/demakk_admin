@@ -47,7 +47,7 @@ class DrawerComponent extends StatelessWidget {
             ),
             AppBarTile(
               onTap: () {
-                Navigator.pushNamed(context, 'employee_management_screen');
+                Navigator.pushNamed(context, 'work_log_entry_screen');
               },
               iconData: Icons.person_2,
               title: 'Employee Management',

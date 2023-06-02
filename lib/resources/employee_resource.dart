@@ -3,28 +3,28 @@ import 'dart:core' as core;
 import '../objects/employee.dart';
 import 'wage_resource.dart';
 
-core.List<Employee> employees = <Employee>[
-  Employee(
-      name: 'sami',
-      hourlyRate: 3.0,
-      rating: 3.3,
-      userRole: userRoles['officer']!),
-  Employee(
-      name: 'elias',
-      hourlyRate: 4.4,
-      rating: 3.3,
-      userRole: userRoles['labour']!),
-  Employee(
-      name: 'yidres',
-      hourlyRate: 5.5,
-      rating: 2.2,
-      userRole: userRoles['delivery']!),
-  Employee(
-      name: 'ephrem',
-      hourlyRate: 10.0,
-      rating: 4.5,
-      userRole: userRoles['admin']!),
-];
+// core.List<Employee> employees = <Employee>[
+//   Employee(
+//       name: 'sami',
+//       hourlyRate: 3.0,
+//       rating: 3.3,
+//       userRole: userRoles['officer']!),
+//   Employee(
+//       name: 'elias',
+//       hourlyRate: 4.4,
+//       rating: 3.3,
+//       userRole: userRoles['labour']!),
+//   Employee(
+//       name: 'yidres',
+//       hourlyRate: 5.5,
+//       rating: 2.2,
+//       userRole: userRoles['delivery']!),
+//   Employee(
+//       name: 'ephrem',
+//       hourlyRate: 10.0,
+//       rating: 4.5,
+//       userRole: userRoles['admin']!),
+// ];
 
 core.List<Performance> performances = <Performance>[
   Performance(month: '3,2023', ratedPerformance: 2.3, day: 1),
