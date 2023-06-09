@@ -40,27 +40,35 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demakk_admin/objects/employee_position.dart';
 
 class Employee {
-  final String employeeId;
+  final String employeeEmail;
   final String name;
   final EmployeePosition employeePosition;
   final String phoneNo;
   Employee(
-      {required this.employeeId,
+      {required this.employeeEmail,
       required this.name,
       required this.employeePosition,
       required this.phoneNo});
 
   factory Employee.fromSnapshot(QueryDocumentSnapshot snapshot) {
     return Employee(
-        employeeId: snapshot['emplyeeId'],
+        employeeEmail: snapshot['emplyeeId'],
         name: snapshot['name'],
         employeePosition: EmployeePosition.fromSnapshot(snapshot),
         phoneNo: snapshot['phoneNo']);
   }
 
-  toMap(Employee employee){
+  factory Employee.fromDocumentSnapshot(DocumentSnapshot snapshot) {
+    return Employee(
+        employeeEmail: snapshot.id,
+        name: snapshot['name'],
+        phoneNo: snapshot['phone number'],
+        employeePosition: EmployeePosition.fromDocumentSnapshot(snapshot));
+  }
+
+  toMap(Employee employee) {
     return {
-      'employeeId': employeeId,
+      'employeeId': employeeEmail,
       'name': name,
       'positionTitle': employeePosition.positionTitle,
       'hourlyRate': employeePosition.hourlyRate,
@@ -68,4 +76,3 @@ class Employee {
     };
   }
 }
-

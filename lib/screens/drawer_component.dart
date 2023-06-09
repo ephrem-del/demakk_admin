@@ -1,4 +1,6 @@
+import 'package:demakk_admin/provider/employee_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../utilities/constants.dart';
 import '../widgets/app_bar_tile.dart';
@@ -8,6 +10,8 @@ class DrawerComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    EmployeeProvider employeeProvider = Provider.of<EmployeeProvider>(context, listen: false);
+    print('employee name: ${employeeProvider.currentUser}');
     return Drawer(
       backgroundColor: primaryColor,
       child: Padding(
@@ -15,14 +19,24 @@ class DrawerComponent extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CircleAvatar(
-              child: ClipOval(
-                child: Image.asset(
-                  'images/demakk_logo.png',
-                  fit: BoxFit.cover,
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                CircleAvatar(
+                  child: ClipOval(
+                    child: Image.asset(
+                      'images/demakk_logo.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  radius: 60.0,
                 ),
-              ),
-              radius: 60.0,
+                SizedBox(
+                  width: 10,
+                ),
+                
+                Text('${context.watch<EmployeeProvider>().currentUser?.name}',style: TextStyle(fontSize: 20, color: Colors.white),),
+              ],
             ),
             SizedBox(
               height: 15,

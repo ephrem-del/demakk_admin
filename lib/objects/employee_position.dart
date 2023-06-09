@@ -11,6 +11,13 @@ class EmployeePosition {
         hourlyRate: snapshot['hourlyRate']);
   }
 
+  factory EmployeePosition.fromDocumentSnapshot(DocumentSnapshot snapshot){
+    return EmployeePosition(
+      positionTitle: snapshot['position title'],
+      hourlyRate: double.parse(snapshot['hourly rate'].toString()), //snapshot['hourly rate'],
+    );
+  }
+
   toMap(EmployeePosition employeePosition) {
     return {
       'positionTitle': positionTitle,

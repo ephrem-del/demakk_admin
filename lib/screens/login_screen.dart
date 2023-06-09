@@ -13,9 +13,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController employeeNameController = TextEditingController();
+  TextEditingController employeeEmailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  LoginScreenViewModel loginScreenViewModel = LoginScreenViewModel();
+  late LoginScreenViewModel loginScreenViewModel;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   // void authenticate(BuildContext context) {
@@ -29,8 +29,10 @@ class _LoginScreenState extends State<LoginScreen> {
   //     }
   //   }
   // }
-  void authenticate(BuildContext context) {
-    if (true) {
+  void authenticate(BuildContext context) async {
+    bool isLoggedIn = await loginScreenViewModel.authenticateLogin(
+        employeeEmailController.text, passwordController.text);
+    if (isLoggedIn) {
       Navigator.pop(context);
       Navigator.pushNamed(context, '/home_screen');
     }
@@ -38,6 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    loginScreenViewModel = LoginScreenViewModel(context: context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: SizedBox(
@@ -65,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                             return null;
                           },
-                          controller: employeeNameController,
+                          controller: employeeEmailController,
                           decoration: userInputDecoration(
                               'የተጠቃሚ ስም', const Icon(Icons.person)),
                         ),
@@ -80,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                             return null;
                           },
-                          controller: employeeNameController,
+                          controller: employeeEmailController,
                           decoration: userInputDecoration(
                               'Employee Name', const Icon(Icons.person)),
                         ),

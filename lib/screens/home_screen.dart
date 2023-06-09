@@ -1,3 +1,4 @@
+import 'package:demakk_admin/provider/employee_provider.dart';
 import 'package:demakk_admin/screens/stalk_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  EmployeeProvider employeeProvider = EmployeeProvider();
   final PersistentTabController _controller =
       PersistentTabController(initialIndex: 0);
   @override
@@ -28,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),
-        drawer: const DrawerComponent(),
+        drawer:  DrawerComponent(),
         body: PersistentTabView(
           context,
           screens: screens,

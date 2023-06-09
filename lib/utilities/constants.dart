@@ -8,8 +8,6 @@ import '../resources/employee_position_repository.dart';
 import '../resources/employee_resource.dart';
 import '../resources/wage_resource.dart';
 
-
-
 const Color primaryColor = Color(0xFFFF6200);
 const Color backgroundColor = Colors.white;
 
@@ -21,7 +19,7 @@ const ButtonStyle elevatedButtonStyle = ButtonStyle(
 // Employee currentUser = employees[3];
 
 Employee currentUser = Employee(
-    employeeId: '3RnsV4eC560FLPeSyKQr',
+    employeeEmail: '3RnsV4eC560FLPeSyKQr',
     name: 'Sami',
     employeePosition: EmployeePositionRepository().designer,
     phoneNo: '0909090909');

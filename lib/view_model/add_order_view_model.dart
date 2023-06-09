@@ -60,6 +60,7 @@ class AddOrderViewModel {
     String customerName,
     String categoryType,
   ) async {
+    print('add order function called');
     order_from_order.Order order = order_from_order.Order(
       type: type,
       amount: amount,

@@ -42,11 +42,11 @@ class WorkLogEntryScreenViewModel {
     try {
       await FirebaseFirestore.instance
           .collection('employees')
-          .doc(currentUser.employeeId)
+          .doc(currentUser.employeeEmail)
           .collection('time controller')
           .doc(_getDocumentId())
           .set(WorkLog(
-            employeeId: currentUser.employeeId,
+            employeeId: currentUser.employeeEmail,
             startMorning: _startMorningTime,
             startLunch: _startLunchTime,
             endLunch: _endLunchTime,
@@ -63,7 +63,7 @@ class WorkLogEntryScreenViewModel {
     print('_checkIfWorkLogExists called');
     FirebaseFirestore.instance
         .collection('employees')
-        .doc(currentUser.employeeId)
+        .doc(currentUser.employeeEmail)
         .collection('time controller')
         .doc(_getDocumentId())
         .get()
@@ -81,7 +81,7 @@ class WorkLogEntryScreenViewModel {
     print('_getWorkLogEntry called');
     DocumentSnapshot doc = await FirebaseFirestore.instance
         .collection('employees')
-        .doc(currentUser.employeeId)
+        .doc(currentUser.employeeEmail)
         .collection('time controller')
         .doc(_getDocumentId())
         .get();
