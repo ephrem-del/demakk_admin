@@ -1,8 +1,14 @@
+import 'dart:io';
+
 import 'package:demakk_admin/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:image_picker/image_picker.dart';
 import '../view_model/add_supplier_view_model.dart';
+
+import '../main.dart';
+
+enum PhotoOptions { camera, gallery }
 
 class AddSupplierScreen extends StatefulWidget {
   const AddSupplierScreen({Key? key}) : super(key: key);
@@ -23,6 +29,7 @@ class _AddSupplierScreenState extends State<AddSupplierScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   late AddSupplierViewModel _addSupplierViewModel;
+  File? _image;
 
   @override
   void initState() {
@@ -30,8 +37,37 @@ class _AddSupplierScreenState extends State<AddSupplierScreen> {
     _addSupplierViewModel = AddSupplierViewModel();
   }
 
+  void _selectPhotoFromGallery() async {
+    final ImagePicker imagePicker = ImagePicker();
+    final XFile? pickedFile = await imagePicker.pickImage(
+        source: ImageSource.gallery); //getImage(source: ImageSource.gallery);
+    setState(() {
+      _image = File(pickedFile!.path);
+    });
+  }
+
+  void _selectPhotoFromCamera() async {
+    final ImagePicker imagePicker = ImagePicker();
+    final XFile? pickedImage =
+        await imagePicker.pickImage(source: ImageSource.camera);
+    setState(() {
+      _image = File(pickedImage!.path);
+    });
+  }
+
+  void _optionSelected(PhotoOptions option) {
+    switch (option) {
+      case PhotoOptions.camera:
+        _selectPhotoFromCamera();
+        break;
+      case PhotoOptions.gallery:
+        _selectPhotoFromGallery();
+        break;
+    }
+  }
+
   void _authenticate(BuildContext context) {
-    if (_formKey.currentState!.validate()) {
+    if (_formKey.currentState!.validate() && _image != null) {
       showDialog(
           context: context,
           builder: (context) {
@@ -64,7 +100,7 @@ class _AddSupplierScreenState extends State<AddSupplierScreen> {
                     String phoneNumber = _phoneNumberController.text;
                     String comment = _commentController.text;
                     _addSupplierViewModel.addSupplier(
-                        companyName, address, phoneNumber, comment);
+                        companyName, address, phoneNumber, comment, _image);
                     Navigator.pop(context);
                     Navigator.pushNamed(context, '/home_screen');
                   },
@@ -249,6 +285,44 @@ class _AddSupplierScreenState extends State<AddSupplierScreen> {
                             const Icon(Icons.comment),
                           ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(primaryColor)),
+                      onPressed: () {},
+                      child: PopupMenuButton<PhotoOptions>(
+                        child: Text(amharic ? 'ፎቶ ጨምር' : 'Add Photo'),
+                        onSelected: _optionSelected,
+                        itemBuilder: (context) => [
+                          PopupMenuItem(
+                            child: Text(amharic ? 'ፎቶ አንሳ' : 'Take a picture'),
+                            value: PhotoOptions.camera,
+                          ),
+                          PopupMenuItem(
+                            child: Text(
+                                amharic ? 'ከጋላሪ ምረጥ' : 'Select from Gallery'),
+                            value: PhotoOptions.gallery,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  // _image == null
+                  //     ? Text(
+                  //         amharic ? '' : 'Image is required',
+                  //         style: TextStyle(color: Colors.red),
+                  //       )
+                  //     : SizedBox.shrink(),
+
+                  _image == null
+                      ? const SizedBox.shrink()
+                      : SizedBox(
+                          height: 300,
+                          width: 300,
+                          child: Image.file(_image!),
+                        ),
 
                   //
                   ElevatedButton(

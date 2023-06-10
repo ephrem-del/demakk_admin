@@ -7,6 +7,7 @@ class Supplier {
   final String address;
   final String comment;
   final String id;
+  final String imageDownloadUrl;
   //List<SupplierItemsAndServices> supplierItemsAndServices;
   Supplier({
     required this.companyName,
@@ -14,6 +15,7 @@ class Supplier {
     required this.address,
     required this.comment,
     this.id = '',
+    this.imageDownloadUrl = '',
     //this.supplierItemsAndServices = const [],
   });
 
@@ -23,6 +25,7 @@ class Supplier {
       'phoneNumber': phoneNumber,
       'address': address,
       'comment': comment,
+      'imageDownloadUrl': imageDownloadUrl,
 // TODO: implement supplierItemsAndServices
     };
   }
@@ -34,6 +37,7 @@ class Supplier {
       address: doc['address'],
       comment: doc['comment'],
       id: doc.id,
+      imageDownloadUrl: doc['imageDownloadUrl'],
     );
   }
 }

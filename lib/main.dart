@@ -1,14 +1,36 @@
+import 'package:demakk_admin/objects/employee.dart';
+import 'package:demakk_admin/provider/employee_provider.dart';
+import 'package:demakk_admin/screens/settings_screen.dart';
+import 'package:demakk_admin/screens/work_log_entry_screen.dart';
 import 'package:demakk_admin/utilities/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'screens/login_screen.dart';
 import 'screens/splash_screen.dart';
 import 'screens/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 //import 'firebase_options.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
+bool amharic = true;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(App());
+  final prefs = await SharedPreferences.getInstance();
+  amharic = prefs.getBool('amharicOrNot') == null
+      ? true
+      : prefs.getBool('amharicOrNot')!;
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => EmployeeProvider(),
+        ),
+      ],
+      child: App(),
+    ),
+  );
 }
 
 class App extends StatelessWidget {
@@ -37,13 +59,23 @@ class App extends StatelessWidget {
                 ),
                 routes: {
                   '/': (context) {
-                    return const SplashScreen();
+                    bool isLoggedIn =
+                        context.watch<EmployeeProvider>().isLoggedIn;
+                    return isLoggedIn
+                        ? const HomeScreen()
+                        : const SplashScreen();
                   },
                   '/home_screen': (context) {
                     return const HomeScreen();
                   },
                   'login_screen': (context) {
                     return const LoginScreen();
+                  },
+                  'settings_screen': (context) {
+                    return const SettingsScreen();
+                  },
+                  'work_log_entry_screen': (context) {
+                    return const WorkLogEntryScreen();
                   }
                 },
               );

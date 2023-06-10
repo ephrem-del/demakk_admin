@@ -1,30 +1,40 @@
+import 'package:demakk_admin/objects/date_and_time.dart';
+
 import '../objects/customer.dart';
 import 'package:flutter/material.dart';
 
+import '../objects/order.dart';
 import '../utilities/constants.dart';
+
+import '../main.dart';
 
 class CustomerOrderTile extends StatelessWidget {
   final Customer customer;
-  const CustomerOrderTile({Key? key, required this.customer}) : super(key: key);
+  final Order order;
+  //double paymentLeft = 0;
+  const CustomerOrderTile(
+      {Key? key, required this.customer, required this.order})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double paymentLeft = order.type.price * order.amount - order.paid;
     return Container(
       //height: 200,
       margin: const EdgeInsets.all(10.0),
       child: Card(
         elevation: 5.0,
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(25.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 children: [
                   amharic
-                      ? const Text('ስም', style: subTitleTextStyle)
+                      ? const Text('ስም :', style: subTitleTextStyle)
                       : const Text(
-                          'Name',
+                          'Name :',
                           style: subTitleTextStyle,
                         ),
                   const Spacer(),
@@ -37,14 +47,14 @@ class CustomerOrderTile extends StatelessWidget {
               Row(
                 children: [
                   amharic
-                      ? const Text('አይነት', style: subTitleTextStyle)
+                      ? const Text('አይነት :', style: subTitleTextStyle)
                       : const Text(
-                          'Type',
+                          'Type :',
                           style: subTitleTextStyle,
                         ),
                   const Spacer(),
-                  const Text(
-                    '*****',
+                  Text(
+                    amharic ? order.type.amharicName : order.type.name,
                     style: otherTextStyle,
                   )
                 ],
@@ -52,14 +62,14 @@ class CustomerOrderTile extends StatelessWidget {
               Row(
                 children: [
                   amharic
-                      ? const Text('ብዛት', style: subTitleTextStyle)
+                      ? const Text('ብዛት :', style: subTitleTextStyle)
                       : const Text(
-                          'Amount',
+                          'Amount :',
                           style: subTitleTextStyle,
                         ),
                   const Spacer(),
-                  const Text(
-                    '*****',
+                  Text(
+                    order.amount.toString(),
                     style: otherTextStyle,
                   ),
                 ],
@@ -67,14 +77,14 @@ class CustomerOrderTile extends StatelessWidget {
               Row(
                 children: [
                   amharic
-                      ? const Text('የአንዱ ዋጋ', style: subTitleTextStyle)
+                      ? const Text('የአንዱ ዋጋ :', style: subTitleTextStyle)
                       : const Text(
-                          'Single Price',
+                          'Single Price :',
                           style: subTitleTextStyle,
                         ),
                   const Spacer(),
-                  const Text(
-                    '*****',
+                  Text(
+                    order.type.price.toString(),
                     style: otherTextStyle,
                   ),
                 ],
@@ -82,14 +92,14 @@ class CustomerOrderTile extends StatelessWidget {
               Row(
                 children: [
                   amharic
-                      ? const Text('የተከፈለ', style: subTitleTextStyle)
+                      ? const Text('የተከፈለ :', style: subTitleTextStyle)
                       : const Text(
-                          'Paid',
+                          'Paid :',
                           style: subTitleTextStyle,
                         ),
                   const Spacer(),
-                  const Text(
-                    '*****',
+                  Text(
+                    order.paid.toString(),
                     style: otherTextStyle,
                   ),
                 ],
@@ -98,35 +108,38 @@ class CustomerOrderTile extends StatelessWidget {
                 children: [
                   amharic
                       ? const Text(
-                          'ቀሪ ሂሳብ',
+                          'ቀሪ ሂሳብ :',
                           style: subTitleTextStyle,
                         )
                       : const Text(
-                          'Payment Left',
+                          'Payment Left :',
                           style: subTitleTextStyle,
                         ),
                   const Spacer(),
-                  const Text(
-                    '*****',
+                  Text(
+                    paymentLeft.toString(),
                     style: otherTextStyle,
                   ),
                 ],
               ),
+              SizedBox(
+                height: 10,
+              ),
               Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    amharic
-                        ? const Text(
-                            'የትዕዛዝ ቀን',
-                            style: otherTextStyle,
-                          )
-                        : const Text(
-                            'Orders date',
-                            style: otherTextStyle,
-                          ),
-                    const Text('******')
-                  ],
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(30)),
+                    color: primaryColor,
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  child: Text(
+                    '${order.dateAndTime.month()} ${order.dateAndTime.day()} : ${order.dateAndTime.year()}',
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w600,
+                        overflow: TextOverflow.fade,
+                        color: Colors.white),
+                  ),
                 ),
               ),
             ],

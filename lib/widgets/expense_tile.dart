@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../objects/expense.dart';
 
+import '../main.dart';
+
 class ExpenseTile extends StatelessWidget {
   final ExpenseScreenViewModel _expenseScreenViewModel =
       ExpenseScreenViewModel();

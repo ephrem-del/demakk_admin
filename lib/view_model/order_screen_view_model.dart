@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rxdart/rxdart.dart';
 import '../objects/order.dart' as order_object;
+import '../objects/order_type.dart';
 
 class OrderScreenViewModel {
   BehaviorSubject<List<order_object.Order>> uncompletedOrdersController =
@@ -12,7 +13,20 @@ class OrderScreenViewModel {
     _fetchCompletedOrders();
   }
 
-  void _fetchUncompletedOrders() {
+  Future<void> _fetchUncompletedOrders() async {
+    Map<String, OrderType> allOrderTypesMap = {};
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('allOrderTypes').get();
+    List<OrderType> listOfOrderTypes = querySnapshot.docs
+        .map((doc) => OrderType(
+            name: doc['name'],
+            price: double.parse(doc['price'].toString()),
+            amharicName: doc['amharicName']))
+        .toList();
+    for (int i = 0; i < listOfOrderTypes.length; i++) {
+      allOrderTypesMap.addAll({listOfOrderTypes[i].name: listOfOrderTypes[i]});
+    }
+
     FirebaseFirestore.instance
         .collectionGroup('orders')
         .where('completed', isEqualTo: false)
@@ -20,14 +34,27 @@ class OrderScreenViewModel {
         .snapshots()
         .listen((snapshot) {
       List<order_object.Order> orders = snapshot.docs
-          .map((doc) => order_object.Order.fromSnapshot(doc))
+          .map((doc) => order_object.Order.fromSnapshot(doc, allOrderTypesMap))
           .toList();
       orders = reOrder(orders);
       uncompletedOrdersController.sink.add(orders);
     });
   }
 
-  void _fetchCompletedOrders() {
+  Future<void> _fetchCompletedOrders() async {
+    Map<String, OrderType> allOrderTypesMap = {};
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('allOrderTypes').get();
+    List<OrderType> listOfOrderTypes = querySnapshot.docs
+        .map((doc) => OrderType(
+            name: doc['name'],
+            price: double.parse(doc['price'].toString()),
+            amharicName: doc['amharicName']))
+        .toList();
+    for (int i = 0; i < listOfOrderTypes.length; i++) {
+      allOrderTypesMap.addAll({listOfOrderTypes[i].name: listOfOrderTypes[i]});
+    }
+
     FirebaseFirestore.instance
         .collectionGroup('orders')
         .where('completed', isEqualTo: true)
@@ -35,7 +62,7 @@ class OrderScreenViewModel {
         .snapshots()
         .listen((snapshot) {
       List<order_object.Order> orders = snapshot.docs
-          .map((doc) => order_object.Order.fromSnapshot(doc))
+          .map((doc) => order_object.Order.fromSnapshot(doc, allOrderTypesMap))
           .toList();
       completedOrdersController.sink.add(orders);
     });

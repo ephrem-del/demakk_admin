@@ -1,23 +1,25 @@
 import 'package:demakk_admin/objects/order_type.dart';
 import 'package:demakk_admin/objects/priority.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:demakk_admin/resources/order_resource.dart';
+// import 'package:demakk_admin/resources/order_resource.dart';
 
 import '../resources/priorites.dart';
 // import 'customer.dart';
 import 'date_and_time.dart';
 
 class Order {
-  String id;
-  OrderType type;
-  int amount;
-  String comment;
-  Priority priority;
-  String customerId;
-  bool completed;
-  DateAndTime dateAndTime;
-  double paid;
-  String customerName;
+  final String id;
+  final OrderType type;
+  final int amount;
+  final String comment;
+  final Priority priority;
+  final String customerId;
+  final bool completed;
+  final DateAndTime dateAndTime;
+  final double paid;
+  final String customerName;
+  double price;
+  // late Map<String, OrderType> allOrderTypesMap;
   Order(
       {this.id = '',
       required this.type,
@@ -28,7 +30,27 @@ class Order {
       required this.completed,
       required this.dateAndTime,
       required this.paid,
-      required this.customerName});
+      required this.customerName,
+      this.price = 0.0}) {
+    price = type.price;
+    // _getAllOrderTypesMap();
+  }
+
+  // void _getAllOrderTypesMap() async {
+  //   QuerySnapshot querySnapshot =
+  //   await FirebaseFirestore.instance.collection('allOrderTypes').get();
+  //   List<OrderType> listOfOrderTypes = querySnapshot.docs
+  //       .map((doc) => OrderType(
+  //       name: doc['name'],
+  //       price: double.parse(doc['price'].toString()),
+  //       amharicName: doc['amharicName']))
+  //       .toList();
+  //   for (int i = 0; i < listOfOrderTypes.length; i++) {
+  //     allOrderTypesMap
+  //         .addAll({listOfOrderTypes[i].name: listOfOrderTypes[i]});
+  //   }
+  //   // print(allOrderTypesMap);
+  // }
 
   Map<String, dynamic> toMap() {
     return {
@@ -40,11 +62,18 @@ class Order {
       'completed': completed,
       'dateAndTime': dateAndTime.dateTime,
       'paid': paid,
-      'customerName': customerName
+      'customerName': customerName,
+      'price': type.price,
     };
   }
 
-  factory Order.fromSnapshot(QueryDocumentSnapshot doc) {
+  factory Order.fromSnapshot(
+      QueryDocumentSnapshot doc, Map<String, OrderType> allOrderTypesMap) {
+    //OrderResource orderResource = OrderResource();
+    // print('doc: ${doc['type']}');
+    // print('doc: ${orderResource.allOrderTypesMap}');
+    // print('orderType: ${orderResource.allOrderTypesMap[doc['type']]}');
+
     return Order(
       id: doc.id,
       type: allOrderTypesMap[doc['type']]!,
@@ -58,6 +87,7 @@ class Order {
       ),
       paid: doc['paid'],
       customerName: doc['customerName'],
+      price: doc['price'],
     );
   }
 }

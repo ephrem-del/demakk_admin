@@ -1,13 +1,18 @@
+import 'package:demakk_admin/provider/employee_provider.dart';
 import 'package:demakk_admin/screens/stalk_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
+import '../widgets/app_bar_tile.dart';
 import 'customers_screen.dart';
+import 'drawer_component.dart';
 import 'expense_screen.dart';
 import 'history_screen.dart';
 import 'orders_screen.dart';
+
+import '../main.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -17,18 +22,25 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  EmployeeProvider employeeProvider = EmployeeProvider();
   final PersistentTabController _controller =
       PersistentTabController(initialIndex: 0);
   @override
   Widget build(BuildContext context) {
-    return PersistentTabView(
-      context,
-      screens: screens,
-      controller: _controller,
-      items: items,
-      navBarStyle: NavBarStyle.style1,
-      decoration: const NavBarDecoration(
-        colorBehindNavBar: Color(0xFFFF6200),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(),
+        drawer:  DrawerComponent(),
+        body: PersistentTabView(
+          context,
+          screens: screens,
+          controller: _controller,
+          items: items,
+          navBarStyle: NavBarStyle.style1,
+          decoration: const NavBarDecoration(
+            colorBehindNavBar: Color(0xFFFF6200),
+          ),
+        ),
       ),
     );
   }
@@ -61,12 +73,12 @@ List<PersistentBottomNavBarItem> items = <PersistentBottomNavBarItem>[
         color: primaryColor,
       ),
       title: amharic ? 'ወጪዎች' : 'Expenses'),
-  PersistentBottomNavBarItem(
-      icon: const Icon(
-        Icons.history,
-        color: primaryColor,
-      ),
-      title: amharic ? 'ታሪክ' : 'History'),
+  // PersistentBottomNavBarItem(
+  //     icon: const Icon(
+  //       Icons.history,
+  //       color: primaryColor,
+  //     ),
+  //     title: amharic ? 'ታሪክ' : 'History'),
 ];
 
 List<Widget> screens = <Widget>[
@@ -74,7 +86,7 @@ List<Widget> screens = <Widget>[
   const CustomersScreen(),
   const StalkScreen(),
   ExpenseScreen(),
-  const HistoryScreen(),
+  //const HistoryScreen(),
 ];
 
 //orders

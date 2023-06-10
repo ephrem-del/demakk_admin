@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 
 import '../view_model/add_customer_view_model.dart';
 
+import '../main.dart';
+
 class AddCustomerScreen extends StatefulWidget {
   const AddCustomerScreen({Key? key}) : super(key: key);
 

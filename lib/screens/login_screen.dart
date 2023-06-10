@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../utilities/constants.dart';
 
+import '../main.dart';
+import '../view_model/login_screen_view_model.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -10,18 +13,26 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController employeeNameController = TextEditingController();
+  TextEditingController employeeEmailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  late LoginScreenViewModel loginScreenViewModel;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   // void authenticate(BuildContext context) {
+  //   String employeeName = employeeNameController.text;
+  //   String password = passwordController.text;
   //   if (_formKey.currentState!.validate()) {
-  //     Navigator.pop(context);
-  //     Navigator.pushNamed(context, '/home_screen');
+  //     bool authenticated = loginScreenViewModel.authenticateLogin(employeeName, password);
+  //     if(authenticated){
+  //       //Navigator.pop(context);
+  //       Navigator.popAndPushNamed(context, '/home_screen');
+  //     }
   //   }
   // }
-  void authenticate(BuildContext context) {
-    if (true) {
+  void authenticate(BuildContext context) async {
+    bool isLoggedIn = await loginScreenViewModel.authenticateLogin(
+        employeeEmailController.text, passwordController.text);
+    if (isLoggedIn) {
       Navigator.pop(context);
       Navigator.pushNamed(context, '/home_screen');
     }
@@ -29,6 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    loginScreenViewModel = LoginScreenViewModel(context: context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: SizedBox(
@@ -56,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                             return null;
                           },
-                          controller: employeeNameController,
+                          controller: employeeEmailController,
                           decoration: userInputDecoration(
                               'የተጠቃሚ ስም', const Icon(Icons.person)),
                         ),
@@ -67,11 +79,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Username is required';
+                              return 'Employee Name is required';
                             }
                             return null;
                           },
-                          controller: employeeNameController,
+                          controller: employeeEmailController,
                           decoration: userInputDecoration(
                               'Employee Name', const Icon(Icons.person)),
                         ),

@@ -15,9 +15,24 @@ class AddOrderViewModel {
       BehaviorSubject<List<Customer>>();
   final BehaviorSubject<Map<String, int>> stalkAmountsController =
       BehaviorSubject<Map<String, int>>();
+  final BehaviorSubject<List<OrderType>> mugTypesController =
+      BehaviorSubject<List<OrderType>>();
   AddOrderViewModel() {
     _fetchCustomers();
     _fetchStalkAmounts();
+    _fetchMugTypes();
+  }
+
+  Future<void> _fetchMugTypes() async {
+    FirebaseFirestore.instance
+        .collection('allOrderTypes')
+        .where('category', isEqualTo: 'Mug')
+        .snapshots()
+        .listen((data) {
+      List<OrderType> mugTypes =
+          data.docs.map((doc) => OrderType.fromSnapshot(doc)).toList();
+      mugTypesController.sink.add(mugTypes);
+    });
   }
 
   Future<void> _fetchCustomers() async {
@@ -45,6 +60,7 @@ class AddOrderViewModel {
     String customerName,
     String categoryType,
   ) async {
+    print('add order function called');
     order_from_order.Order order = order_from_order.Order(
       type: type,
       amount: amount,
@@ -59,6 +75,8 @@ class AddOrderViewModel {
       ),
     );
 
+    final unpaid = amount * type.price - paid;
+
     bool isSaved = false;
 
     QuerySnapshot querySnapshot =
@@ -67,9 +85,13 @@ class AddOrderViewModel {
         .map((doc) => StalkCategory.fromSnapshot(doc))
         .toList();
 
+    print('categoryType: $categoryType');
+
     for (int i = 0; i < stalkCategories.length; i++) {
+      print('at index $i categoryTitle: ${stalkCategories[i].categoryTitle}');
       if (stalkCategories[i].categoryTitle == categoryType) {
         categoryDocumentId = stalkCategories[i].docId;
+        print(stalkCategories[i].categoryTitle);
       }
     }
 
@@ -86,6 +108,14 @@ class AddOrderViewModel {
             .doc(customerId)
             .collection('orders')
             .add(order.toMap());
+
+        final documentReference =
+            FirebaseFirestore.instance.collection('customers').doc(customerId);
+        FirebaseFirestore.instance.runTransaction((transaction) async {
+          final snapshot = await transaction.get(documentReference);
+          final paymentLeft = snapshot.get('paymentLeft') + unpaid;
+          transaction.update(documentReference, {'paymentLeft': paymentLeft});
+        });
 
         isSaved = true;
         if (kDebugMode) {
@@ -105,11 +135,12 @@ class AddOrderViewModel {
     return isSaved;
   }
 
-  Future<bool> _updateStalk(
-      {required String categoryType,
-      required OrderType type,
-      required int stalkDecreased,
-      required String categoryDocumentId}) async {
+  Future<bool> _updateStalk({
+    required String categoryType,
+    required OrderType type,
+    required int stalkDecreased,
+    required String categoryDocumentId,
+  }) async {
     String stalkTypeDocId = '';
     categoryDocumentId = categoryDocumentId;
     print(categoryDocumentId);
@@ -134,7 +165,7 @@ class AddOrderViewModel {
         .collection('stalk_categories')
         .doc(categoryDocumentId)
         .collection('stalkTypes')
-        .doc(stalkTypeDocId);
+        .doc(stalkTypeDocId); //HERE IS THE PROBLEM
     bool isAdded =
         await FirebaseFirestore.instance.runTransaction((transaction) async {
       final snapshot = await transaction.get(databaseReference);

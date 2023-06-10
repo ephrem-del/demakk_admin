@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'add_supplier_screen.dart';
 
+import '../main.dart';
+
 class CustomerOrSupplierScreen extends StatelessWidget {
   const CustomerOrSupplierScreen({Key? key}) : super(key: key);
 
