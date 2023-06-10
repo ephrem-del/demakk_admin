@@ -1,8 +1,11 @@
-import 'package:demakk_admin/utilities/constants.dart';
+// import 'package:demakk_admin/utilities/constants.dart';
 import 'package:demakk_admin/view_model/work_log_entry_screen_view_model.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+// import 'package:flutter/src/widgets/framework.dart';
+// import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../provider/employee_provider.dart';
+import '../resources/base_auth_user_provider.dart';
 
 class WorkLogEntryScreen extends StatefulWidget {
   const WorkLogEntryScreen({super.key});
@@ -18,7 +21,7 @@ class _WorkLogEntryScreenState extends State<WorkLogEntryScreen> {
   void initState() {
     _model = WorkLogEntryScreenViewModel();
     // _model.initState();
-    set();
+    // set();
     super.initState();
   }
 
@@ -27,16 +30,19 @@ class _WorkLogEntryScreenState extends State<WorkLogEntryScreen> {
     setState(() {});
   }
 
-  set() async {
-    await _model.initState();
+  set(BaseAuthUser currentUser) async {
+    print(currentUser.employeeEmail);
+    await _model.initState(currentUser);
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
+    BaseAuthUser? currentUser = context.watch<EmployeeProvider>().currentUser;
+    set(currentUser!);
     return Scaffold(
       appBar: AppBar(
-        title: Text(_model.employee.name),
+        title: Text(currentUser.name),
         centerTitle: false,
       ),
       body: Column(

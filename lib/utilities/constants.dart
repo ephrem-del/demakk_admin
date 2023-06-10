@@ -18,11 +18,11 @@ const ButtonStyle elevatedButtonStyle = ButtonStyle(
 //UserRole currentUserRole = employees[2].userRole;
 // Employee currentUser = employees[3];
 
-Employee currentUser = Employee(
-    employeeEmail: '3RnsV4eC560FLPeSyKQr',
-    name: 'Sami',
-    employeePosition: EmployeePositionRepository().designer,
-    phoneNo: '0909090909');
+// Employee currentUser = Employee(
+//     employeeEmail: '3RnsV4eC560FLPeSyKQr',
+//     name: 'Sami',
+//     employeePosition: EmployeePositionRepository().designer,
+//     phoneNo: '0909090909');
 
 const TextStyle titleTextStyle = TextStyle(
   fontSize: 30.0,

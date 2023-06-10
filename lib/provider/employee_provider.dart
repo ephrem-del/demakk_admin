@@ -16,7 +16,15 @@ class EmployeeProvider with ChangeNotifier {
     return null;
   }
 
-  set employee(BaseAuthUser employee) {
+  // set employee(BaseAuthUser employee) {
+  //   _isLoggedIn = true;
+  //   _currentUser = employee;
+  //   print(_currentUser);
+  //   print(_isLoggedIn);
+  //   notifyListeners();
+  // }
+
+  void login(BaseAuthUser employee) {
     _isLoggedIn = true;
     _currentUser = employee;
     print(_currentUser);
@@ -24,11 +32,9 @@ class EmployeeProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void login(BaseAuthUser employee){
-_isLoggedIn = true;
-    _currentUser = employee;
-    print(_currentUser);
-    print(_isLoggedIn);
+  void logout() {
+    _isLoggedIn = false;
+    _currentUser = null;
     notifyListeners();
   }
 }

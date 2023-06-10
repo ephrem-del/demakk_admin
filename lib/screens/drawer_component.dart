@@ -1,16 +1,26 @@
 import 'package:demakk_admin/provider/employee_provider.dart';
+import 'package:demakk_admin/view_model/login_screen_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../utilities/constants.dart';
 import '../widgets/app_bar_tile.dart';
 
-class DrawerComponent extends StatelessWidget {
-  const DrawerComponent({Key? key}) : super(key: key);
+class DrawerComponent extends StatefulWidget {
+  DrawerComponent({Key? key}) : super(key: key);
+
+  @override
+  State<DrawerComponent> createState() => _DrawerComponentState();
+}
+
+class _DrawerComponentState extends State<DrawerComponent> {
+  late LoginScreenViewModel loginScreenViewModel;
 
   @override
   Widget build(BuildContext context) {
-    EmployeeProvider employeeProvider = Provider.of<EmployeeProvider>(context, listen: false);
+    loginScreenViewModel = LoginScreenViewModel(context: context);
+    EmployeeProvider employeeProvider =
+        Provider.of<EmployeeProvider>(context, listen: false);
     print('employee name: ${employeeProvider.currentUser}');
     return Drawer(
       backgroundColor: primaryColor,
@@ -34,8 +44,10 @@ class DrawerComponent extends StatelessWidget {
                 SizedBox(
                   width: 10,
                 ),
-                
-                Text('${context.watch<EmployeeProvider>().currentUser?.name}',style: TextStyle(fontSize: 20, color: Colors.white),),
+                Text(
+                  '${context.watch<EmployeeProvider>().currentUser?.name}',
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
               ],
             ),
             SizedBox(
@@ -80,7 +92,10 @@ class DrawerComponent extends StatelessWidget {
             Spacer(),
             Center(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  loginScreenViewModel.logout();
+                  Navigator.pushReplacementNamed(context, 'login_screen');
+                },
                 child: Text(
                   'Logout',
                   style: TextStyle(color: Colors.black87),

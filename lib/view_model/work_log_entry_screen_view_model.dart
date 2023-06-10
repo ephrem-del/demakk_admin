@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../objects/work_log.dart';
+import '../resources/base_auth_user_provider.dart';
 
 class WorkLogEntryScreenViewModel {
   final DateTime dateTime = DateTime.now();
-  late final Employee employee;
+  // late final Employee employee;
   bool _startedMorning = false;
   bool _startLunch = false;
   bool _endLunch = false;
@@ -16,13 +17,15 @@ class WorkLogEntryScreenViewModel {
   DateTime? _startLunchTime;
   DateTime? _endLunchTime;
   DateTime? _endDayTime;
+  BaseAuthUser? _currentUser;
   WorkLogEntryScreenViewModel() {
-    employee = currentUser;
-    _getWorkLogEntry();
+    // employee = currentUser;
+    // _getWorkLogEntry();
   }
 
-  Future<void> initState() async {
+  Future<void> initState(BaseAuthUser currentUser) async {
     // bool check = await _checkIfWorkLogExists();
+    _currentUser = currentUser;
 
     await _getWorkLogEntry();
   }
@@ -42,11 +45,11 @@ class WorkLogEntryScreenViewModel {
     try {
       await FirebaseFirestore.instance
           .collection('employees')
-          .doc(currentUser.employeeEmail)
+          .doc(_currentUser!.employeeEmail)
           .collection('time controller')
           .doc(_getDocumentId())
           .set(WorkLog(
-            employeeId: currentUser.employeeEmail,
+            employeeEmail: _currentUser!.employeeEmail,
             startMorning: _startMorningTime,
             startLunch: _startLunchTime,
             endLunch: _endLunchTime,
@@ -63,7 +66,7 @@ class WorkLogEntryScreenViewModel {
     print('_checkIfWorkLogExists called');
     FirebaseFirestore.instance
         .collection('employees')
-        .doc(currentUser.employeeEmail)
+        .doc(_currentUser?.employeeEmail)
         .collection('time controller')
         .doc(_getDocumentId())
         .get()
@@ -81,11 +84,12 @@ class WorkLogEntryScreenViewModel {
     print('_getWorkLogEntry called');
     DocumentSnapshot doc = await FirebaseFirestore.instance
         .collection('employees')
-        .doc(currentUser.employeeEmail)
+        .doc(_currentUser!.employeeEmail)
         .collection('time controller')
         .doc(_getDocumentId())
         .get();
-    WorkLog _log = WorkLog.fromDocSnapshot(doc);
+    WorkLog _log =
+        !doc.exists ? WorkLog(employeeEmail: '') : WorkLog.fromDocSnapshot(doc);
 
     if (_log.endDay != null || _log.endDay.toString() != 'null') {
       _startMorningTime = _log.startMorning;

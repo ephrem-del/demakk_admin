@@ -25,11 +25,18 @@ class LoginScreenViewModel {
           .get();
       Employee employee = Employee.fromDocumentSnapshot(employeeDoc);
       demakkEmployee = DemakkEmployee(employee: employee);
+      // context.read<EmployeeProvider>().login(demakkEmployee as BaseAuthUser);
+      // currentUser =
       notifyProvider();
       // employeeProvider.employee = demakkEmployee;
       // employeeProvider.login(demakkEmployee);
     }
     return isLoggedIn;
+  }
+
+  logout() async {
+    auth.signOut();
+    context.read<EmployeeProvider>().logout();
   }
 
   notifyProvider() {
