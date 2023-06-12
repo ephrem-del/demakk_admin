@@ -37,7 +37,7 @@ class _AdminToolsScreenState extends State<AdminToolsScreen> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        title: Text('Admin Tools'),
+        title: const Text('Admin Tools'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -53,17 +53,17 @@ class _AdminToolsScreenState extends State<AdminToolsScreen> {
                     children: [
                       Container(
                         width: double.infinity,
-                        child: Center(child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          child: Text('Attendance', style: subTitleTextStyle,),
-                        )),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: primaryColor,
                           borderRadius: BorderRadius.only(
                             topRight: Radius.circular(4),
                             topLeft: Radius.circular(4),
                           ),
                         ),
+                        child: const Center(child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: 8),
+                          child: Text('Attendance', style: subTitleTextStyle,),
+                        )),
                       ),
                       SizedBox(
                         height: 300,
@@ -87,6 +87,7 @@ class _AdminToolsScreenState extends State<AdminToolsScreen> {
                                               employee: employee),),);
                                 },
                                 child: Card(
+                                  color: primaryColor,
                                   child: Center(
                                     child: Text(
                                       employee.name,
@@ -96,7 +97,6 @@ class _AdminToolsScreenState extends State<AdminToolsScreen> {
                                       ),
                                     ),
                                   ),
-                                  color: primaryColor,
                                 ),
                               );
                             },

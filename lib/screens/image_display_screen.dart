@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class ImageDisplayScreenWidget extends StatelessWidget {
   final String imageUrl;
@@ -30,13 +28,7 @@ class ImageDisplayScreenWidget extends StatelessWidget {
             child: Align(
               alignment: Alignment.bottomLeft,
               child: Container(
-                child: Text(
-                  location,
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                padding: EdgeInsets.all(
+                padding: const EdgeInsets.all(
                   10,
                 ),
                 decoration: BoxDecoration(
@@ -46,6 +38,12 @@ class ImageDisplayScreenWidget extends StatelessWidget {
                   ),
                 ),
                 width: double.infinity,
+                child: Text(
+                  location,
+                  style: const TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
           ),
@@ -67,7 +65,7 @@ class ImageDisplayScreenWidget extends StatelessWidget {
                       padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
                       child: IconButton(
                         onPressed: () => Navigator.pop(context),
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.arrow_back_ios,
                           color: Colors.white,
                         ),

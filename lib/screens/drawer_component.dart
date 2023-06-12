@@ -7,7 +7,7 @@ import '../utilities/constants.dart';
 import '../widgets/app_bar_tile.dart';
 
 class DrawerComponent extends StatefulWidget {
-  DrawerComponent({Key? key}) : super(key: key);
+  const DrawerComponent({Key? key}) : super(key: key);
 
   @override
   State<DrawerComponent> createState() => _DrawerComponentState();
@@ -33,31 +33,31 @@ class _DrawerComponentState extends State<DrawerComponent> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 CircleAvatar(
+                  radius: 60.0,
                   child: ClipOval(
                     child: Image.asset(
                       'images/demakk_logo.png',
                       fit: BoxFit.cover,
                     ),
                   ),
-                  radius: 60.0,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Text(
                   '${context.watch<EmployeeProvider>().currentUser?.name}',
-                  style: TextStyle(fontSize: 20, color: Colors.white),
+                  style: const TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Divider(
+            const Divider(
               color: Colors.white,
               thickness: 1.0,
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             AppBarTile(
@@ -91,19 +91,19 @@ class _DrawerComponentState extends State<DrawerComponent> {
                 },
                 iconData: Icons.settings,
                 title: 'Settings'),
-            Spacer(),
+            const Spacer(),
             Center(
               child: ElevatedButton(
                 onPressed: () {
                   loginScreenViewModel.logout();
                   Navigator.pushReplacementNamed(context, 'login_screen');
                 },
-                child: Text(
-                  'Logout',
-                  style: TextStyle(color: Colors.black87),
-                ),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.white),
+                ),
+                child: const Text(
+                  'Logout',
+                  style: TextStyle(color: Colors.black87),
                 ),
               ),
             ),

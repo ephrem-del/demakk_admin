@@ -293,19 +293,19 @@ class _AddSupplierScreenState extends State<AddSupplierScreen> {
                               MaterialStateProperty.all(primaryColor)),
                       onPressed: () {},
                       child: PopupMenuButton<PhotoOptions>(
-                        child: Text(amharic ? 'ፎቶ ጨምር' : 'Add Photo'),
                         onSelected: _optionSelected,
                         itemBuilder: (context) => [
                           PopupMenuItem(
-                            child: Text(amharic ? 'ፎቶ አንሳ' : 'Take a picture'),
                             value: PhotoOptions.camera,
+                            child: Text(amharic ? 'ፎቶ አንሳ' : 'Take a picture'),
                           ),
                           PopupMenuItem(
+                            value: PhotoOptions.gallery,
                             child: Text(
                                 amharic ? 'ከጋላሪ ምረጥ' : 'Select from Gallery'),
-                            value: PhotoOptions.gallery,
                           )
                         ],
+                        child: Text(amharic ? 'ፎቶ ጨምር' : 'Add Photo'),
                       ),
                     ),
                   ),

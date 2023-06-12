@@ -1,9 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../objects/employee.dart';
 
 class EmployeeManagementScreenViewModel {
-  EmployeeManagementScreenViewModel() {}
+  EmployeeManagementScreenViewModel();
 
   DateTime todaysDate = DateTime.now()
       .subtract(

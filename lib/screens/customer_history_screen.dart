@@ -31,14 +31,14 @@ class _CustomerHistoryScreenState extends State<CustomerHistoryScreen> {
         stream: customerDetailScreenViewModel.allOrdersController.stream,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return Text('Error');
+            return const Text('Error');
           }
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
-              return Text('Loading...');
+              return const Text('Loading...');
             default:
               if (!snapshot.hasData) {
-                return Text('No Data');
+                return const Text('No Data');
               }
           }
           List<Order> orders = snapshot.data!;

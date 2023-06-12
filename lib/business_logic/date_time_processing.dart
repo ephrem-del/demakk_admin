@@ -1,8 +1,6 @@
 import 'dart:core';
 import '../main.dart';
 
-import '../utilities/constants.dart';
-
 String convertWeekDay(DateTime dateTime) {
   if (dateTime.weekday == 1) {
     return amharic ? 'ሰኞ' : 'Monday';

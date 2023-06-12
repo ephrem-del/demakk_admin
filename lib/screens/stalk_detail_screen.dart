@@ -1,4 +1,3 @@
-import 'package:demakk_admin/utilities/constants.dart';
 
 // import '../business_logic/stalk_processing.dart';
 import '../objects/stalk.dart';

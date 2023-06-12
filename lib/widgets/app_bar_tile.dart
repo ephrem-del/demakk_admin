@@ -27,12 +27,12 @@ class AppBarTile extends StatelessWidget {
                 color: Colors.white,
                 size: 23,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 15,
               ),
               Text(
                 title,
-                style: TextStyle(color: Colors.white, fontSize: 18),
+                style: const TextStyle(color: Colors.white, fontSize: 18),
               )
             ],
           ),

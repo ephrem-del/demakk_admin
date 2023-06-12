@@ -18,20 +18,16 @@ class LoginScreenViewModel {
     try {
       UserCredential userCredential = await auth.signInWithEmailAndPassword(
           email: email, password: password);
-      if (userCredential != null) {
-        isLoggedIn = true;
-        DocumentSnapshot employeeDoc = await FirebaseFirestore.instance
-            .collection('employees')
-            .doc(email)
-            .get();
-        Employee employee = Employee.fromDocumentSnapshot(employeeDoc);
-        demakkEmployee = DemakkEmployee(employee: employee);
-        // context.read<EmployeeProvider>().login(demakkEmployee as BaseAuthUser);
-        // currentUser =
-        notifyProvider();
-        // employeeProvider.employee = demakkEmployee;
-        // employeeProvider.login(demakkEmployee);
-      }
+      isLoggedIn = true;
+      DocumentSnapshot employeeDoc = await FirebaseFirestore.instance
+          .collection('employees')
+          .doc(email)
+          .get();
+      Employee employee = Employee.fromDocumentSnapshot(employeeDoc);
+      demakkEmployee = DemakkEmployee(employee: employee);
+      // context.read<EmployeeProvider>().login(demakkEmployee as BaseAuthUser);
+      // currentUser =
+      notifyProvider();
     } on FirebaseAuthException catch (e) {
       print('firebase auth error: $e');
     } on FirebaseException catch (e) {

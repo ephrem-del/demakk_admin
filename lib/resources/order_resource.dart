@@ -28,11 +28,11 @@ List<OrderType> orderTypes = <OrderType>[
 class OrderResource {
   Map<String, OrderType> allOrderTypesMap = {};
   Map<String, OrderType> plotTypesMap = {};
-  Map<String, OrderType> _mugTypesMap = {};
+  final Map<String, OrderType> _mugTypesMap = {};
   Map<String, OrderType> flashStampTypesMap = {};
   List<OrderType> _mugTypesList = [];
   List<OrderType> _plotTypesList = [];
-  List<OrderType> _tshirtTypesList = [];
+  final List<OrderType> _tshirtTypesList = [];
   List<OrderType> _flashStampTypesList = [];
   late Future<void> finishFirst;
   OrderResource() {

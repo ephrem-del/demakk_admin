@@ -124,11 +124,11 @@ class _CustomerTabState extends State<CustomerTab> {
           return Column(
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: primaryColor, width: 2),
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                    borderRadius: const BorderRadius.all(Radius.circular(30)),
                   ),
                   child: Row(
                     children: [
@@ -144,7 +144,7 @@ class _CustomerTabState extends State<CustomerTab> {
                             searchResult.clear();
                           });
                         },
-                        icon: Icon(Icons.clear),
+                        icon: const Icon(Icons.clear),
                       )
                     ],
                   ),
@@ -247,11 +247,11 @@ class _SupplierTabState extends State<SupplierTab> {
           return Column(
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: primaryColor, width: 2),
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                    borderRadius: const BorderRadius.all(Radius.circular(30)),
                   ),
                   child: Row(
                     children: [
@@ -267,7 +267,7 @@ class _SupplierTabState extends State<SupplierTab> {
                             searchResult.clear();
                           });
                         },
-                        icon: Icon(Icons.clear),
+                        icon: const Icon(Icons.clear),
                       )
                     ],
                   ),

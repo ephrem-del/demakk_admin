@@ -30,14 +30,14 @@ class _WeeklyScreenState extends State<WeeklyScreen> {
       stream: customerDetailScreenViewModel.weeklyOrdersController.stream,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Text('Snapshot error');
+          return const Text('Snapshot error');
         }
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return Text('Loading...');
+            return const Text('Loading...');
           default:
             if (!snapshot.hasData) {
-              return Text('No data');
+              return const Text('No data');
             }
         }
         List<Order> orders = snapshot.data!;

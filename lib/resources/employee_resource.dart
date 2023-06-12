@@ -1,6 +1,5 @@
 import 'dart:core' as core;
 
-import '../objects/employee.dart';
 import 'wage_resource.dart';
 
 // core.List<Employee> employees = <Employee>[

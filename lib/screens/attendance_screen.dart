@@ -22,7 +22,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
     attendanceScreenViewModel = AttendanceScreenViewModel();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Attendance'),
+        title: const Text('Attendance'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -30,7 +30,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
           Container(
               height: 50,
               width: double.infinity,
-              child: Row(
+              child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(flex: 1, child: Center(child: Text('Date'))),
@@ -39,7 +39,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                     Expanded(flex: 1, child: Center(child: Text('Lunch'))),
                     Expanded(flex: 1, child: Center(child: Text('EOD'))),
                   ])),
-          Divider(
+          const Divider(
             color: primaryColor,
             thickness: 2.0,
           ),
@@ -117,7 +117,7 @@ class AttendanceDisplayWidget extends StatelessWidget {
             ],
           ),
         ),
-        Divider(color: primaryColor,thickness: 1.0,),
+        const Divider(color: primaryColor,thickness: 1.0,),
       ],
     );
   }

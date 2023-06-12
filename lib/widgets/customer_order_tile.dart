@@ -1,4 +1,3 @@
-import 'package:demakk_admin/objects/date_and_time.dart';
 
 import '../objects/customer.dart';
 import 'package:flutter/material.dart';
@@ -122,19 +121,19 @@ class CustomerOrderTile extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Center(
                 child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(30)),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
                     color: primaryColor,
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                   child: Text(
                     '${order.dateAndTime.month()} ${order.dateAndTime.day()} : ${order.dateAndTime.year()}',
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.w600,
                         overflow: TextOverflow.fade,

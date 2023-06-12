@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../objects/color_object.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../objects/employee.dart';
-import '../resources/employee_position_repository.dart';
-import '../resources/employee_resource.dart';
-import '../resources/wage_resource.dart';
 
 const Color primaryColor = Color(0xFFFF6200);
 const Color backgroundColor = Colors.white;

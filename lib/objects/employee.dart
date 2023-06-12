@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../resources/wage_resource.dart';
 
 // class Employee {
 //   String name;
@@ -36,7 +35,6 @@ import '../resources/wage_resource.dart';
 //   }
 // }
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demakk_admin/objects/employee_position.dart';
 
 class Employee {

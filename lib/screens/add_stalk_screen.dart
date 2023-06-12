@@ -24,7 +24,7 @@ class _AddStalkScreenState extends State<AddStalkScreen> {
   String? selectedStalkCategory;
   String? selectedStalkType;
 
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Future<bool> addNewStock() async {
     bool isAdded = await addStalkViewModel.addStalk(
@@ -60,7 +60,7 @@ class _AddStalkScreenState extends State<AddStalkScreen> {
                         amharic ? 'የዕቃ አይነት' : 'Stalk Type',
                         style: subTitleTextStyle,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       StreamBuilder<List<StalkCategory>>(
@@ -94,6 +94,7 @@ class _AddStalkScreenState extends State<AddStalkScreen> {
                                   // alignment: AlignmentDirectional.centerEnd,
                                   items: stalkCategories
                                       .map((stalkCategory) => DropdownMenuItem(
+                                            value: stalkCategory.categoryTitle,
                                             child: Text(
                                               amharic
                                                   ? stalkCategory
@@ -101,7 +102,6 @@ class _AddStalkScreenState extends State<AddStalkScreen> {
                                                   : stalkCategory.categoryTitle,
                                               textAlign: TextAlign.center,
                                             ),
-                                            value: stalkCategory.categoryTitle,
                                           ))
                                       .toList(),
                                   value: selectedStalkCategory,
@@ -113,12 +113,12 @@ class _AddStalkScreenState extends State<AddStalkScreen> {
                                   }),
                             );
                           }),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
 
                       selectedStalkCategory == null
-                          ? SizedBox.shrink()
+                          ? const SizedBox.shrink()
                           : Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -126,7 +126,7 @@ class _AddStalkScreenState extends State<AddStalkScreen> {
                                   amharic ? 'የዕቃ መለያ' : 'Stalk Type',
                                   style: subTitleTextStyle,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 StreamBuilder(
@@ -178,9 +178,9 @@ class _AddStalkScreenState extends State<AddStalkScreen> {
                                                         selectedStalkCategory)
                                                     .map((stalkType) =>
                                                         DropdownMenuItem(
+                                                          value: stalkType.name,
                                                           child: Text(
                                                               stalkType.name),
-                                                          value: stalkType.name,
                                                         ))
                                                     .toList(),
                                                 onChanged: (selected) {
@@ -197,7 +197,7 @@ class _AddStalkScreenState extends State<AddStalkScreen> {
                                     }),
                               ],
                             ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       SizedBox(

@@ -21,7 +21,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Settings'),
+          title: const Text('Settings'),
           centerTitle: true,
         ),
         drawer: DrawerComponent(),
@@ -67,10 +67,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   }
                 });
               },
-              child: Text(amharic ? 'ቅንብሮቹን አስተካክል' : 'Apply Settings'),
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(primaryColor),
               ),
+              child: Text(amharic ? 'ቅንብሮቹን አስተካክል' : 'Apply Settings'),
             ),
           ],
         ),

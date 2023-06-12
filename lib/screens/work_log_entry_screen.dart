@@ -58,7 +58,7 @@ class _WorkLogEntryScreenState extends State<WorkLogEntryScreen> {
               time: _model.endLunchTime, text: 'End of Lunch Break Time:'),
           TimeListWidget(
               time: _model.endDayTime, text: 'End of days work Time:'),
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
           InkWell(
@@ -72,7 +72,7 @@ class _WorkLogEntryScreenState extends State<WorkLogEntryScreen> {
               child: Center(
                 child: Text(
                   _model.buttonText,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                   ),
                 ),
@@ -100,7 +100,7 @@ class TimeListWidget extends StatelessWidget {
           Text(
             text,
           ),
-          Spacer(),
+          const Spacer(),
           Text(
             time,
           ),

@@ -22,7 +22,7 @@ class StalkTile extends StatelessWidget {
               amharic
                   ? Text(
                       stalk.stalkType.amharicTypeName,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                         color: primaryColor,
@@ -31,7 +31,7 @@ class StalkTile extends StatelessWidget {
                     )
                   : Text(
                       stalk.stalkType.typeName,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                         color: primaryColor,

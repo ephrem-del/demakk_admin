@@ -6,11 +6,9 @@ import 'package:provider/provider.dart';
 import '../utilities/constants.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
-import '../widgets/app_bar_tile.dart';
 import 'customers_screen.dart';
 import 'drawer_component.dart';
 import 'expense_screen.dart';
-import 'history_screen.dart';
 import 'orders_screen.dart';
 
 import '../main.dart';

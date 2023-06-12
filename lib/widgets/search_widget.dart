@@ -18,10 +18,10 @@ class SearchWidget extends StatelessWidget {
         controller: searchController,
         decoration: InputDecoration(
             hintText: amharic ? 'ፈልግ' : 'Search',
-            prefixIcon: Icon(Icons.search),
+            prefixIcon: const Icon(Icons.search),
             prefixIconColor: primaryColor,
             border: InputBorder.none,
-            contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 15)),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15)),
         onChanged: onChanged,
       ),
     );

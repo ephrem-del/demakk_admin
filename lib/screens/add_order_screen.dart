@@ -9,7 +9,6 @@ import 'package:flutter/services.dart';
 import '../objects/customer.dart';
 import '../objects/order_type.dart';
 import '../objects/priority.dart';
-import '../resources/order_resource.dart';
 import '../utilities/constants.dart';
 import '../view_model/add_order_view_model.dart';
 
@@ -286,7 +285,7 @@ class _AddOrderScreenState extends State<AddOrderScreen> {
 
                       //type = tshirtTypesMap[_selectedTshirt]!;
                     } else if (flashStampOrNot) {
-                      print('selected stamp: ${_selectedStamp}');
+                      print('selected stamp: $_selectedStamp');
                       print(
                           'ordertype: ${OrderResource().allOrderTypesMap[_selectedStamp]?.name}');
                       type = OrderResource().flashStampTypesMap[

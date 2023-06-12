@@ -8,7 +8,7 @@ import '../widgets/customer_order_tile.dart';
 
 class TodayScreen extends StatefulWidget {
   final Customer customer;
-  TodayScreen({Key? key, required this.customer}) : super(key: key);
+  const TodayScreen({Key? key, required this.customer}) : super(key: key);
 
   @override
   State<TodayScreen> createState() => _TodayScreenState();
@@ -30,14 +30,14 @@ class _TodayScreenState extends State<TodayScreen> {
         stream: customerDetailScreenViewModel.todaysOrdersController.stream,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return Text('Snapshot Error');
+            return const Text('Snapshot Error');
           }
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
-              return Text('Loading...');
+              return const Text('Loading...');
             default:
               if (!snapshot.hasData) {
-                return Text('No Data');
+                return const Text('No Data');
               }
           }
           List<Order> orders = snapshot.data!;
