@@ -67,7 +67,9 @@ class _DrawerComponentState extends State<DrawerComponent> {
                 iconData: Icons.home,
                 title: 'Home'),
             AppBarTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, 'admin_tools_screen');
+              },
               iconData: Icons.admin_panel_settings,
               title: 'Admin Tools',
             ),

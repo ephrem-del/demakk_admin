@@ -22,13 +22,30 @@ class ExpenseTile extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    expense.employee,
+                    style: subTitleTextStyle,
+                  ),
+                  Text(
+                    '${expense.dateAndTime.date()} ${expense.dateAndTime.time()}',
+                    style: subTitleTextStyle,
+                  ),
+                ],
+              ),
+              const Divider(
+                color: primaryColor,
+                thickness: 3.0,
+              ),
               Text(
                 expense.reason,
                 style: subTitleTextStyle,
               ),
               const Divider(
                 color: primaryColor,
-                thickness: 3.0,
+                thickness: 2.0,
               ),
               amharic
                   ? Text(

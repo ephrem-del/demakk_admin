@@ -3,28 +3,69 @@ import 'dart:core' as core;
 import 'package:demakk_admin/business_logic/date_time_processing.dart';
 
 class DateAndTime {
-  final core.DateTime dateTime;
+  final core.DateTime? dateTime;
 
   DateAndTime({required this.dateTime});
 
+  core.String date() {
+    if (dateTime == null) {
+      return '';
+    }
+    core.String date = dateTime!.day.toString();
+    core.String year = dateTime!.year.toString();
+    core.String month = dateTime!.month.toString();
+
+    return '$date,$month,$year';
+  }
+
   core.String day() {
-    core.String day = convertWeekDay(dateTime);
-    core.String date = dateTime.day.toString();
+    if (dateTime == null) {
+      return '';
+    }
+    core.String day = convertWeekDay(dateTime!);
+    core.String date = dateTime!.day.toString();
     return '$date, $day';
   }
 
   core.String year() {
-    core.String year = dateTime.year.toString();
+    if (dateTime == null) {
+      return '';
+    }
+    core.String year = dateTime!.year.toString();
     return year;
   }
 
   core.String month() {
-    core.String month = convertMonth(dateTime);
+    if (dateTime == null) {
+      return '';
+    }
+    core.String month = convertMonth(dateTime!);
     return month;
   }
 
+  core.String time() {
+    if (dateTime == null) {
+      return '';
+    }
+    core.String _hour = dateTime!.hour.toString();
+    if (_hour.length == 1) {
+      _hour = '0$_hour';
+    }
+
+    core.String _minute = dateTime!.minute.toString();
+    if (_minute.length == 1) {
+      _minute = '0$_minute';
+    }
+
+    core.String time = '$_hour:$_minute';
+    return time;
+  }
+
   core.String hour() {
-    core.String hour = dateTime.hour.toString();
+    if (dateTime == null) {
+      return '';
+    }
+    core.String hour = dateTime!.hour.toString();
     if (hour.length == 1) {
       hour = '0$hour';
     }
@@ -32,7 +73,10 @@ class DateAndTime {
   }
 
   core.String minute() {
-    core.String minute = dateTime.minute.toString();
+    if (dateTime == null) {
+      return '';
+    }
+    core.String minute = dateTime!.minute.toString();
     if (minute.length == 1) {
       minute = '0$minute';
     }
@@ -40,7 +84,10 @@ class DateAndTime {
   }
 
   core.String second() {
-    core.String second = dateTime.second.toString();
+    if (dateTime == null) {
+      return '';
+    }
+    core.String second = dateTime!.second.toString();
     if (second.length == 1) {
       second = '0$second';
     }

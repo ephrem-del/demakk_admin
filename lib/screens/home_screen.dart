@@ -1,6 +1,7 @@
 import 'package:demakk_admin/provider/employee_provider.dart';
 import 'package:demakk_admin/screens/stalk_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../utilities/constants.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -29,7 +30,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: Text(context.watch<EmployeeProvider>().currentUser!.name),
+          centerTitle: true,
+        ),
         drawer:  DrawerComponent(),
         body: PersistentTabView(
           context,

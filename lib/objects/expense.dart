@@ -10,6 +10,7 @@ class Expense {
   final ExpenseType expenseType;
   final DateAndTime dateAndTime;
   String? id;
+  String employee;
   Expense({
     required this.reason,
     required this.price,
@@ -17,6 +18,7 @@ class Expense {
     required this.expenseType,
     required this.dateAndTime,
     this.id = '',
+    required this.employee,
   });
 
   Map<String, dynamic> toMap() {
@@ -25,7 +27,8 @@ class Expense {
       'paidOrNot': paidOrNot,
       'price': price,
       'expenseType': expenseType.typeName,
-      'dateAndTime': dateAndTime.dateTime
+      'dateAndTime': dateAndTime.dateTime,
+      'employee': employee,
     };
   }
 
@@ -35,6 +38,7 @@ class Expense {
         price: doc['price'],
         paidOrNot: doc['paidOrNot'],
         id: doc.id,
+        employee: doc['employee'],
         expenseType: ExpenseType(
             typeName: doc['expenseType'],
             amharicTypeName:

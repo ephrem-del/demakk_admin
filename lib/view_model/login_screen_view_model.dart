@@ -15,22 +15,31 @@ class LoginScreenViewModel {
   // EmployeeProvider employeeProvider = EmployeeProvider();
   Future<bool> authenticateLogin(String email, String password) async {
     bool isLoggedIn = false;
-    UserCredential userCredential =
-        await auth.signInWithEmailAndPassword(email: email, password: password);
-    if (userCredential != null) {
-      isLoggedIn = true;
-      DocumentSnapshot employeeDoc = await FirebaseFirestore.instance
-          .collection('employees')
-          .doc(email)
-          .get();
-      Employee employee = Employee.fromDocumentSnapshot(employeeDoc);
-      demakkEmployee = DemakkEmployee(employee: employee);
-      // context.read<EmployeeProvider>().login(demakkEmployee as BaseAuthUser);
-      // currentUser =
-      notifyProvider();
-      // employeeProvider.employee = demakkEmployee;
-      // employeeProvider.login(demakkEmployee);
+    try {
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      if (userCredential != null) {
+        isLoggedIn = true;
+        DocumentSnapshot employeeDoc = await FirebaseFirestore.instance
+            .collection('employees')
+            .doc(email)
+            .get();
+        Employee employee = Employee.fromDocumentSnapshot(employeeDoc);
+        demakkEmployee = DemakkEmployee(employee: employee);
+        // context.read<EmployeeProvider>().login(demakkEmployee as BaseAuthUser);
+        // currentUser =
+        notifyProvider();
+        // employeeProvider.employee = demakkEmployee;
+        // employeeProvider.login(demakkEmployee);
+      }
+    } on FirebaseAuthException catch (e) {
+      print('firebase auth error: $e');
+    } on FirebaseException catch (e) {
+      print('firebase error: $e');
+    } catch (e) {
+      print(e);
     }
+
     return isLoggedIn;
   }
 

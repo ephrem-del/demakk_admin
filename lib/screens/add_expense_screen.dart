@@ -20,6 +20,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   void _authenticate(BuildContext context) {
+    
     if (_formKey.currentState!.validate()) {
       showDialog(
           context: context,
@@ -51,7 +52,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                     String reason = _reasonController.text;
                     double price = double.parse(_priceController.text);
                     ExpenseType expenseType = expenseTypesMap[selectedType]!;
-                    _addExpenseViewModel.addExpense(reason, price, expenseType);
+                    _addExpenseViewModel.addExpense(reason, price, expenseType,context);
                     Navigator.pop(context);
                     Navigator.pushNamed(context, '/home_screen');
                   },
@@ -70,7 +71,15 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    // _addExpenseViewModel.
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         title: amharic ? const Text('ወጪ መጨመሪያ') : const Text('Add Expense'),
